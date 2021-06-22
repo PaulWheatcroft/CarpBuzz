@@ -1,59 +1,124 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<img src="images/" style="margin: 0;">
 
-Welcome USER_NAME,
+# Carp Buzz
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+>
+> Carp Buzz...
+>
 
-## Gitpod Reminders
+The live site has been deployed via GitHub to
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## User Experience (UX)
 
-`python3 -m http.server`
+XX target personas have been identified:
 
-A blue button should appear to click: _Make Public_,
+- XXX
+- XXX
 
-Another blue button should appear to click: _Open Browser_.
+### XXX
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+<img src="images/enthusiast.png" style="margin: 0;">
 
-A blue button should appear to click: _Make Public_,
+This persona will have an interest in independent music. **This is the primary target persona for 8 Meg Stick Records**. They will be looking to:
+- Links to released music
 
-Another blue button should appear to click: _Open Browser_.
+### XXX
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<img src="images/musician.png" style="margin: 0;">
 
-To log into the Heroku toolbelt CLI:
+A musician will use the website to review the music released by the label with a view to submitting a demo for consideration to be released on the label. They may also wish to assess an artist with a view to partnering over live music opportunities either asking for support roles or to offer support roles.
+- Found out about the label's ethos
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidently make it public then you can create a new one with _Regenerate API Key_.
+### User Stories
 
-## Updates Since The Instructional Video
+Using the targeted personas, the following list of user stories have been identified to fulfil their needs.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- As a...
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Design Choices
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+Below is the brand colour pallet for Carp Buzz.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+| Description | Hex Colour Value |
+| --- | ----------- |
+| Dark grey which can be used extensively | #1a1a1a |
+| Off white which can be used extensively | #f9f9f9 |
+| Light yellow to be used as a primary colour | #ffdd55 |
+| Darker yellow to be used as a secondary supportive colour | #d4aa00 |
+| Sky blue to be used as a main highlight colour | #80ffe6 |
+| Complimentary supporting  pink highlight colour | #ffaeae |
+| Complimentary supporting  green highlight colour | #b7ffa5 |
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+## Structure
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Wireframing
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+<img src="images/" style="margin: 0;">
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Mocking up of the site was done using Figma.
 
----
+A Figma wireframe for each page can be found in the links Below.
 
-Happy coding!
+[index.html](https://www.figma.com/file/lbEOracgvjZ4jw3uFd6hJd/8-Meg-Stick-Records?node-id=0%3A1)
+
+
+## Design Choices
+
+
+## Technologies
+
+### Languages Used
+
+- HTML5
+- CSS3
+- Python
+- Jinja template language
+- Jquery
+
+### Frameworks, Libraries & Programs Used
+
+- [Materialize](https://materializecss.com/) 
+- [Google Fonts](https://fonts.google.com/): Google fonts were used to import the 'Noto Sans', 'Noto Sans TC' and 'Monoton' font into the style.css file which is used on all pages throughout the project
+- [Font Awesome](https://fontawesome.com/): Font Awesome was used on all pages throughout the website for social media icons
+- [jQuery](https://jquery.com/): used to display the releases catalogue within the index.html file
+- [JSON](https://www.json.org/json-en.html): The releases catalogue is held in JSON
+- [Git](https://git-scm.com/): Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub
+- [Gitpod](https://www.gitpod.io/): Gitpod was used as the development environment
+- [GitHub](https://github.com/): GitHub is used to store the projects code after being pushed from Git
+- [Inkscape](https://inkscape.org/): Inkscape was used to create SVG files where needed such as the artist's logo
+- [Figma](https://www.figma.com/): Figma was used to create the wireframes during the design process
+
+## Testing
+
+### Testing User Stories from User Experience (UX) Section
+
+
+Both HTML and CSS have been validated via
+
+- W3C [Nu HTML Checker](https://validator.w3.org/nu/)
+- W3C CSS Validation Service [CSS Result]
+Accessibility was checked at [www.webaccessibility.com]
+Responsiveness was checked thought using the Google dev tools and [www.responsinator.com]
+
+A code review was posted in the Code Institute peer-code-review channel.
+
+
+Functional testing was carried out against every element to ensure everything worked and was linked as expected before user tested was started. This was recorded in [functional-testing.xlsx](functional-testing.xlsx). Another tab was added after user testing to regression test functionality following changes through the user testing feedback.
+
+## Bugs and issues
+
+
+## Deployment
+
+
+## Acknowledgements
+
+The project was started using the The Code Institute's [Gitpod Full Template](https://github.com/Code-Institute-Org/gitpod-full-template).
+
+
+
+## Further Development Ideas
+
