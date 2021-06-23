@@ -22,8 +22,9 @@ mongo = PyMongo(app)
 @app.route("/get_fisheries")
 def get_fisheries():
     fisheries = mongo.db.fisheries.contact.find()
-    facilities = mongo.db.fisheries.facilities.find()
-    return render_template("fisheries.html", fisheries=fisheries, facilities=facilities)
+    facilities = list(mongo.db.fisheries.facilities.find())
+    return render_template(
+        "fisheries.html", fisheries=fisheries, facilities=facilities)
 
 
 if __name__ == "__main__":
