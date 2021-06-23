@@ -9,17 +9,28 @@
 <body>
 
     <h1>Fisheries in the South West</h1>
-
+    
     {% for fishery in fisheries %}
+    <h1>Name</h1>
+        {{ fishery._id }}<br>
         {{ fishery.name }}<br>
         {{ fishery.address }}<br>
         {{ fishery.town }}<br>
         {{ fishery.county }}<br>
         {{ fishery.postcode }}<br>
-        {{ fishery.name }}<br>
-        {{ fishery.telephone }}<br>
-        {{ fishery.website }}<br>
-        {{ fishery.facebook }}<br>
+        <br>
+        <h2>Facilities</h2>
+        {% for facility in facilities %}
+        {% if fishery._id|string == facility.fishery_id %}
+                {{ facility.fishery_id }}<br>
+                Fishery type {{ facility.type }}<br>
+                Fish stock size of up to {{ facility.stock_size }}lbs<br>
+                Dogs allowed {{ facility.cafe }}<br>
+                Parking {{ facility.cafe }}<br>
+                <br>
+        {% endif %}
+    {% endfor %}
+
     {% endfor %}
 
 </body>
