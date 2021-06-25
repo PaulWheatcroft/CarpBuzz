@@ -12,8 +12,9 @@ The live site has been deployed via GitHub to
 
 XX target personas have been identified:
 
-- XXX
-- XXX
+- Unregistered person
+- Registered person
+- Administrator
 
 ### XXX
 
@@ -34,7 +35,14 @@ A musician will use the website to review the music released by the label with a
 
 Using the targeted personas, the following list of user stories have been identified to fulfil their needs.
 
-- As a...
+•	Unregistered person can filter a directory of fisheries
+•	Unregistered person can read a review of a fishery
+
+•	A registered user can leave a review of a fishery
+•	A registered user can record their catch report
+
+•	An administrator can add new CRUD fisheries
+•	An administrator can moderate fishery reviews
 
 ## Design Choices
 
@@ -43,13 +51,13 @@ Below is the brand colour pallet for Carp Buzz.
 
 | Description | Hex Colour Value |
 | --- | ----------- |
-| Dark grey which can be used extensively | #1a1a1a |
-| Off white which can be used extensively | #f9f9f9 |
-| Light yellow to be used as a primary colour | #ffdd55 |
-| Darker yellow to be used as a secondary supportive colour | #d4aa00 |
-| Sky blue to be used as a main highlight colour | #80ffe6 |
-| Complimentary supporting  pink highlight colour | #ffaeae |
-| Complimentary supporting  green highlight colour | #b7ffa5 |
+| XXX | #1a1a1a |
+| XXX | #f9f9f9 |
+| XXX | #ffdd55 |
+| XXX | #d4aa00 |
+| XXX | #80ffe6 |
+| XXX | #ffaeae |
+| XXX | #b7ffa5 |
 
 
 ## Structure

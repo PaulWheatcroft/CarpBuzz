@@ -25,13 +25,17 @@
                 {{ facility.fishery_id }}<br>
                 Fishery type {{ facility.type }}<br>
                 Fish stock size of up to {{ facility.stock_size }}lbs<br>
-                Dogs allowed {{ facility.cafe }}<br>
-                Parking {{ facility.cafe }}<br>
+                {% if facility %}
+                    Dogs allowed {{ facility.dogs_allowed }}<br>
+                    Parking {{ facility.parking }}<br>
+                {% endif %}
                 <br>
         {% endif %}
     {% endfor %}
 
     {% endfor %}
+
+
 
 </body>
 </html>
