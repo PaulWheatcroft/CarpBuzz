@@ -3,46 +3,27 @@
 # Carp Buzz
 
 >
-> Carp Buzz...
+> Carp Buzz is a directory of fisheries in the South West of England.
 >
 
 The live site has been deployed via GitHub to
 
 ## User Experience (UX)
 
-XX target personas have been identified:
+The following personas and user stories have been identified:
 
-- Unregistered person
-- Registered person
-- Administrator
+- As someone who wants to go carp fishing, I can view a directory of fisheries in the South West of England
+- As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on my requirements 
+- As someone who wants to go carp fishing, who is registered to the site, I can leave a review of a fishery
+    - I can edit my review at a later date
+    - I can delete my review
+- As someone who wants to go carp fishing, who is registered to the site, I can log the fish I catch on a fishing trip to one of the fisheries in the directory
+- As an administrator of the site, I can add new fisheries to the directory
+- I can amend existing fishery entries
+o	I can delete fisheries from the directory
+- An administrator of the site, I can moderate fishery reviews when notified by someone who uses the “report review” function.
+- I can deleted the review
 
-### XXX
-
-<img src="images/enthusiast.png" style="margin: 0;">
-
-This persona will have an interest in independent music. **This is the primary target persona for 8 Meg Stick Records**. They will be looking to:
-- Links to released music
-
-### XXX
-
-<img src="images/musician.png" style="margin: 0;">
-
-A musician will use the website to review the music released by the label with a view to submitting a demo for consideration to be released on the label. They may also wish to assess an artist with a view to partnering over live music opportunities either asking for support roles or to offer support roles.
-- Found out about the label's ethos
-
-
-### User Stories
-
-Using the targeted personas, the following list of user stories have been identified to fulfil their needs.
-
-•	Unregistered person can filter a directory of fisheries
-•	Unregistered person can read a review of a fishery
-
-•	A registered user can leave a review of a fishery
-•	A registered user can record their catch report
-
-•	An administrator can add new CRUD fisheries
-•	An administrator can moderate fishery reviews
 
 ## Design Choices
 
