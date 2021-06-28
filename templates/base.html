@@ -13,7 +13,60 @@
 </head>
 <body>
 
-    
+    <header>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">Add Fishery</a></li>
+            <li><a href="#!">Moderate Reviews</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">User Admin</a></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a href="#!">View Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Write a Review</a></li>            
+            <li><a href="#!">Create a Catch Report</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Carp Buzz</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Search</a></li>                   
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Admin <i class="fas fa-arrow-circle-down right"></i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Account <i class="fas fa-arrow-circle-down right"></i></a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Sidebar Nav Element Dropdown -->
+        <ul id="dropdown1-mobile" class="dropdown-content">
+            <li><a href="#!">Add Fishery</a></li>
+            <li><a href="#!">Moderate Reviews</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">User Admin</a></li>
+        </ul>
+        <ul id="dropdown2-mobile" class="dropdown-content">
+            <li><a href="#!">View Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Write a Review</a></li>            
+            <li><a href="#!">Create a Catch Report</a></li>
+        </ul>
+        <!-- Sidebar Nav Element-->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#">Search</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile">Dropdown <i class="fas fa-arrow-circle-down right"></i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown2-mobile">Account <i class="fas fa-arrow-circle-down right"></i></a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+    </header>
 
     {% block content %}        
     {% endblock %}
