@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+body {
+    color: #505050;
+}
+nav ul a {
+    color: #505050;
+}
+.nav-wrapper{
+    background-color: #e5e5e5;
+}
+.nav-wrapper a {
+    color: #505050;;
+}
+.brand-logo {
+    font-family: 'Questrial', sans-serif;
+}
