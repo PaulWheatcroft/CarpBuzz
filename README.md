@@ -48,13 +48,13 @@ Below is the brand colour pallet for Carp Buzz.
 
 | Description | Hex Colour Value |
 | --- | ----------- |
-| XXX | #1a1a1a |
-| XXX | #f9f9f9 |
-| XXX | #ffdd55 |
-| XXX | #d4aa00 |
-| XXX | #80ffe6 |
-| XXX | #ffaeae |
-| XXX | #b7ffa5 |
+| XXX | ### |
+| XXX | ### |
+| XXX | ### |
+| XXX | ### |
+| XXX | ### |
+| XXX | ### |
+| XXX | ### |
 
 
 ## Structure
