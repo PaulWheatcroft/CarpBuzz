@@ -4,36 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block styles %}
+    {% endblock %}
     <title>Carp Buzz</title>
 </head>
 <body>
-    {% block content %}
-        <h1>Fisheries in the South West</h1>
-        
-        {% for fishery in fisheries %}
-        <h1>Name</h1>
-            {{ fishery._id }}<br>
-            {{ fishery.name }}<br>
-            {{ fishery.address }}<br>
-            {{ fishery.town }}<br>
-            {{ fishery.county }}<br>
-            {{ fishery.postcode }}<br>
-            <br>
-            <h2>Facilities</h2>
-            {% for facility in facilities %}
-            {% if fishery._id|string == facility.fishery_id %}
-                    {{ facility.fishery_id }}<br>
-                    Fishery type {{ facility.type }}<br>
-                    Fish stock size of up to {{ facility.stock_size }}lbs<br>
-                    {% if facility %}
-                        Dogs allowed {{ facility.dogs_allowed }}<br>
-                        Parking {{ facility.parking }}<br>
-                    {% endif %}
-                    <br>
-            {% endif %}
-        {% endfor %}
 
-        {% endfor %}
+    
+
+    {% block content %}        
+    {% endblock %}
+
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}
     {% endblock %}
 </body>
 </html>
