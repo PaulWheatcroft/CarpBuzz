@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carp Buzz</title>
+</head>
+<body>
+    {% block content %}
+        <h1>Fisheries in the South West</h1>
+        
+        {% for fishery in fisheries %}
+        <h1>Name</h1>
+            {{ fishery._id }}<br>
+            {{ fishery.name }}<br>
+            {{ fishery.address }}<br>
+            {{ fishery.town }}<br>
+            {{ fishery.county }}<br>
+            {{ fishery.postcode }}<br>
+            <br>
+            <h2>Facilities</h2>
+            {% for facility in facilities %}
+            {% if fishery._id|string == facility.fishery_id %}
+                    {{ facility.fishery_id }}<br>
+                    Fishery type {{ facility.type }}<br>
+                    Fish stock size of up to {{ facility.stock_size }}lbs<br>
+                    {% if facility %}
+                        Dogs allowed {{ facility.dogs_allowed }}<br>
+                        Parking {{ facility.parking }}<br>
+                    {% endif %}
+                    <br>
+            {% endif %}
+        {% endfor %}
+
+        {% endfor %}
+    {% endblock %}
+</body>
+</html>
