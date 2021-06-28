@@ -1,17 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 body {
-    color: #505050;
+    color: #282828;
 }
 nav ul a {
-    color: #505050;
+    color: #fbfbfb;
 }
 .nav-wrapper{
-    background-color: #e5e5e5;
+    background-color: #444F59;
 }
 .nav-wrapper a {
-    color: #505050;;
+    color: #fbfbfb;
+}
+.nav-wrapper img {
+    height: 50px;
+    padding-top: 15%;
+    padding-left: 30%;
 }
 .brand-logo {
     font-family: 'Questrial', sans-serif;
+    letter-spacing: 6px;
+    color: #fbfbfb;
 }
