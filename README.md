@@ -10,19 +10,35 @@ The live site has been deployed via GitHub to
 
 ## User Experience (UX)
 
+### User Stories
+
 The following personas and user stories have been identified:
 
+>
+> All Users
+>
+
 - As someone who wants to go carp fishing, I can view a directory of fisheries in the South West of England
-- As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on my requirements 
+- As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on my requirements
+
+>
+> Registered Users
+>
+
 - As someone who wants to go carp fishing, who is registered to the site, I can leave a review of a fishery
     - I can edit my review at a later date
     - I can delete my review
 - As someone who wants to go carp fishing, who is registered to the site, I can log the fish I catch on a fishing trip to one of the fisheries in the directory
 - As an administrator of the site, I can add new fisheries to the directory
 - I can amend existing fishery entries
-o	I can delete fisheries from the directory
+    - I can delete fisheries from the directory
+
+>
+> Administrator
+>
+
 - An administrator of the site, I can moderate fishery reviews when notified by someone who uses the “report review” function.
-- I can deleted the review
+    - I can deleted the review
 
 
 ## Design Choices
