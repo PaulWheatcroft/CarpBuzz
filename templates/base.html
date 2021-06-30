@@ -27,8 +27,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="left"><img src="{{url_for('static', filename='cb.png')}}" alt="Carp Buzz Logo" /></a>
-                <a href="#!" class="brand-logo center">carp buzz</a>
+                <a href="#!" class="brand-logo left">carp buzz</a>
                 <a href="#" data-target="mobile-menu" class="sidenav-trigger right">menu</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Search</a></li>                   
@@ -55,6 +54,10 @@
         </ul>
         <!-- Sidebar Nav Element-->
         <ul class="sidenav" id="mobile-menu">
+            <div id="mobile-logo">
+                <img width="50px" src="{{url_for('static', filename='cb.png')}}" alt="Carp Buzz Logo" />
+            </div>
+            
             <li><a href="#"><i class="fas fa-search"></i>Search</a></li>
             <!-- Dropdown Trigger -->
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile"><i class="fas fa-user-cog"></i>Admin<i class="fas fa-sort-down right"></i></a></li>

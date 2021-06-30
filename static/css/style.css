@@ -22,3 +22,14 @@ nav ul a {
     letter-spacing: 6px;
     color: #fbfbfb;
 }
+#mobile-logo {
+    height: 200px;
+    background-color: #444F59;
+}
+#mobile-logo img {
+    margin-top: 70px;
+    margin-left: 120px;
+}
+.dropdown-content {
+    background-color: #ececec;
+}
