@@ -1,29 +1,100 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1><i class="fas fa-fish"></i> Fisheries in the South West <i class="fas fa-fish"></i> </h1>
+    <h1>Fisheries in the South West </h1>
     
     {% for fishery in fisheries %}
-    <h1>Name</h1>
-        {{ fishery._id }}<br>
-        {{ fishery.name }}<br>
-        {{ fishery.address }}<br>
-        {{ fishery.town }}<br>
-        {{ fishery.county }}<br>
-        {{ fishery.postcode }}<br>
-        <br>
-        <h2>Facilities</h2>
-        {% for facility in facilities %}
-        {% if fishery._id|string == facility.fishery_id %}
-                {{ facility.fishery_id }}<br>
-                Fishery type {{ facility.type }}<br>
-                Fish stock size of up to {{ facility.stock_size }}lbs<br>
-                {% if facility %}
-                    Dogs allowed {{ facility.dogs_allowed }}<br>
-                    Parking {{ facility.parking }}<br>
-                {% endif %}
-                <br>
-        {% endif %}
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card small fishery-card hoverable">
+                    <div class="waves-effect waves-block waves-light">
+                        
+                    </div>
+                    <div class="card-content">
+                        <h2 class="fishery-card">{{ fishery.name }}</h2>
+                        <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
+                        <p>{{ fishery.telephone }}</p>
+                        <p>{{ fishery.website }}</p>
+                        <p>{{ fishery.facebook }}</p>
+                      
+                        <p><a href="#" class="activator">View facilities</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <div class="row">
+                            <div class="col s12">
+                                <h3 class="center">Facilities <span class="card-title right">X</span></h3>
+                            </div>
+                        </div>
+                      
+                        {% for facility in facilities %}
+                            {% if fishery._id|string == facility.fishery_id %}
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col s4">{{ facility.type }}</div>
+                                    <div class="col s4">{{ facility.stock_size }}</div>
+                                    <div class="col s4">{{ facility.rods }}</div>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col s6">
+                                        <ul>
+                                            {% if facility.tackle_shop %}
+                                                <li>Tackle Shop</li>
+                                            {% endif %}
+                                            {% if facility.toilet %}
+                                                <li>toilet</li>
+                                            {% endif %}
+                                            {% if facility.shower %}
+                                                <li>shower</li>
+                                            {% endif %}
+                                            {% if facility.cafe %}
+                                                <li>cafe</li>
+                                            {% endif %}
+                                            {% if facility.fridge %}
+                                                <li>fridge</li>
+                                            {% endif %}
+                                            {% if facility.tackle_rent %}
+                                                <li>Tacke for Rent</li>
+                                            {% endif %}
+                                            {% if facility.lakeside_huts %}
+                                                <li>Lakeside Huts</li>
+                                            {% endif %}
+                                            {% if facility.tuition %}
+                                                <li>Tuition</li>
+                                            {% endif %}
+                                            {% if facility.drive_to_swim %}
+                                                <li>Drive to Swim</li>
+                                            {% endif %}
+                                            {% if facility.takeaway_delivery %}
+                                                <li>Takeaway Delivery</li>
+                                            {% endif %}
+                                            {% if facility.dogs_allowed %}
+                                                <li>Dogs Allowed</li>
+                                            {% endif %}
+                                            {% if facility.parking %}
+                                                <li>Parking</li>
+                                            {% endif %}                                    
+                                        </ul>
+                                    </div>
+                                    <div class="col s6">
+
+                                    </div>
+                                </div>
+
+
+                               
+                            </div>                            
+                            {% endif %}
+                        {% endfor %}
+                      
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+
+        
+       
 
     {% endfor %}
 

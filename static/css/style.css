@@ -2,9 +2,26 @@
 
 body {
     color: #282828;
+    
+}
+.desktop-only {
+    visibility: hidden;
 }
 nav ul a {
     color: #fbfbfb;
+}
+h1 {
+    font-size: 2em;
+    margin: 0;
+    text-align: center;
+}
+h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+h3 {
+    font-size: 1em;
+    margin: 0;
 }
 .nav-wrapper{
     background-color: #444F59;
@@ -31,5 +48,24 @@ nav ul a {
     margin-left: 120px;
 }
 .dropdown-content {
-    background-color: #ececec;
+    background-color: #f7f7f7;
+}
+.fishery-card {
+    text-align: center;
+}
+.fishery-card h1 {
+    line-height: 1em;
+    
+}
+.facilities-main ul {
+    list-style-type: none;
+    display: inline;
+}
+@media only screen and (min-width: 1025px) {
+    .mobile-only {
+        visibility: hidden;
+    }
+    .desktop-only {
+        visibility: visible;
+    }
 }
