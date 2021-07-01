@@ -23,8 +23,11 @@ mongo = PyMongo(app)
 def get_fisheries():
     fisheries = mongo.db.fisheries.contact.find()
     facilities = list(mongo.db.fisheries.facilities.find())
+    tickets = list(mongo.db.fisheries.tickets.find())
+    payments = list(mongo.db.fisheries.payment.find())
     return render_template(
-        "fisheries.html", fisheries=fisheries, facilities=facilities)
+        "fisheries.html", fisheries=fisheries, facilities=facilities,
+        tickets=tickets, payments=payments)
 
 
 if __name__ == "__main__":

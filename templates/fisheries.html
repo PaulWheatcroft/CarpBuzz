@@ -18,7 +18,34 @@
 
                 <!-- Fishery price -->
                 <div class="row">
-
+                    {% for ticket in tickets %}
+                        {% if fishery._id|string == ticket.fishery_id %}
+                            {% if ticket.day_dayonly|string != "0.00" %}
+                                Day: £{{ ticket.day_dayonly }}
+                            {% endif %}
+                            {% if ticket.day_daynigh|string != "0.00" %}
+                                24hrs: £{{ ticket.day_daynight }}
+                            {% endif %}
+                            {% if ticket.lake_daynight|string != "0.00" %}
+                                Lake Day: £{{ ticket.lake_daynight }}
+                            {% endif %}
+                            {% if ticket.syndicate_daynight|string != "0.00" %}
+                                Syndicate 24hrs: £{{ ticket.syndicate_daynight }}
+                            {% endif %}
+                            {% if ticket.club_dayonly|string != "0.00" %}
+                                Club Day: £{{ ticket.club_dayonly }}
+                            {% endif %}
+                            {% if ticket.club_daynight|string != "0.00" %}
+                                Club 24hrs: £{{ ticket.club_daynight }}
+                            {% endif %}
+                            {% if ticket.season_dayonly|string != "0.00" %}
+                                Season Day: £{{ ticket.season_dayonly }}
+                            {% endif %}
+                            {% if ticket.season_daynight|string != "0.00" %}
+                                Season 24hrs: £{{ ticket.season_daynight }}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 
                 <div class="card-action">
@@ -43,10 +70,10 @@
 
             <!-- Reveal details for the fishery (facilities and payment methods)-->
             <div class="card-reveal">
-                <div class="row">
-                    <div class="col s12">
-                        <span class="card-title right"><i class="fas fa-times-circle"></i></span>
-                    </div>
+                <div class="row facilities-close-row">
+   
+                        <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
+
                 </div>
                 
                 <!-- Main facilities -->

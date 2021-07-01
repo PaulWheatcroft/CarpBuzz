@@ -62,10 +62,7 @@ h3 {
 .card-content {
     text-align: center;
     padding: 0px;
-}
-.fishery-card h1 {
-    line-height: 1em;
-    text-align: center;
+    font-size: 12px;
 }
 .card .card-action {
     background-color: inherit;
@@ -73,6 +70,11 @@ h3 {
     position: relative;
     padding: 0px 0px;
 }
+.card .card-title {
+    font-size: 0px;
+    font-weight: 0;
+}
+
 .card-buttons {
     height: 50px;
     line-height: 50px;
@@ -87,6 +89,16 @@ h3 {
     background-color: #89A857;
     height: 50px;
     line-height: 50px;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #f7f7f7;
+    margin-right: 0px;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: #ffffff;
 }
 .view-facilities a {
     color: #f7f7f7;
@@ -109,11 +121,19 @@ h3 {
     display: inline-block;
     width: 20px;
 }
+.facilities-close {
+    font-size: 16px;
+    line-height: 30px;
+    margin-right: 7px;
+}
 @media only screen and (min-width: 1025px) {
     .mobile-only {
         visibility: hidden;
     }
     .desktop-only {
         visibility: visible;
+    }
+    .card-content {
+        font-size: 14px;
     }
 }
