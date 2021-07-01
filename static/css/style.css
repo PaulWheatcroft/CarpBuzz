@@ -23,6 +23,9 @@ h3 {
     font-size: 1em;
     margin: 0;
 }
+.row {
+    margin: 0;
+}
 .nav-wrapper{
     background-color: #444F59;
 }
@@ -50,15 +53,43 @@ h3 {
 .dropdown-content {
     background-color: #f7f7f7;
 }
+.card .card-content {
+    padding: 0px;
+}
 .fishery-card {
     background-color: #f7f7f7;
 }
 .card-content {
     text-align: center;
+    padding: 0px;
 }
 .fishery-card h1 {
     line-height: 1em;
     text-align: center;
+}
+.card .card-action {
+    background-color: inherit;
+    border-top: 0;
+    position: relative;
+    padding: 0px 0px;
+}
+.card-buttons {
+    height: 50px;
+    line-height: 50px;
+}
+.reviews-button {
+    background-color: #689DA8;
+}
+.reports-button {
+    background-color: #99C2CB;
+}
+.view-facilities {
+    background-color: #89A857;
+    height: 50px;
+    line-height: 50px;
+}
+.view-facilities a {
+    color: #f7f7f7;
 }
 .main-facility {
     text-align: center;
@@ -70,7 +101,7 @@ h3 {
     margin-top: 0px;
 }
 .card .card-reveal {
-    padding: 18px;
+    padding: 0px;
     background-color: #89A857;
     color: #f7f7f7;
 }

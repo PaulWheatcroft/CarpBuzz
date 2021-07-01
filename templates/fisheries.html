@@ -4,102 +4,121 @@
     
     {% for fishery in fisheries %}
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <div class="card small fishery-card">
-                    <div class="waves-effect waves-block waves-light">
-                        
+        <div class="card small fishery-card">
+            <!-- Primary details for the fishery -->
+            <div class="card-content">
+                <!-- Fishery contact details -->
+                <div class="row">
+                    <h2>{{ fishery.name }}</h2>
+                    <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
+                    <p>{{ fishery.telephone }}</p>
+                    <p>{{ fishery.website }}</p>
+                    <p>{{ fishery.facebook }}</p>
+                </div>
+
+                <!-- Fishery price -->
+                <div class="row">
+
+                </div>
+                
+                <div class="card-action">
+                    <!-- Review and Reports buttons -->
+                    <div class="row">
+                        <div class="col s6 card-buttons reviews-button">
+                            reviews
+                        </div>
+                        <div class="col s6 card-buttons reports-button">
+                            reports
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <h2 class="fishery-card">{{ fishery.name }}</h2>
-                        <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
-                        <p>{{ fishery.telephone }}</p>
-                        <p>{{ fishery.website }}</p>
-                        <p>{{ fishery.facebook }}</p>
-                      
+                
+                    <!-- Fishery details reveal link -->
+                    <div class="row">
                         <div class="view-facilities">
                             <a href="#" class="activator">View facilities</a>
                         </div>
-                        
-                    </div>
-                    <div class="card-reveal">
-                        <div class="row">
-                            <div class="col s12">
-                                <span class="card-title right"><i class="fas fa-times-circle"></i></span>
-                            </div>
-                        </div>
-                      
-                        {% for facility in facilities %}
-                            {% if fishery._id|string == facility.fishery_id %}
-
-                                <div class="row">
-                                    <div class="col s4 main-facility">
-                                        <i class="fas fa-water"></i>
-                                        <p>{{ facility.type }}</p>
-                                    </div>
-                                    <div class="col s4 main-facility">
-                                        <i class="fas fa-fish"></i>
-                                        <p>Up to {{ facility.stock_size }}lbs</p>
-                                    </div>
-                                    <div class="col s4 main-facility">
-                                        <i class="fas fa-list-ol"></i>
-                                        <p>Max rods {{ facility.rods }}</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="row">
-                                    <div class="col s6">
-                                        <ul>
-                                            {% if facility.tackle_shop %}
-                                                <li><span class="icon-span"><i class="fas fa-store-alt"></i></span> Tackle Shop</li>
-                                            {% endif %}
-                                            {% if facility.toilet %}
-                                                <li><span class="icon-span"><i class="fas fa-toilet"></i></span> toilet</li>
-                                            {% endif %}
-                                            {% if facility.shower %}
-                                                <li><span class="icon-span"><i class="fas fa-shower"></i></span> shower</li>
-                                            {% endif %}
-                                            {% if facility.cafe %}
-                                                <li><span class="icon-span"><i class="fas fa-coffee"></i></span> cafe</li>
-                                            {% endif %}
-                                            {% if facility.fridge %}
-                                                <li><span class="icon-span"><i class="fas fa-snowflake"></i></span> fridge</li>
-                                            {% endif %}
-                                            {% if facility.tackle_rent %}
-                                                <li><span class="icon-span"><i class="fas fa-exchange-alt"></i></span> Rent Tackle</li>
-                                            {% endif %}
-                                            {% if facility.lakeside_huts %}
-                                                <li><span class="icon-span"><i class="fas fa-store"></i></span> Lakeside Huts</li>
-                                            {% endif %}
-                                            {% if facility.tuition %}
-                                                <li><span class="icon-span"><i class="fas fa-user-graduate"></i></span> Tuition</li>
-                                            {% endif %}
-                                            {% if facility.drive_to_swim %}
-                                                <li><span class="icon-span"><i class="fas fa-car-side"></i></span> Drive to Swim</li>
-                                            {% endif %}
-                                            {% if facility.takeaway_delivery %}
-                                                <li><span class="icon-span"><i class="fas fa-pizza-slice"></i></span> Food Delivery</li>
-                                            {% endif %}
-                                            {% if facility.dogs_allowed %}
-                                                <li><span class="icon-span"><i class="fas fa-dog"></i></span> Dogs Allowed</li>
-                                            {% endif %}
-                                            {% if facility.parking %}
-                                                <li><span class="icon-span"><i class="fas fa-parking"></i></span> Parking</li>
-                                            {% endif %}                                    
-                                        </ul>
-                                    </div>
-                                    <div class="col s6">
-
-                                    </div>
-                                </div>
-                          
-                            {% endif %}
-                        {% endfor %}
-                      
-                    </div>
+                    </div> 
                 </div>
             </div>
-          </div>
+
+            <!-- Reveal details for the fishery (facilities and payment methods)-->
+            <div class="card-reveal">
+                <div class="row">
+                    <div class="col s12">
+                        <span class="card-title right"><i class="fas fa-times-circle"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Main facilities -->
+                {% for facility in facilities %}
+                    {% if fishery._id|string == facility.fishery_id %}
+
+                        <div class="row">
+                            <div class="col s4 main-facility">
+                                <i class="fas fa-water"></i>
+                                <p>{{ facility.type }}</p>
+                            </div>
+                            <div class="col s4 main-facility">
+                                <i class="fas fa-fish"></i>
+                                <p>Up to {{ facility.stock_size }}lbs</p>
+                            </div>
+                            <div class="col s4 main-facility">
+                                <i class="fas fa-list-ol"></i>
+                                <p>Max rods {{ facility.rods }}</p>
+                            </div>
+                        </div>
+                        <!-- This list of facilities to only show if the are truthy -->
+                        <div class="row">
+                            <div class="col s6">
+                                <ul>
+                                    {% if facility.tackle_shop %}
+                                        <li><span class="icon-span"><i class="fas fa-store-alt"></i></span> Tackle Shop</li>
+                                    {% endif %}
+                                    {% if facility.toilet %}
+                                        <li><span class="icon-span"><i class="fas fa-toilet"></i></span> toilet</li>
+                                    {% endif %}
+                                    {% if facility.shower %}
+                                        <li><span class="icon-span"><i class="fas fa-shower"></i></span> shower</li>
+                                    {% endif %}
+                                    {% if facility.cafe %}
+                                        <li><span class="icon-span"><i class="fas fa-coffee"></i></span> cafe</li>
+                                    {% endif %}
+                                    {% if facility.fridge %}
+                                        <li><span class="icon-span"><i class="fas fa-snowflake"></i></span> fridge</li>
+                                    {% endif %}
+                                    {% if facility.tackle_rent %}
+                                        <li><span class="icon-span"><i class="fas fa-exchange-alt"></i></span> Rent Tackle</li>
+                                    {% endif %}
+                                    {% if facility.lakeside_huts %}
+                                        <li><span class="icon-span"><i class="fas fa-store"></i></span> Lakeside Huts</li>
+                                    {% endif %}
+                                    {% if facility.tuition %}
+                                        <li><span class="icon-span"><i class="fas fa-user-graduate"></i></span> Tuition</li>
+                                    {% endif %}
+                                    {% if facility.drive_to_swim %}
+                                        <li><span class="icon-span"><i class="fas fa-car-side"></i></span> Drive to Swim</li>
+                                    {% endif %}
+                                    {% if facility.takeaway_delivery %}
+                                        <li><span class="icon-span"><i class="fas fa-pizza-slice"></i></span> Food Delivery</li>
+                                    {% endif %}
+                                    {% if facility.dogs_allowed %}
+                                        <li><span class="icon-span"><i class="fas fa-dog"></i></span> Dogs Allowed</li>
+                                    {% endif %}
+                                    {% if facility.parking %}
+                                        <li><span class="icon-span"><i class="fas fa-parking"></i></span> Parking</li>
+                                    {% endif %}                                    
+                                </ul>
+                            </div>
+                            <div class="col s6">
+
+                            </div>
+                        </div>
+                    
+                    {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
     </div>
 
         
