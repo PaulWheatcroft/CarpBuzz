@@ -51,15 +51,26 @@ h3 {
     background-color: #f7f7f7;
 }
 .fishery-card {
+    background-color: #f7f7f7;
+}
+.card-content {
     text-align: center;
 }
 .fishery-card h1 {
     line-height: 1em;
-    
+    text-align: center;
 }
-.facilities-main ul {
-    list-style-type: none;
-    display: inline;
+.main-facility {
+    text-align: center;
+}
+.card .card-reveal {
+    padding: 18px;
+    background-color: #89A857;
+    color: #f7f7f7;
+}
+.icon-span {
+    display: inline-block;
+    width: 20px;
 }
 @media only screen and (min-width: 1025px) {
     .mobile-only {
