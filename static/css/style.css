@@ -63,6 +63,12 @@ h3 {
 .main-facility {
     text-align: center;
 }
+.main-facility i {
+    font-size: 2em;
+}
+.main-facility p {
+    margin-top: 0px;
+}
 .card .card-reveal {
     padding: 18px;
     background-color: #89A857;

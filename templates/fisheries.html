@@ -33,9 +33,18 @@
                             {% if fishery._id|string == facility.fishery_id %}
 
                                 <div class="row">
-                                    <div class="col s4 main-facility">{{ facility.type }}</div>
-                                    <div class="col s4 main-facility">{{ facility.stock_size }}</div>
-                                    <div class="col s4 main-facility">{{ facility.rods }}</div>
+                                    <div class="col s4 main-facility">
+                                        <i class="fas fa-water"></i>
+                                        <p>{{ facility.type }}</p>
+                                    </div>
+                                    <div class="col s4 main-facility">
+                                        <i class="fas fa-fish"></i>
+                                        <p>Up to {{ facility.stock_size }}lbs</p>
+                                    </div>
+                                    <div class="col s4 main-facility">
+                                        <i class="fas fa-list-ol"></i>
+                                        <p>Max rods {{ facility.rods }}</p>
+                                    </div>
                                 </div>
                             
                                 <div class="row">
