@@ -75,7 +75,7 @@ h3 {
     background-color: inherit;
     border-top: 0;
     position: relative;
-    padding: 0px 0px;
+    padding: 0 10px 0 10px;
 }
 .card .card-title {
     font-size: 0px;
@@ -97,6 +97,9 @@ h3 {
     height: 50px;
     line-height: 50px;
 }
+.view-facilities a {
+    color: #f7f7f7;
+}
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     color: #f7f7f7;
     margin-right: 0px;
@@ -106,9 +109,6 @@ h3 {
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
     color: #ffffff;
-}
-.view-facilities a {
-    color: #f7f7f7;
 }
 .main-facility {
     text-align: center;
@@ -120,7 +120,7 @@ h3 {
     margin-top: 0px;
 }
 .card .card-reveal {
-    padding: 0px;
+    padding: 0 15px 0 15px;
     background-color: #89A857;
     color: #f7f7f7;
 }
