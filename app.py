@@ -33,6 +33,28 @@ def get_fisheries():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        # Check if the email address already exists
+        existing_email = mongo.db.accounts.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_email:
+            flash("That email address is already in use")
+            return redirect(url_for("register"))
+
+        register = {
+            "email": request.form.get("email").lower(),
+            "fname": request.form.get("fname").lower(),
+            "lname": request.form.get("lname").lower(),
+            "username": request.form.get("username"),
+            "password": generate_password_hash(request.form.get("password")),
+            "is_admin": bool(False)
+        }
+        mongo.db.accounts.insert_one(register)
+
+        flash("Your account has been registered. Please log in.")
+        return redirect(url_for("get_fisheries"))
+
     return render_template("register.html")
 
 
