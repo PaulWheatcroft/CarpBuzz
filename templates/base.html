@@ -25,7 +25,7 @@
             <li><a href="#!">User Admin</a></li>
         </ul>
         <ul id="dropdown2" class="dropdown-content">
-            <li><a href="#!">View Profile</a></li>
+            <li><a href="{{ url_for('profile', user_id=session['user']) }}">View Profile</a></li>
             <li><a href="#!">Write a Review</a></li>
             <li><a href="#!">Create a Catch Report</a></li>
         </ul>
@@ -56,7 +56,7 @@
             <li><a href="#!"><i class="fas fa-user-cog"></i>User Admin</a></li>
         </ul>
         <ul id="dropdown2-mobile" class="dropdown-content">
-            <li><a href="#!"><i class="fas fa-user-cog"></i>View Profile</a></li>
+            <li><a href="{{ url_for('profile', user_id=session['user']) }}"><i class="fas fa-user-cog"></i>View Profile</a></li>
             <li><a href="#!"><i class="fas fa-pen-square"></i>Write a Review</a></li>
             <li><a href="#!"><i class="fas fa-clipboard-list"></i>Create a Catch Report</a></li>
         </ul>
