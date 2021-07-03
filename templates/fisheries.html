@@ -9,43 +9,47 @@
             <div class="card-content">
                 <!-- Fishery contact details -->
                 <div class="row">
-                    <h2>{{ fishery.name }}</h2>
-                    <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
-                    <p>{{ fishery.telephone }}</p>
-                    <p>{{ fishery.website }}</p>
-                    <p>{{ fishery.facebook }}</p>
+                    <div class="col s12">
+                        <h2>{{ fishery.name }}</h2>
+                        <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
+                        <p>{{ fishery.telephone }}</p>
+                        <p>{{ fishery.website }}</p>
+                        <p>{{ fishery.facebook }}</p>
+                    </div>                    
                 </div>
 
                 <!-- Fishery price -->
                 <div class="row">
-                    {% for ticket in tickets %}
-                    {% if fishery._id|string == ticket.fishery_id %}
-                    {% if ticket.day_dayonly|string != "0.00" %}
-                    Day: £{{ ticket.day_dayonly }}
-                    {% endif %}
-                    {% if ticket.day_daynigh|string != "0.00" %}
-                    24hrs: £{{ ticket.day_daynight }}
-                    {% endif %}
-                    {% if ticket.lake_daynight|string != "0.00" %}
-                    Lake Day: £{{ ticket.lake_daynight }}
-                    {% endif %}
-                    {% if ticket.syndicate_daynight|string != "0.00" %}
-                    Syndicate 24hrs: £{{ ticket.syndicate_daynight }}
-                    {% endif %}
-                    {% if ticket.club_dayonly|string != "0.00" %}
-                    Club Day: £{{ ticket.club_dayonly }}
-                    {% endif %}
-                    {% if ticket.club_daynight|string != "0.00" %}
-                    Club 24hrs: £{{ ticket.club_daynight }}
-                    {% endif %}
-                    {% if ticket.season_dayonly|string != "0.00" %}
-                    Season Day: £{{ ticket.season_dayonly }}
-                    {% endif %}
-                    {% if ticket.season_daynight|string != "0.00" %}
-                    Season 24hrs: £{{ ticket.season_daynight }}
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
+                    <div class="col s12">
+                        {% for ticket in tickets %}
+                        {% if fishery._id|string == ticket.fishery_id %}
+                        {% if ticket.day_dayonly|string != "0.00" %}
+                        Day: £{{ ticket.day_dayonly }}
+                        {% endif %}
+                        {% if ticket.day_daynigh|string != "0.00" %}
+                        24hrs: £{{ ticket.day_daynight }}
+                        {% endif %}
+                        {% if ticket.lake_daynight|string != "0.00" %}
+                        Lake Day: £{{ ticket.lake_daynight }}
+                        {% endif %}
+                        {% if ticket.syndicate_daynight|string != "0.00" %}
+                        Syndicate 24hrs: £{{ ticket.syndicate_daynight }}
+                        {% endif %}
+                        {% if ticket.club_dayonly|string != "0.00" %}
+                        Club Day: £{{ ticket.club_dayonly }}
+                        {% endif %}
+                        {% if ticket.club_daynight|string != "0.00" %}
+                        Club 24hrs: £{{ ticket.club_daynight }}
+                        {% endif %}
+                        {% if ticket.season_dayonly|string != "0.00" %}
+                        Season Day: £{{ ticket.season_dayonly }}
+                        {% endif %}
+                        {% if ticket.season_daynight|string != "0.00" %}
+                        Season 24hrs: £{{ ticket.season_daynight }}
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>                   
                 </div>
 
                 <div class="card-action">
@@ -61,9 +65,11 @@
 
                     <!-- Fishery details reveal link -->
                     <div class="row">
-                        <div class="view-facilities">
-                            <a href="#" class="activator">View facilities</a>
-                        </div>
+                        <div class="col s12">
+                            <div class="view-facilities">
+                                <a href="#" class="activator">View facilities</a>
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -71,9 +77,9 @@
             <!-- Reveal details for the fishery (facilities and payment methods)-->
             <div class="card-reveal">
                 <div class="row facilities-close-row">
-
-                    <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
-
+                    <div class="col s12">
+                        <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
+                    </div>    
                 </div>
 
                 <!-- Main facilities -->

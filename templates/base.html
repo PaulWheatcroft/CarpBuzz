@@ -42,7 +42,7 @@
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Account <i
                                 class="fas fa-sort-down right"></i></a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="#">Logout</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                 </ul>
@@ -73,7 +73,7 @@
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown2-mobile"><i
                         class="fas fa-user-circle"></i>Account<i class="fas fa-sort-down right"></i></a></li>
             <li><a href="#"><i class="fas fa-envelope"></i>Contact</a></li>
-            <li><a href="#"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+            <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
             <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
             <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i>Register</a></li>
         </ul>

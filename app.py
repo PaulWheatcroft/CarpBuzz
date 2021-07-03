@@ -53,9 +53,38 @@ def register():
         mongo.db.accounts.insert_one(register)
 
         flash("Your account has been registered. Please log in.")
-        return redirect(url_for("get_fisheries"))
+        return redirect(url_for("login"))
 
     return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Check if the email exists
+        existing_email = mongo.db.accounts.find_one(
+            {"email": request.form.get("email").lower()})
+        user_id = existing_email["email"]
+        username = existing_email["username"]
+
+        if existing_email:
+            # check hashed passwords match
+            if check_password_hash(
+                    existing_email["password"], request.form.get("password")):
+                session["user"] = user_id
+                flash(f"Welcome {username}")
+
+            else:
+                # Invalid password
+                flash("Incorrrect email and or password")
+                return redirect(url_for("login"))
+
+        else:
+            # Invalid password
+            flash("Incorrrect email and or password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
