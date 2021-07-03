@@ -36,6 +36,9 @@ h3 {
 .row .col {
     padding: 0;
 }
+.card-panel {
+    background-color: #f7f7f7;
+}
 .nav-wrapper{
     background-color: #537e86;
 }
