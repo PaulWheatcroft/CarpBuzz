@@ -70,9 +70,9 @@ def login():
             # check hashed passwords match
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                session["user"] = str(existing_user["_id"])
+                session["user_id"] = str(existing_user["_id"])
                 flash(f"Welcome {username}")
-                return redirect(url_for("profile", user_id=session["user"]))
+                return redirect(url_for("profile", user_id=session["user_id"]))
             else:
                 # Invalid password
                 flash("Incorrrect email and or password")
