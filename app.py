@@ -176,8 +176,17 @@ def add_fishery():
             "book_on_phone": bool(request.form.get("book_on_phone")),
             "tackle_shop": bool(request.form.get("tackle_shop"))
         }
-        # insert ticket prices
+        # insert payment and booking details
         mongo.db.fisheries.payment.insert_one(fishery_payment)
+        # get fishery facilities
+        fishery_facilities = {
+            "fishery_id": str(fishery_id),
+            "lake_type": request.form.get("lake_type"),
+            "stock_size": int(request.form.get("stock_size")),
+            "rods": request.form.get("rods")
+        }
+        # insert payment and booking details
+        mongo.db.fisheries.facilities.insert_one(fishery_facilities)
         return render_template("add_fishery.html")
 
     return render_template("add_fishery.html")
