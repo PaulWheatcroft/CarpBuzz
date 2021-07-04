@@ -183,7 +183,19 @@ def add_fishery():
             "fishery_id": str(fishery_id),
             "lake_type": request.form.get("lake_type"),
             "stock_size": int(request.form.get("stock_size")),
-            "rods": request.form.get("rods")
+            "rods": request.form.get("rods"),
+            "onsite_tackle_shop": bool(request.form.get("onsite_tackle_shop")),
+            "toilet": bool(request.form.get("toilet")),
+            "shower": bool(request.form.get("shower")),
+            "cafe": bool(request.form.get("cafe")),
+            "fridge": bool(request.form.get("fridge")),
+            "tackle_rent": bool(request.form.get("tackle_rent")),
+            "lakeside_huts": bool(request.form.get("lakeside_huts")),
+            "tuition": bool(request.form.get("tuition")),
+            "drive_to_swim": bool(request.form.get("drive_to_swim")),
+            "takeaway_delivery": bool(request.form.get("takeaway_delivery")),
+            "dogs_allowed": bool(request.form.get("dogs_allowed")),
+            "parking": bool(request.form.get("parking"))
         }
         # insert payment and booking details
         mongo.db.fisheries.facilities.insert_one(fishery_facilities)
