@@ -1,309 +1,321 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">Add a Fishery</h3>
+<h1 class="center-align">Add a Fishery</h1>
 
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <form>
-
-                <div class="off-white-background">
-                    <!-- Fishery Contact Details -->
-                    <h2 class="center-align">Fishery Contact Details</h2>
-                    <div class="row">
-                        <div class="input-field col s12 m10 offset-m1">
-                            <input id="name" name="name" type="text" minlength="2" maxlength="50"
-                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$" class="validate" required>
-                            <label for="name">Fishery Name</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m10 offset-m1">
-                            <input id="first-line" name="first-line" type="text" minlength="2" maxlength="50"
-                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
-                            <label for="first-line">First Line of the Address</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m10 offset-m1">
-                            <input id="town" name="town" type="text" minlength="2" maxlength="50"
-                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
-                            <label for="town">Town</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m10 offset-m1 off-white">
-                            <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
-                                pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate" required>
-                            <label for="postcode">Postcode</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m10 offset-m1">
-                            <input id="website" name="website" type="text" minlength="1"
-                                pattern="^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$" class="validate">
-                            <label for="website">Fishery Website</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m10 offset-m1">
-                            <input id="facebook" name="facebook" type="text" minlength="1"
-                                pattern="^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$" class="validate">
-                            <label for="facebook">Fishery Facebook Address</label>
-                        </div>
+            <form method="POST" action="{{ url_for('add_fishery') }}">
+                <!-- Fishery Contact Details -->
+                <h2 class="center-align">Fishery Contact Details</h2>
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="name" name="name" type="text" minlength="2" maxlength="50"
+                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$" class="validate" required>
+                        <label for="name">Fishery Name</label>
                     </div>
                 </div>
 
-                <div class="grey-background">
-                    <!-- Ticket Prices -->
-                    <h2 class="center-align">Fishery Ticket Prices</h2>
-                    <div class="row">
-                        <div class="input-field col s2 offset-s1">
-                            <input id="day-dayonly" name="day-dayonly" type="text" pattern="\d*\.?\d*" class="validate">
-                            <label for="day-dayonly">Day Only</label>
-                        </div>
-                        <div class="input-field col s2 offset-s2">
-                            <input id="day-24hours" name="day-24hours" type="text" pattern="\d*\.?\d*" class="validate">
-                            <label for="day-24hours">Day 24 Hours</label>
-                        </div>
-                        <div class="input-field col s2 offset-s2">
-                            <input id="lake-24hours" name="lake-24hours" type="text" pattern="\d*\.?\d*"
-                                class="validate">
-                            <label for="lake-24hours">Lake 24 Hours</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s2 offset-s1">
-                            <input id="syndicate-24hours" name="syndicate-24hours" type="text" pattern="\d*\.?\d*"
-                                class="validate">
-                            <label for="syndicate-24hours">Syndicate 24hours</label>
-                        </div>
-                        <div class="input-field col s2 offset-s2">
-                            <input id="club-dayonly" name="club-dayonly" type="text" pattern="\d*\.?\d*"
-                                class="validate">
-                            <label for="club-dayonly">Club Day Only</label>
-                        </div>
-                        <div class="input-field col s2 offset-s2">
-                            <input id="club-24hours" name="club-24hours" type="text" pattern="\d*\.?\d*"
-                                class="validate">
-                            <label for="club-24hours">Club 24 Hours</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s2 offset-s1">
-                            <input id="season-dayonly" name="season-dayonly" type="text" pattern="\d*\.?\d*"
-                                class="validate">
-                            <label for="season-dayonly">Season Day Only</label>
-                        </div>
-                        <div class="input-field col s2 offset-s2">
-                            <input id="season-24hours" name="season-24hours" type="text" pattern="\d*\.?\d*"
-                                class="validate">
-                            <label for="season-24hours">Club 24 Hours</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="address" name="address" type="text" minlength="2" maxlength="50"
+                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
+                        <label for="address">First Line of the Address</label>
                     </div>
                 </div>
 
-                <div class="off-white-background">
-                    <!-- Payment methods -->
-                    <h2 class="center-align">Fishery Payment and Booking Methods</h2>
-                    <div class="row">
-                        <div class="col s1 offset-s1">
-                            <label for="on-the-bank">
-                                <input type="checkbox" name="on-the-bank" id="on-the-bank" />
-                                <span>Bank</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="on-arival">
-                                <input type="checkbox" name="on-arival" id="on-arival" />
-                                <span>Arrival</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="online">
-                                <input type="checkbox" name="online" id="online" />
-                                <span>Online</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="phone">
-                                <input type="checkbox" name="phone" id="phone" />
-                                <span>Phone</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="tackle-shop">
-                                <input type="checkbox" name="tackle-shop" id="tackle-shop" />
-                                <span>Shop</span>
-                            </label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="town" name="town" type="text" minlength="2" maxlength="50"
+                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
+                        <label for="town">Town</label>
                     </div>
                 </div>
 
-                <div class="grey-background">
-                    <!-- facilities -->
-                    <div class="row">
-                        <!-- lake type -->
-                        <h2 class="center-align">Fishery Main Facilities</h2>
-                        <div class="col s1 offset-s1">
-                            <label for="single">
-                                <input name="lake-type" id="single" type="radio" checked />
-                                <span>Single</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="multiple">
-                                <input name="lake-type" id="multiple" type="radio" />
-                                <span>Multiple</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- stock size -->
-                        <div class="col s1 offset-s1">
-                            <label for="20lbs">
-                                <input name="stock-size" id="20lbs" type="radio" checked />
-                                <span>20lbs</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="30lbs">
-                                <input name="stock-size" id="30lbs" type="radio" />
-                                <span>30lbs</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="40lbs">
-                                <input name="stock-size" id="40lbs" type="radio" />
-                                <span>40lbs</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="50lbs">
-                                <input name="stock-size" id="50lbs" type="radio" />
-                                <span>50lbs</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="60lbs">
-                                <input name="stock-size" id="60lbs" type="radio" />
-                                <span>60lbs</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s1 offset-s1">
-                            <!-- number of rods allowes -->
-                            <label for="one-rod">
-                                <input name="rods" id="one-rod" type="radio" checked />
-                                <span>One</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="two-rods">
-                                <input name="rods" id="two-rods" type="radio" />
-                                <span>Two</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="three-rods">
-                                <input name="rods" id="three-rods" type="radio" />
-                                <span>Three</span>
-                            </label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1 off-white">
+                        <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
+                            pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate" required>
+                        <label for="postcode">Postcode</label>
                     </div>
                 </div>
 
-                <div class="off-white-background">
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="telephone" name="telephone" type="text" minlength="10" maxlength="20"
+                            pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate" required>
+                        <label for="telephone">Telephone</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="website" name="website" type="text" minlength="1"
+                            pattern="^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^.]+)(?:[.,]\w+)*\.(\w+)"
+                            class="validate">
+                        <label for="website">Fishery Website</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="facebook" name="facebook" type="text" minlength="1"
+                            pattern="^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$"
+                            class="validate">
+                        <label for="facebook">Fishery Facebook Address</label>
+                    </div>
+                </div>
+
+
+
+                <!-- Ticket Prices -->
+                <h2 class="center-align">Fishery Ticket Prices</h2>
+                <div class="row">
+                    <div class="input-field col s2 offset-s1">
+                        <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <label for="day_dayonly">Day Only</label>
+                    </div>
+                    <div class="input-field col s2 offset-s2">
+                        <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <label for="day_daynight">Day 24 Hours</label>
+                    </div>
+                    <div class="input-field col s2 offset-s2">
+                        <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <label for="lake_daynight">Lake 24 Hours</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s2 offset-s1">
+                        <input id="syndicate_daynight" name="syndicate_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
+                        <label for="syndicate_daynight">Syndicate 24hours</label>
+                    </div>
+                    <div class="input-field col s2 offset-s2">
+                        <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <label for="club_dayonly">Club Day Only</label>
+                    </div>
+                    <div class="input-field col s2 offset-s2">
+                        <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <label for="club_daynight">Club 24 Hours</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s2 offset-s1">
+                        <input id="season_dayonly" name="season_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
+                        <label for="season_dayonly">Season Day Only</label>
+                    </div>
+                    <div class="input-field col s2 offset-s2">
+                        <input id="season_daynight" name="season_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
+                        <label for="season_daynight">Club 24 Hours</label>
+                    </div>
+                </div>
+
+                <!-- Payment methods -->
+                <h2 class="center-align">Fishery Payment and Booking Methods</h2>
+                <div class="row">
+                    <div class="col s1 offset-s1">
+                        <label for="on-the-bank">
+                            <input type="checkbox" name="on-the-bank" id="on-the-bank" />
+                            <span>Bank</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="on-arival">
+                            <input type="checkbox" name="on-arival" id="on-arival" />
+                            <span>Arrival</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="online">
+                            <input type="checkbox" name="online" id="online" />
+                            <span>Online</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="phone">
+                            <input type="checkbox" name="phone" id="phone" />
+                            <span>Phone</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="tackle-shop">
+                            <input type="checkbox" name="tackle-shop" id="tackle-shop" />
+                            <span>Shop</span>
+                        </label>
+                    </div>
+                </div>
+
+
+
+                <!-- facilities -->
+
+
+                <div class="row">
+                    <h2 class="center-align">Fishery Main Facilities</h2>
+                    <!-- lake type -->
+                    <h3 class="center-align">Fishery Type</h3>
+                    <div class="col s1 offset-s1">
+                        <label for="single">
+                            <input name="lake-type" id="single" type="radio" checked />
+                            <span>Single</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="multiple">
+                            <input name="lake-type" id="multiple" type="radio" />
+                            <span>Multiple</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <!-- stock size -->
+                    <h3 class="center-align">Maximum Fish Stock Size</h3>
+                    <div class="col s1 offset-s1">
+                        <label for="20lbs">
+                            <input name="stock-size" id="20lbs" type="radio" checked />
+                            <span>20lbs</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="30lbs">
+                            <input name="stock-size" id="30lbs" type="radio" />
+                            <span>30lbs</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="40lbs">
+                            <input name="stock-size" id="40lbs" type="radio" />
+                            <span>40lbs</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="50lbs">
+                            <input name="stock-size" id="50lbs" type="radio" />
+                            <span>50lbs</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="60lbs">
+                            <input name="stock-size" id="60lbs" type="radio" />
+                            <span>60lbs</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <h3 class="center-align">Number of Rods Allowed</h3>
+                    <div class="col s1 offset-s1">
+                        <!-- number of rods allowes -->
+                        <label for="one-rod">
+                            <input name="rods" id="one-rod" type="radio" checked />
+                            <span>One</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="two-rods">
+                            <input name="rods" id="two-rods" type="radio" />
+                            <span>Two</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="three-rods">
+                            <input name="rods" id="three-rods" type="radio" />
+                            <span>Three</span>
+                        </label>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Site facilities -->
+                <div class="row input-row">
                     <h2 class="center-align">Fishery Site Facilities</h2>
-                    <!-- Site facilities -->
-                    <div class="row">
-                        <div class="col s1 offset-s1">
-                            <label for="shop">
-                                <input type="checkbox" name="shop" id="shop" />
-                                <span>Shop</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="toilet">
-                                <input type="checkbox" name="toilet" id="toilet" />
-                                <span>Toilet</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="shower">
-                                <input type="checkbox" name="shower" id="shower" />
-                                <span>Shower</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="cafe">
-                                <input type="checkbox" name="cafe" id="cafe" />
-                                <span>Cafe</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="fridge">
-                                <input type="checkbox" name="fridge" id="fridge" />
-                                <span>Fridge</span>
-                            </label>
-                        </div>
+                    <div class="col s1 offset-s1">
+                        <label for="shop">
+                            <input type="checkbox" name="shop" id="shop" />
+                            <span>Shop</span>
+                        </label>
                     </div>
-                    <div class="row">
-                        <div class="col s1 offset-s1">
-                            <label for="tackle-rent">
-                                <input type="checkbox" name="tackle-rent" id="tackle-rent" />
-                                <span>Rent</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="drive-swim">
-                                <input type="checkbox" name="drive-swim" id="drive-swim" />
-                                <span>DriveToSwim</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="lakeside-huts">
-                                <input type="checkbox" name="lakeside-huts" id="lakeside-huts" />
-                                <span>Huts</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="tuition">
-                                <input type="checkbox" name="tuition" id="tuition" />
-                                <span>Tuition</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="dogs-allowed">
-                                <input type="checkbox" name="dogs-allowed" id="dogs-allowed" />
-                                <span>Dogs</span>
-                            </label>
-                        </div>
+                    <div class="col s1 offset-s1">
+                        <label for="toilet">
+                            <input type="checkbox" name="toilet" id="toilet" />
+                            <span>Toilet</span>
+                        </label>
                     </div>
-                    <div class="row">
-                        <div class="col s1 offset-s1">
-                            <label for="takeaway">
-                                <input type="checkbox" name="takeaway" id="takeaway" />
-                                <span>Takeaway</span>
-                            </label>
-                        </div>
-                        <div class="col s1 offset-s1">
-                            <label for="parking">
-                                <input type="checkbox" name="parking" id="parking" />
-                                <span>Parking</span>
-                            </label>
-                        </div>
+                    <div class="col s1 offset-s1">
+                        <label for="shower">
+                            <input type="checkbox" name="shower" id="shower" />
+                            <span>Shower</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="cafe">
+                            <input type="checkbox" name="cafe" id="cafe" />
+                            <span>Cafe</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="fridge">
+                            <input type="checkbox" name="fridge" id="fridge" />
+                            <span>Fridge</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col s1 offset-s1">
+                        <label for="tackle-rent">
+                            <input type="checkbox" name="tackle-rent" id="tackle-rent" />
+                            <span>Rent</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="drive-swim">
+                            <input type="checkbox" name="drive-swim" id="drive-swim" />
+                            <span>DriveToSwim</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="lakeside-huts">
+                            <input type="checkbox" name="lakeside-huts" id="lakeside-huts" />
+                            <span>Huts</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="tuition">
+                            <input type="checkbox" name="tuition" id="tuition" />
+                            <span>Tuition</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="dogs-allowed">
+                            <input type="checkbox" name="dogs-allowed" id="dogs-allowed" />
+                            <span>Dogs</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col s1 offset-s1">
+                        <label for="takeaway">
+                            <input type="checkbox" name="takeaway" id="takeaway" />
+                            <span>Takeaway</span>
+                        </label>
+                    </div>
+                    <div class="col s1 offset-s1">
+                        <label for="parking">
+                            <input type="checkbox" name="parking" id="parking" />
+                            <span>Parking</span>
+                        </label>
                     </div>
                 </div>
 
-                <button type="submit" class="col s12 btn-large submit-button">Add Fishery</button>
+
+                <div class="row input-row">
+                    <button type="submit" class="col s12 btn-large submit-button">Add Fishery</button>
+                </div>
+
             </form>
         </div>
 

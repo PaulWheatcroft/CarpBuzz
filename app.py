@@ -106,6 +106,68 @@ def logout():
 
 @app.route("/add_fishery", methods=["GET", "POST"])
 def add_fishery():
+    if request.method == "POST":
+        # create fishery contact dict
+        fishery_contact = {
+            "name": request.form.get("name"),
+            "address": request.form.get("address"),
+            "town": request.form.get("town"),
+            "postcode": request.form.get("postcode"),
+            "telephone": request.form.get("telephone"),
+            "website": request.form.get("website"),
+            "facebook": request.form.get("facebook")
+        }
+        # insert the fishery contact dict and get the inserted id
+        fishery_id = mongo.db.fisheries.contact.insert_one(
+            fishery_contact).inserted_id
+        # get the ticket prices. Convert "" to 0
+        if (request.form.get("day_dayonly") == ""):
+            day_dayonly = 0.00
+        else:
+            day_dayonly = float(request.form.get("day_dayonly"))
+        if (request.form.get("day_daynight") == ""):
+            day_daynight = 0.00
+        else:
+            day_daynight = float(request.form.get("day_daynight"))
+        if (request.form.get("lake_daynight") == ""):
+            lake_daynight = 0.00
+        else:
+            lake_daynight = float(request.form.get("lake_daynight"))
+        if (request.form.get("syndicate_daynight") == ""):
+            syndicate_daynight = 0.00
+        else:
+            syndicate_daynight = float(request.form.get("syndicate_daynight"))
+        if (request.form.get("club_dayonly") == ""):
+            club_dayonly = 0.00
+        else:
+            club_dayonly = float(request.form.get("club_dayonly"))
+        if (request.form.get("club_daynight") == ""):
+            club_daynight = 0.00
+        else:
+            club_daynight = float(request.form.get("club_daynight"))
+        if (request.form.get("season_dayonly") == ""):
+            season_dayonly = 0.00
+        else:
+            season_dayonly = float(request.form.get("season_dayonly"))
+        if (request.form.get("season_daynight") == ""):
+            season_daynight = 0.00
+        else:
+            season_daynight = float(request.form.get("season_daynight"))
+        # create tickets dict
+        fishery_tickets = {
+            "fishery_id": str(fishery_id),
+            "day_dayonly": day_dayonly,
+            "day_daynight": day_daynight,
+            "lake_daynight": lake_daynight,
+            "syndicate_daynight": syndicate_daynight,
+            "club_dayonly": club_dayonly,
+            "club_daynight": club_daynight,
+            "season_dayonly": season_dayonly,
+            "season_daynight": season_daynight
+        }
+        mongo.db.fisheries.tickets.insert_one(fishery_tickets)
+        return render_template("add_fishery.html")
+
     return render_template("add_fishery.html")
 
 
