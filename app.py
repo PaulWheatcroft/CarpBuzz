@@ -96,6 +96,14 @@ def profile(user):
     return redirect(url_for("login"))
 
 
+@app.route("/logout")
+def logout():
+    # Remove all sessions cookies
+    flash("You have been successfully logged out")
+    session.clear()
+    return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
