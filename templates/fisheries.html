@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Fisheries in the South West </h1>
+    <h1>{{ session["user_id"] }}</h1>
 
     {% for fishery in fisheries %}
     <div class="row">

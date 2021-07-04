@@ -64,15 +64,14 @@ def login():
         # Check if the email exists
         existing_user = mongo.db.accounts.find_one(
             {"email": request.form.get("email").lower()})
-        username = existing_user["username"]
 
         if existing_user:
             # check hashed passwords match
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                session["user_id"] = str(existing_user["_id"])
-                flash(f"Welcome {username}")
-                return redirect(url_for("profile", user_id=session["user_id"]))
+                session["user"] = request.form.get("email")
+                flash(f"Welcome {session['user']}")
+                return redirect(url_for("profile", user=session["user"]))
             else:
                 # Invalid password
                 flash("Incorrrect email and or password")
@@ -86,11 +85,15 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<user_id>", methods=["GET", "POST"])
-def profile(user_id):
+@app.route("/profile/<user>", methods=["GET", "POST"])
+def profile(user):
     username = mongo.db.accounts.find_one(
-        {"_id": ObjectId(user_id)})["username"]
-    return render_template("profile.html", username=username)
+        {"email": user})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
