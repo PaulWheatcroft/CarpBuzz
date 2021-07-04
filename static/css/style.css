@@ -23,6 +23,12 @@ h3 {
     font-size: 1em;
     margin: 0;
 }
+.off-white-background {
+    background-color: #fbfbfb;
+}
+.grey-background {
+    background-color: #ebebeb;
+}
 .flashes {
     line-height: 20px;
     background-color: #89A857;
@@ -37,7 +43,7 @@ h3 {
     padding: 0;
 }
 .card-panel {
-    background-color: #f7f7f7;
+    background-color: #689DA8;
 }
 .nav-wrapper{
     background-color: #537e86;

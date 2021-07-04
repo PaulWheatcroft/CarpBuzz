@@ -20,7 +20,7 @@
     <header>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Add Fishery</a></li>
+            <li><a href="{{ url_for('add_fishery') }}">Add Fishery</a></li>
             <li><a href="#!">Moderate Reviews</a></li>
             <li><a href="#!">User Admin</a></li>
         </ul>
@@ -56,7 +56,7 @@
 
         <!-- Sidebar Nav Element Dropdown -->
         <ul id="dropdown1-mobile" class="dropdown-content">
-            <li><a href="#!"><i class="fas fa-plus-square"></i>Add Fishery</a></li>
+            <li><a href="{{ url_for('add_fishery') }}"><i class="fas fa-plus-square"></i>Add Fishery</a></li>
             <li><a href="#!"><i class="fas fa-pen-square"></i>Moderate Reviews</a></li>
             <li><a href="#!"><i class="fas fa-user-cog"></i>User Admin</a></li>
         </ul>
