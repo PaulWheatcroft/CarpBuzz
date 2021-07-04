@@ -86,10 +86,10 @@
                 {% for facility in facilities %}
                 {% if fishery._id|string == facility.fishery_id %}
 
-                <div class="row">
+                <div class="row main-facilities">
                     <div class="col s4 main-facility">
                         <i class="fas fa-water"></i>
-                        <p>{{ facility.type }}</p>
+                        <p>{{ facility.lake_type }}</p>
                     </div>
                     <div class="col s4 main-facility">
                         <i class="fas fa-fish"></i>
@@ -103,8 +103,8 @@
                 <!-- This list of facilities to only show if the are truthy -->
                 <div class="row">
                     <div class="col s6">
-                        <ul>
-                            {% if facility.tackle_shop %}
+                        <ul class="facilities-list">
+                            {% if facility.onsite_tackle_shop %}
                             <li><span class="icon-span"><i class="fas fa-store-alt"></i></span> Tackle Shop</li>
                             {% endif %}
                             {% if facility.toilet %}

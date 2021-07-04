@@ -122,6 +122,19 @@ h3 {
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
     color: #ffffff;
 }
+.card .card-reveal {
+    padding: 0 15px 0 15px;
+    background-color: #89A857;
+    color: #f7f7f7;
+}
+.main-facilities:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 80%; /* Change this to whatever width you want. */
+    padding-top: 2px; /* This creates some space between the element and the border. */
+    border-bottom: 1px whitesmoke solid; /* This creates the border. Replace black with whatever color you want. */
+}
 .main-facility {
     text-align: center;
 }
@@ -131,11 +144,10 @@ h3 {
 .main-facility p {
     margin-top: 0px;
 }
-.card .card-reveal {
-    padding: 0 15px 0 15px;
-    background-color: #89A857;
-    color: #f7f7f7;
+.facilities-list {
+    margin-left: 40%;
 }
+
 .icon-span {
     display: inline-block;
     width: 20px;

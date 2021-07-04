@@ -123,6 +123,8 @@ Functional testing was carried out against every element to ensure everything wo
 
 The project was started using the The Code Institute's [Gitpod Full Template](https://github.com/Code-Institute-Org/gitpod-full-template).
 
+Border https://www.steckinsights.com/shorten-length-border-bottom-pure-css/ 
+
 
 
 ## Further Development Ideas
