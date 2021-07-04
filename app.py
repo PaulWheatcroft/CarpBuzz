@@ -165,7 +165,19 @@ def add_fishery():
             "season_dayonly": season_dayonly,
             "season_daynight": season_daynight
         }
+        # insert ticket prices
         mongo.db.fisheries.tickets.insert_one(fishery_tickets)
+        # get the payment and booking details
+        fishery_payment = {
+            "fishery_id": str(fishery_id),
+            "on_the_bank": bool(request.form.get("on_the_bank")),
+            "on_arrival": bool(request.form.get("on_arrival")),
+            "book_online": bool(request.form.get("book_online")),
+            "book_on_phone": bool(request.form.get("book_on_phone")),
+            "tackle_shop": bool(request.form.get("tackle_shop"))
+        }
+        # insert ticket prices
+        mongo.db.fisheries.payment.insert_one(fishery_payment)
         return render_template("add_fishery.html")
 
     return render_template("add_fishery.html")
