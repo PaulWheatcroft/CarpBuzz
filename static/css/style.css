@@ -33,15 +33,29 @@ h3 {
     padding-top: 20px;
 }
 .flashes {
-    line-height: 20px;
-    background-color: #89A857;
+    line-height: 20px;    
     z-index: 1;
     position: absolute;
-    top: 30px;
-    border: 1px solid #738d4a;
+    top: 30px;    
     border-radius: 5px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     color: #f7f7f7;
+}
+.error {
+    background-color: #a85757;
+    border: 1px solid #e65858;
+}
+.warning {
+    background-color: #979660;
+    border: 1px solid #e7e431;
+}
+.info {
+    background-color: #57a5a8;
+    border: 1px solid #5ec7f0;
+}
+.success {
+    background-color: #89A857;
+    border: 1px solid #b6f05a;
 }
 .flashes h4 {
     font-family: 'Questrial', sans-serif;

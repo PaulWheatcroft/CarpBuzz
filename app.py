@@ -22,7 +22,6 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_fisheries")
 def get_fisheries():
-    flash("Just sending a massage")
     fisheries = mongo.db.fisheries.contact.find()
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
@@ -40,7 +39,7 @@ def register():
             {"email": request.form.get("email").lower()})
 
         if existing_email:
-            flash("That email address is already in use")
+            flash("That email address is already in use", 'warning')
             return redirect(url_for("register"))
 
         register = {
@@ -53,7 +52,7 @@ def register():
         }
         mongo.db.accounts.insert_one(register)
 
-        flash("Your account has been registered. Please log in.")
+        flash("Your account has been registered. Please log in.", 'error')
         return redirect(url_for("login"))
 
     return render_template("register.html")
@@ -71,16 +70,16 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("email")
-                flash(f"Welcome {session['user']}")
+                flash(f"Welcome {session['user']}", 'info')
                 return redirect(url_for("profile", user=session["user"]))
             else:
                 # Invalid password
-                flash("Incorrrect email and or password")
+                flash("Incorrrect email and or password", 'error')
                 return redirect(url_for("login"))
 
         else:
             # Invalid password
-            flash("Incorrrect email and or password")
+            flash("Incorrrect email and or password", 'error')
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -100,10 +99,10 @@ def profile(user):
 @app.route("/logout")
 def logout():
     # Remove all sessions cookies
-    flash("You have been successfully logged out")
     session.clear()
+    flash('You have been successfully logged out', 'info')
     return redirect(url_for("login"))
-
+    
 
 @app.route("/add_fishery", methods=["GET", "POST"])
 def add_fishery():
@@ -200,6 +199,7 @@ def add_fishery():
         }
         # insert payment and booking details
         mongo.db.fisheries.facilities.insert_one(fishery_facilities)
+        flash('You have successfully added the fishery', 'success')
         return render_template("add_fishery.html")
 
     return render_template("add_fishery.html")
