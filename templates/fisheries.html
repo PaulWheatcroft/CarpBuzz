@@ -1,160 +1,161 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ session["user_id"] }}</h1>
+<h1>{{ session["user_id"] }}</h1>
 
-    {% for fishery in fisheries %}
-    <div class="row">
-        <div class="card small fishery-card col s12 m10 offset-m1">
-            <!-- Primary details for the fishery -->
-            <div class="card-content">
-                <!-- Fishery contact details -->
-                <div class="row">
-                    <div class="col s12">
-                        <h2>{{ fishery.name }}</h2>
-                        <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
-                        <p>{{ fishery.telephone }}</p>
-                        <p>{{ fishery.website }}</p>
-                        <p>{{ fishery.facebook }}</p>
-                    </div>                    
-                </div>
-
-                <!-- Fishery price -->
-                <div class="row">
-                    <div class="col s12">
-                        {% for ticket in tickets %}
-                        {% if fishery._id|string == ticket.fishery_id %}
-                        {% if ticket.day_dayonly|string != "0.00" %}
-                        Day: £{{ ticket.day_dayonly }}
-                        {% endif %}
-                        {% if ticket.day_daynigh|string != "0.00" %}
-                        24hrs: £{{ ticket.day_daynight }}
-                        {% endif %}
-                        {% if ticket.lake_daynight|string != "0.00" %}
-                        Lake Day: £{{ ticket.lake_daynight }}
-                        {% endif %}
-                        {% if ticket.syndicate_daynight|string != "0.00" %}
-                        Syndicate 24hrs: £{{ ticket.syndicate_daynight }}
-                        {% endif %}
-                        {% if ticket.club_dayonly|string != "0.00" %}
-                        Club Day: £{{ ticket.club_dayonly }}
-                        {% endif %}
-                        {% if ticket.club_daynight|string != "0.00" %}
-                        Club 24hrs: £{{ ticket.club_daynight }}
-                        {% endif %}
-                        {% if ticket.season_dayonly|string != "0.00" %}
-                        Season Day: £{{ ticket.season_dayonly }}
-                        {% endif %}
-                        {% if ticket.season_daynight|string != "0.00" %}
-                        Season 24hrs: £{{ ticket.season_daynight }}
-                        {% endif %}
-                        {% endif %}
-                        {% endfor %}
-                    </div>                   
-                </div>
-
-                <div class="card-action">
-                    <!-- Review and Reports buttons -->
-                    <div class="row">
-                        <div class="col s6 card-buttons reviews-button">
-                            reviews
-                        </div>
-                        <div class="col s6 card-buttons reports-button">
-                            reports
-                        </div>
-                    </div>
-
-                    <!-- Fishery details reveal link -->
-                    <div class="row">
-                        <div class="col s12">
-                            <div class="view-facilities">
-                                <a href="#" class="activator">View facilities</a>
-                            </div>
-                        </div>                        
-                    </div>
+{% for fishery in fisheries %}
+<div class="row">
+    <div class="card small fishery-card col s12 m10 offset-m1">
+        <!-- Primary details for the fishery -->
+        <div class="card-content">
+            <!-- Fishery contact details -->
+            <div class="row">
+                <div class="col s12">
+                    <h2>{{ fishery.name }}</h2>
+                    <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
+                    <p>{{ fishery.telephone }}</p>
+                    <p>{{ fishery.website }}</p>
+                    <p>{{ fishery.facebook }}</p>
                 </div>
             </div>
 
-            <!-- Reveal details for the fishery (facilities and payment methods)-->
-            <div class="card-reveal">
-                <div class="row facilities-close-row">
-                    <div class="col s12">
-                        <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
-                    </div>    
+            <!-- Fishery price -->
+            <div class="row">
+                <div class="col s12">
+                    {% for ticket in tickets %}
+                    {% if fishery._id|string == ticket.fishery_id %}
+                    {% if ticket.day_dayonly|string != "0.00" %}
+                    Day: £{{ ticket.day_dayonly }}
+                    {% endif %}
+                    {% if ticket.day_daynigh|string != "0.00" %}
+                    24hrs: £{{ ticket.day_daynight }}
+                    {% endif %}
+                    {% if ticket.lake_daynight|string != "0.00" %}
+                    Lake Day: £{{ ticket.lake_daynight }}
+                    {% endif %}
+                    {% if ticket.syndicate_daynight|string != "0.00" %}
+                    Syndicate 24hrs: £{{ ticket.syndicate_daynight }}
+                    {% endif %}
+                    {% if ticket.club_dayonly|string != "0.00" %}
+                    Club Day: £{{ ticket.club_dayonly }}
+                    {% endif %}
+                    {% if ticket.club_daynight|string != "0.00" %}
+                    Club 24hrs: £{{ ticket.club_daynight }}
+                    {% endif %}
+                    {% if ticket.season_dayonly|string != "0.00" %}
+                    Season Day: £{{ ticket.season_dayonly }}
+                    {% endif %}
+                    {% if ticket.season_daynight|string != "0.00" %}
+                    Season 24hrs: £{{ ticket.season_daynight }}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
                 </div>
+            </div>
 
-                <!-- Main facilities -->
-                {% for facility in facilities %}
-                {% if fishery._id|string == facility.fishery_id %}
-
-                <div class="row main-facilities">
-                    <div class="col s4 main-facility">
-                        <i class="fas fa-water"></i>
-                        <p>{{ facility.lake_type }}</p>
-                    </div>
-                    <div class="col s4 main-facility">
-                        <i class="fas fa-fish"></i>
-                        <p>Up to {{ facility.stock_size }}lbs</p>
-                    </div>
-                    <div class="col s4 main-facility">
-                        <i class="fas fa-list-ol"></i>
-                        <p>Max rods {{ facility.rods }}</p>
-                    </div>
-                </div>
-                <!-- This list of facilities to only show if the are truthy -->
+            <div class="card-action">
+                <!-- Review and Reports buttons -->
                 <div class="row">
-                    <div class="col s6">
-                        <ul class="facilities-list">
-                            {% if facility.onsite_tackle_shop %}
-                            <li><span class="icon-span"><i class="fas fa-store-alt"></i></span> Tackle Shop</li>
-                            {% endif %}
-                            {% if facility.toilet %}
-                            <li><span class="icon-span"><i class="fas fa-toilet"></i></span> toilet</li>
-                            {% endif %}
-                            {% if facility.shower %}
-                            <li><span class="icon-span"><i class="fas fa-shower"></i></span> shower</li>
-                            {% endif %}
-                            {% if facility.cafe %}
-                            <li><span class="icon-span"><i class="fas fa-coffee"></i></span> cafe</li>
-                            {% endif %}
-                            {% if facility.fridge %}
-                            <li><span class="icon-span"><i class="fas fa-snowflake"></i></span> fridge</li>
-                            {% endif %}
-                            {% if facility.tackle_rent %}
-                            <li><span class="icon-span"><i class="fas fa-exchange-alt"></i></span> Rent Tackle</li>
-                            {% endif %}
-                            {% if facility.lakeside_huts %}
-                            <li><span class="icon-span"><i class="fas fa-store"></i></span> Lakeside Huts</li>
-                            {% endif %}
-                            {% if facility.tuition %}
-                            <li><span class="icon-span"><i class="fas fa-user-graduate"></i></span> Tuition</li>
-                            {% endif %}
-                            {% if facility.drive_to_swim %}
-                            <li><span class="icon-span"><i class="fas fa-car-side"></i></span> Drive to Swim</li>
-                            {% endif %}
-                            {% if facility.takeaway_delivery %}
-                            <li><span class="icon-span"><i class="fas fa-pizza-slice"></i></span> Food Delivery</li>
-                            {% endif %}
-                            {% if facility.dogs_allowed %}
-                            <li><span class="icon-span"><i class="fas fa-dog"></i></span> Dogs Allowed</li>
-                            {% endif %}
-                            {% if facility.parking %}
-                            <li><span class="icon-span"><i class="fas fa-parking"></i></span> Parking</li>
-                            {% endif %}
-                        </ul>
+                    <div class="col s6 card-buttons reviews-button">
+                        reviews
                     </div>
-                    <div class="col s6">
-
+                    <div class="col s6 card-buttons reports-button">
+                        reports
                     </div>
                 </div>
 
-                {% endif %}
-                {% endfor %}
+                <!-- Fishery details reveal link -->
+                <div class="row">
+                    <button class="col s12 view-facilities activator">
 
+                        View facilities
+
+                    </button>
+                </div>
             </div>
         </div>
+
+        <!-- Reveal details for the fishery (facilities and payment methods)-->
+        <div class="card-reveal">
+            <div class="row facilities-close-row">
+                <div class="col s12">
+                    <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
+                </div>
+            </div>
+
+            <!-- Main facilities -->
+            {% for facility in facilities %}
+            {% if fishery._id|string == facility.fishery_id %}
+
+            <div class="row main-facilities">
+                <div class="col s4 main-facility">
+                    <i class="fas fa-water"></i>
+                    <p>{{ facility.lake_type }}</p>
+                </div>
+                <div class="col s4 main-facility">
+                    <i class="fas fa-fish"></i>
+                    <p>Up to {{ facility.stock_size }}lbs</p>
+                </div>
+                <div class="col s4 main-facility">
+                    <i class="fas fa-list-ol"></i>
+                    <p>Max rods {{ facility.rods }}</p>
+                </div>
+            </div>
+            <!-- This list of facilities to only show if the are truthy -->
+            <div class="row">
+                <div class="col s6">
+                    <ul class="facilities-list">
+                        {% if facility.onsite_tackle_shop %}
+                        <li><span class="icon-span"><i class="fas fa-store-alt"></i></span> Tackle Shop</li>
+                        {% endif %}
+                        {% if facility.toilet %}
+                        <li><span class="icon-span"><i class="fas fa-toilet"></i></span> toilet</li>
+                        {% endif %}
+                        {% if facility.shower %}
+                        <li><span class="icon-span"><i class="fas fa-shower"></i></span> shower</li>
+                        {% endif %}
+                        {% if facility.cafe %}
+                        <li><span class="icon-span"><i class="fas fa-coffee"></i></span> cafe</li>
+                        {% endif %}
+                        {% if facility.fridge %}
+                        <li><span class="icon-span"><i class="fas fa-snowflake"></i></span> fridge</li>
+                        {% endif %}
+                        {% if facility.tackle_rent %}
+                        <li><span class="icon-span"><i class="fas fa-exchange-alt"></i></span> Rent Tackle</li>
+                        {% endif %}
+                        {% if facility.lakeside_huts %}
+                        <li><span class="icon-span"><i class="fas fa-store"></i></span> Lakeside Huts</li>
+                        {% endif %}
+                        {% if facility.tuition %}
+                        <li><span class="icon-span"><i class="fas fa-user-graduate"></i></span> Tuition</li>
+                        {% endif %}
+                        {% if facility.drive_to_swim %}
+                        <li><span class="icon-span"><i class="fas fa-car-side"></i></span> Drive to Swim</li>
+                        {% endif %}
+                        {% if facility.takeaway_delivery %}
+                        <li><span class="icon-span"><i class="fas fa-pizza-slice"></i></span> Food Delivery</li>
+                        {% endif %}
+                        {% if facility.dogs_allowed %}
+                        <li><span class="icon-span"><i class="fas fa-dog"></i></span> Dogs Allowed</li>
+                        {% endif %}
+                        {% if facility.parking %}
+                        <li><span class="icon-span"><i class="fas fa-parking"></i></span> Parking</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col s6">
+
+                </div>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+
+        </div>
     </div>
-        
+</div>
+
 
 {% endfor %}
+
 
 {% endblock %}
