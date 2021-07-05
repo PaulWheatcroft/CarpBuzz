@@ -125,6 +125,8 @@ The project was started using the The Code Institute's [Gitpod Full Template](ht
 
 Border https://www.steckinsights.com/shorten-length-border-bottom-pure-css/ 
 
+Cancelling of flash messages https://stackoverflow.com/questions/57660542/flask-closing-flash-message
+
 
 
 ## Further Development Ideas

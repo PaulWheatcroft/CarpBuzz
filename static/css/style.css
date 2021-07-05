@@ -26,7 +26,7 @@ h2 {
 h3 {
     font-size: 1em;
     margin: 0;
-    padding-bottom: 10px;
+    padding: 10px 0 10px 0;
     font-family: 'Questrial', sans-serif;
 }
 .input-row {
@@ -35,6 +35,21 @@ h3 {
 .flashes {
     line-height: 20px;
     background-color: #89A857;
+    z-index: 1;
+    position: absolute;
+    top: 30px;
+    border: 1px solid #738d4a;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    color: #f7f7f7;
+}
+.flashes h4 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    font-weight: 600;
 }
 .submit-button {
     background-color: #689DA8;
@@ -77,7 +92,7 @@ h3 {
     padding: 0px;
 }
 .card.small {
-    height: 350px;
+    height: 375px;
 }
 .card-content {
     text-align: center;
@@ -161,12 +176,17 @@ h3 {
     margin-top: 0px;
 }
 .facilities-list {
-    margin-left: 40%;
+    text-align: center;
 }
-
-.icon-span {
+.facilities-list h3 {
+    margin-top: 10px;
+    text-decoration: underline;
+}
+.facilities-item {
     display: inline-block;
-    width: 20px;
+    width: 110px;
+    height: 50px;
+    vertical-align: text-top;
 }
 .facilities-close {
     font-size: 16px;

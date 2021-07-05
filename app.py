@@ -22,6 +22,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_fisheries")
 def get_fisheries():
+    flash("Just sending a massage")
     fisheries = mongo.db.fisheries.contact.find()
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
