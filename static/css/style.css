@@ -19,8 +19,8 @@ h1 {
 }
 h2 {
     font-size: 1.5em;
-    margin: 20px 0 0 0;
-    padding-bottom: 20px;
+    margin: 10px 0 0 0;
+    padding-bottom: 10px;
     font-family: 'Questrial', sans-serif;
 }
 h3 {
@@ -119,12 +119,18 @@ h3 {
 }
 .ticket-span {
     display: inline-block;
+    width: 40px;
+    text-align: center;
+    font-size: 11px;
+    margin: 10px;
 }
 .reviews-button {
     background-color: #689DA8;
+    color: #f7f7f7;
 }
 .reports-button {
     background-color: #99C2CB;
+    color: #f7f7f7;
 }
 .view-facilities {
     background-color: #89A857;
@@ -166,7 +172,6 @@ h3 {
     font-size: 16px;
     line-height: 30px;
     margin-right: 7px;
-    padding-left: 10px;
 }
 @media only screen and (min-width: 1025px) {
     .mobile-only {

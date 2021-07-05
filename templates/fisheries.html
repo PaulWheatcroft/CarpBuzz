@@ -24,29 +24,29 @@
                 <div class="col s12">
                     {% for ticket in tickets %}
                         {% if fishery._id|string == ticket.fishery_id %}
-                            {% if ticket.day_dayonly|string != "0.00" %}
-                                <span class="ticket-span">Day: £{{ ticket.day_dayonly }}</span>
+                            {% if ticket.day_dayonly|string != "0.0" %}
+                                <span class="ticket-span">Day<br>£{{ ticket.day_dayonly }}</span> 
                             {% endif %}
-                            {% if ticket.day_daynigh|string != "0.00" %}
-                                <span class="ticket-span">24hrs: £{{ ticket.day_daynight }}</span>
+                            {% if ticket.day_daynigh|string != "0.0" %}
+                                <span class="ticket-span">24hrs<br>£{{ ticket.day_daynight }}</span>
                             {% endif %}
-                            {% if ticket.lake_daynight|string != "0.00" %}
-                                <span class="ticket-span">Lake Day: £{{ ticket.lake_daynight }}</span>
+                            {% if ticket.lake_daynight|string != "0.0" %}
+                                <span class="ticket-span">Lake Day<br>£{{ ticket.lake_daynight }}</span>
                             {% endif %}
-                            {% if ticket.syndicate_daynight|string != "0.00" %}
-                                <span class="ticket-span">Syndicate 24hrs: £{{ ticket.syndicate_daynight }}</span>
+                            {% if ticket.syndicate_daynight|string != "0.0" %}
+                                <span class="ticket-span">Syndicate 24hrs<br>£{{ ticket.syndicate_daynight }}</span>
                             {% endif %}
-                            {% if ticket.club_dayonly|string != "0.00" %}
-                                <span class="ticket-span">Club Day: £{{ ticket.club_dayonly }}</span>
+                            {% if ticket.club_dayonly|string != "0.0" %}
+                                <span class="ticket-span">Club Day<br>£{{ ticket.club_dayonly }}</span>
                             {% endif %}
-                            {% if ticket.club_daynight|string != "0.00" %}
-                                <span class="ticket-span">Club 24hrs: £{{ ticket.club_daynight }}</span>
+                            {% if ticket.club_daynight|string != "0.0" %}
+                                <span class="ticket-span">Club 24hrs<br>£{{ ticket.club_daynight }}</span>
                             {% endif %}
-                            {% if ticket.season_dayonly|string != "0.00" %}
-                                <span class="ticket-span">Season Day: £{{ ticket.season_dayonly }}</span>
+                            {% if ticket.season_dayonly|string != "0.0" %}
+                                <span class="ticket-span">Season Day<br>£{{ ticket.season_dayonly }}</span>
                             {% endif %}
-                            {% if ticket.season_daynight|string != "0.00" %}
-                                <span class="ticket-span">Season 24hrs: £{{ ticket.season_daynight }}</span>
+                            {% if ticket.season_daynight|string != "0.0" %}
+                                <span class="ticket-span">Season 24hrs<br>£{{ ticket.season_daynight }}</span>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -80,8 +80,8 @@
             <div class="row facilities-close-row">
                 <div class="col s12">                    
                     <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
-                    <span class="right"><i class="fas fa-edit facilities-close"></i></span>
-                    <span class="right"><i class="fas fa-trash-alt facilities-close"></i></span>
+                    <span class="left"><i class="fas fa-edit facilities-close orange-text text-lighten-3"></i></span>
+                    <span class="left"><i class="fas fa-trash-alt facilities-close red-text text-lighten-3"></i></span>
                 </div>
             </div>
 
