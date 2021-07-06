@@ -123,31 +123,51 @@
                 <div class="row">
                     <div class="col s6 m2">
                         <label for="on_the_bank">
-                            <input type="checkbox" name="on_the_bank" id="on_the_bank" value="{{ fishery_payment.on_the_bank }}"/>
+                            {% if fishery_payment.on_the_bank %}
+                            <input type="checkbox" name="on_the_bank" id="on_the_bank" checked/>
+                            {% else %}
+                            <input type="checkbox" name="on_the_bank" id="on_the_bank" />
+                            {% endif %}
                             <span>Bank</span>
                         </label>
                     </div>
                     <div class="col s6 m2">
                         <label for="on_arival">
-                            <input type="checkbox" name="on_arival" id="on_arival" value="{{ fishery_payment.on_arival }}"/>
+                            {% if fishery_payment.on_arival %}
+                            <input type="checkbox" name="on_arival" id="on_arival" checked/>
+                            {% else %}
+                            <input type="checkbox" name="on_arival" id="on_arival" />
+                            {% endif %}
                             <span>Arrival</span>
                         </label>
                     </div>
                     <div class="col s6 m2">
                         <label for="book_online">
-                            <input type="checkbox" name="book_online" id="book_online" value="{{ fishery_payment.book_online }}"/>
+                            {% if fishery_payment.book_online %}
+                            <input type="checkbox" name="book_online" id="book_online" checked />
+                            {% else %}
+                            <input type="checkbox" name="book_online" id="book_online" />
+                            {% endif %}
                             <span>Online</span>
                         </label>
                     </div>
                     <div class="col s6 m2">
                         <label for="book_on_phone">
-                            <input type="checkbox" name="book_on_phone" id="book_on_phone" value="{{ fishery_payment.book_on_phone }}"/>
+                            {% if fishery_payment.book_on_phone %}
+                            <input type="checkbox" name="book_on_phone" id="book_on_phone" checked />
+                            {% else %}
+                            <input type="checkbox" name="book_on_phone" id="book_on_phone" />
+                            {% endif %}
                             <span>Phone</span>
                         </label>
                     </div>
                     <div class="col s6 m2">
                         <label for="tackle_shop">
-                            <input type="checkbox" name="tackle_shop" id="tackle_shop" value="{{ fishery_payment.tackle_shop }}"/>
+                            {% if fishery_payment.tackle_shop %}
+                            <input type="checkbox" name="tackle_shop" id="tackle_shop" checked />
+                            {% else %}
+                            <input type="checkbox" name="tackle_shop" id="tackle_shop" />
+                            {% endif %}
                             <span>Shop</span>
                         </label>
                     </div>
