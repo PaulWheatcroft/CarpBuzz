@@ -36,33 +36,30 @@ h3 {
     line-height: 20px;    
     z-index: 1;
     position: absolute;
-    top: 30px;    
+    top: 30px;
+    border: 1px solid #575757;  
     border-radius: 5px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     color: #f7f7f7;
 }
 .error {
     background-color: #a85757;
-    border: 1px solid #e65858;
 }
 .warning {
-    background-color: #979660;
-    border: 1px solid #e7e431;
+    background-color: #979660;;
 }
 .info {
     background-color: #57a5a8;
-    border: 1px solid #5ec7f0;
 }
 .success {
     background-color: #89A857;
-    border: 1px solid #b6f05a;
 }
 .flashes h4 {
     font-family: 'Questrial', sans-serif;
     font-size: 18px;
     line-height: 50px;
     margin: 0;
-    font-weight: 600;
+    font-weight: 400;
 }
 .submit-button {
     background-color: #689DA8;

@@ -102,7 +102,7 @@ def logout():
     session.clear()
     flash('You have been successfully logged out', 'info')
     return redirect(url_for("login"))
-    
+
 
 @app.route("/add_fishery", methods=["GET", "POST"])
 def add_fishery():
@@ -207,6 +207,105 @@ def add_fishery():
 
 @app.route("/edit_fishery/<fishery_id>", methods=["GET", "POST"])
 def edit_fishery(fishery_id):
+    if request.method == "POST":
+        # create fishery contact dict
+        submit_fishery_contact = {
+            "name": request.form.get("name"),
+            "address": request.form.get("address"),
+            "town": request.form.get("town"),
+            "postcode": request.form.get("postcode"),
+            "telephone": request.form.get("telephone"),
+            "website": request.form.get("website"),
+            "facebook": request.form.get("facebook")
+        }
+        # Update fishery contact details
+        mongo.db.fisheries.contact.update(
+            {"_id": ObjectId(fishery_id)}, submit_fishery_contact)
+        # get the ticket prices. Convert "" to 0
+        if (request.form.get("day_dayonly") == ""):
+            day_dayonly = 0.00
+        else:
+            day_dayonly = float(request.form.get("day_dayonly"))
+        if (request.form.get("day_daynight") == ""):
+            day_daynight = 0.00
+        else:
+            day_daynight = float(request.form.get("day_daynight"))
+        if (request.form.get("lake_daynight") == ""):
+            lake_daynight = 0.00
+        else:
+            lake_daynight = float(request.form.get("lake_daynight"))
+        if (request.form.get("syndicate_daynight") == ""):
+            syndicate_daynight = 0.00
+        else:
+            syndicate_daynight = float(request.form.get("syndicate_daynight"))
+        if (request.form.get("club_dayonly") == ""):
+            club_dayonly = 0.00
+        else:
+            club_dayonly = float(request.form.get("club_dayonly"))
+        if (request.form.get("club_daynight") == ""):
+            club_daynight = 0.00
+        else:
+            club_daynight = float(request.form.get("club_daynight"))
+        if (request.form.get("season_dayonly") == ""):
+            season_dayonly = 0.00
+        else:
+            season_dayonly = float(request.form.get("season_dayonly"))
+        if (request.form.get("season_daynight") == ""):
+            season_daynight = 0.00
+        else:
+            season_daynight = float(request.form.get("season_daynight"))
+        # create tickets dict
+        submit_fishery_tickets = {
+            "fishery_id": fishery_id,
+            "day_dayonly": day_dayonly,
+            "day_daynight": day_daynight,
+            "lake_daynight": lake_daynight,
+            "syndicate_daynight": syndicate_daynight,
+            "club_dayonly": club_dayonly,
+            "club_daynight": club_daynight,
+            "season_dayonly": season_dayonly,
+            "season_daynight": season_daynight
+        }
+        # update ticket prices
+        mongo.db.fisheries.tickets.update(
+            {"fishery_id": fishery_id}, submit_fishery_tickets)
+        # get the payment and booking details
+        submit_fishery_payment = {
+            "fishery_id": fishery_id,
+            "on_the_bank": bool(request.form.get("on_the_bank")),
+            "on_arrival": bool(request.form.get("on_arrival")),
+            "book_online": bool(request.form.get("book_online")),
+            "book_on_phone": bool(request.form.get("book_on_phone")),
+            "tackle_shop": bool(request.form.get("tackle_shop"))
+        }
+        # update payment and booking details
+        mongo.db.fisheries.payment.update(
+            {"fishery_id": fishery_id}, submit_fishery_payment)
+        # get fishery facilities
+        submit_fishery_facilities = {
+            "fishery_id": fishery_id,
+            "lake_type": request.form.get("lake_type"),
+            "stock_size": int(request.form.get("stock_size")),
+            "rods": request.form.get("rods"),
+            "onsite_tackle_shop": bool(request.form.get("onsite_tackle_shop")),
+            "toilet": bool(request.form.get("toilet")),
+            "shower": bool(request.form.get("shower")),
+            "cafe": bool(request.form.get("cafe")),
+            "fridge": bool(request.form.get("fridge")),
+            "tackle_rent": bool(request.form.get("tackle_rent")),
+            "lakeside_huts": bool(request.form.get("lakeside_huts")),
+            "tuition": bool(request.form.get("tuition")),
+            "drive_to_swim": bool(request.form.get("drive_to_swim")),
+            "takeaway_delivery": bool(request.form.get("takeaway_delivery")),
+            "dogs_allowed": bool(request.form.get("dogs_allowed")),
+            "parking": bool(request.form.get("parking"))
+        }
+        # update payment and booking details
+        mongo.db.fisheries.facilities.update(
+            {"fishery_id": fishery_id}, submit_fishery_facilities)
+        flash('You have successfully updated the fishery', 'success')
+        return redirect(url_for("get_fisheries"))
+
     fishery_contact = mongo.db.fisheries.contact.find_one(
         {"_id": ObjectId(fishery_id)})
     fishery_tickets = mongo.db.fisheries.tickets.find_one(
