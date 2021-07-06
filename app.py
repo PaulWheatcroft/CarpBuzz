@@ -205,6 +205,24 @@ def add_fishery():
     return render_template("add_fishery.html")
 
 
+@app.route("/edit_fishery/<fishery_id>", methods=["GET", "POST"])
+def edit_fishery(fishery_id):
+    fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_id)})
+    fishery_tickets = mongo.db.fisheries.tickets.find_one(
+        {"fishery_id": fishery_id})
+    fishery_payment = mongo.db.fisheries.payment.find_one(
+        {"fishery_id": fishery_id})
+    fishery_facilities = mongo.db.fisheries.facilities.find_one(
+        {"fishery_id": fishery_id})
+    return render_template(
+        "edit_fishery.html",
+        fishery_contact=fishery_contact,
+        fishery_tickets=fishery_tickets,
+        fishery_payment=fishery_payment,
+        fishery_facilities=fishery_facilities)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
