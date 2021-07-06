@@ -73,15 +73,18 @@
                 <h2 class="center-align">Fishery Ticket Prices</h2>
                 <div class="row">
                     <div class="input-field col s6 m3">
-                        <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
                         <label for="day_dayonly">Day Only</label>
                     </div>
                     <div class="input-field col s6 m3">
-                        <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
                         <label for="day_daynight">Day 24 Hours</label>
                     </div>
                     <div class="input-field col s6 m3">
-                        <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
                         <label for="lake_daynight">Lake 24 Hours</label>
                     </div>
 
@@ -92,11 +95,13 @@
                         <label for="syndicate_daynight">Syndicate 24hours</label>
                     </div>
                     <div class="input-field col s6 m3">
-                        <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
                         <label for="club_dayonly">Club Day Only</label>
                     </div>
                     <div class="input-field col s6 m3">
-                        <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?" class="validate">
+                        <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                            class="validate">
                         <label for="club_daynight">Club 24 Hours</label>
                     </div>
 
@@ -155,81 +160,39 @@
 
                 <div class="row">
                     <h2 class="center-align">Fishery Main Facilities</h2>
-                    <!-- lake type -->
-                    <h3 class="center-align">Fishery Type</h3>
-                    <div class="col s6 m2">
-                        <label for="single">
-                            <input name="lake_type" id="single" type="radio" value="single" />
-                            <span>Single</span>
-                        </label>
+                    <!-- Lake type -->
+                    <h3 class="center-align">Lake Type</h3>
+                    <div class="input-field col s12 m4">
+                        <select name="lake_type">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="single">Single Lake</option>
+                            <option value="multiple">Multiple Lakes</option>
+                        </select>
+                        <label for="lake_type">Lake Type</label>
                     </div>
-                    <div class="col s6 m2">
-                        <label for="multiple">
-                            <input name="lake_type" id="multiple" type="radio" value="multiple" />
-                            <span>Multiple</span>
-                        </label>
+                    <div class="input-field col s12 m4">
+                        <select name="stock_size">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="20">20lbs</option>
+                            <option value="30">30lbs</option>
+                            <option value="40">40lbs</option>
+                            <option value="50">50lbs</option>
+                            <option value="60">60lbs</option>
+                            <option value="70">70lbs</option>
+                        </select>
+                        <label for="stock_size">Stock Size</label>
                     </div>
-                </div>
-                <div class="row input-row">
-                    <!-- stock size -->
-                    <h3 class="center-align">Maximum Fish Stock Size</h3>
-                    <div class="col s6 m2">
-                        <label for="20">
-                            <input name="stock_size" id="20" type="radio" value="20" />
-                            <span>20</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="30">
-                            <input name="stock_size" id="30" type="radio" value="30" />
-                            <span>30lbs</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="40">
-                            <input name="stock_size" id="40" type="radio" value="40" />
-                            <span>40</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="50">
-                            <input name="stock_size" id="50" type="radio" value="50" />
-                            <span>50</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="60">
-                            <input name="stock_size" id="60" type="radio" value="60" />
-                            <span>60</span>lbs
-                        </label>
+                    <div class="input-field col s12 m4">
+                        <select name="rods">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="One">One</option>
+                            <option value="Two">Two</option>
+                            <option value="Three">Three</option>
+                        </select>
+                        <label for="rods">Rods</label>
                     </div>
                 </div>
-                <div class="row input-row">
-                    <h3 class="center-align">Number of Rods Allowed</h3>
-                    <div class="col s6 m2">
-                        <!-- number of rods allowes -->
-                        <label for="one-rod">
-                            <input name="rods" id="one-rod" type="radio" value="One" />
-                            <span>One</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="two-rods">
-                            <input name="rods" id="two-rods" type="radio" value="Two" />
-                            <span>Two</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="three-rods">
-                            <input name="rods" id="three-rods" type="radio" value="Three" />
-                            <span>Three</span>
-                        </label>
-                    </div>
-                </div>
-
-
-
-
+               
                 <!-- Site facilities -->
                 <div class="row input-row">
                     <h2 class="center-align">Fishery Site Facilities</h2>

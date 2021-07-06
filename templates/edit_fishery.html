@@ -185,82 +185,79 @@
 
                 <div class="row">
                     <h2 class="center-align">Fishery Main Facilities</h2>
-                    <!-- lake type -->
-                    <h3 class="center-align">Fishery Type</h3>
-
-                    <div class="col s6 m2">                        
-                        <label for="single">                            
-                            <input name="lake_type" id="single" type="radio" value="single" checked />
-                            <span>Single</span>
-                        </label>
+                    <!-- Lake type -->
+                    <h3 class="center-align">Lake Type</h3>
+                    <div class="input-field col s12 m4">
+                        <select name="lake_type">
+                            <option value="" disabled>Choose your option</option>
+                            {% if fishery_facilities.lake_type == "single" %}
+                            <option value="single" selected>Single Lake</option>
+                            <option value="multiple">Multiple Lakes</option>
+                            {% else %}
+                            <option value="single" selected>Single Lake</option>
+                            <option value="multiple">Multiple Lakes</option>
+                            {% endif %}
+                        </select>
+                        <label for="lake_type">Lake Type</label>
                     </div>
-                    <div class="col s6 m2">
-                        <label for="multiple">
-                            <input name="lake_type" id="multiple" type="radio" value="multiple" />
-                            <span>Multiple</span>
-                        </label>
+                    <div class="input-field col s12 m4">
+                        <select name="stock_size">
+                            <option value="" disabled>Choose your option</option>
+                            {% if fishery_facilities.lake_type == "20" %}
+                            <option value="20" selected>20lbs</option>
+                            {% else %}
+                            <option value="20">20lbs</option>
+                            {% endif %}
+                            {% if fishery_facilities.lake_type == "30" %}
+                            <option value="30" selected>30lbs</option>
+                            {% else %}
+                            <option value="30">30lbs</option>
+                            {% endif %}
+                            {% if fishery_facilities.lake_type == "40" %}
+                            <option value="40" selected>40lbs</option>
+                            {% else %}
+                            <option value="40">40lbs</option>
+                            {% endif %}
+                            {% if fishery_facilities.lake_type == "50" %}
+                            <option value="50" selected>50lbs</option>
+                            {% else %}
+                            <option value="50">50lbs</option>
+                            {% endif %}
+                            {% if fishery_facilities.lake_type == "60" %}
+                            <option value="60" selected>60lbs</option>
+                            {% else %}
+                            <option value="60">60lbs</option>
+                            {% endif %}
+                            {% if fishery_facilities.lake_type == "70" %}
+                            <option value="70" selected>70lbs</option>
+                            {% else %}
+                            <option value="70">70lbs</option>
+                            {% endif %}
+                        </select>
+                        <label for="stock_size">Stock Size</label>
                     </div>
-
+                    <div class="input-field col s12 m4">
+                        <select name="rods">
+                            <option value="" disabled>Choose your option</option>
+                            {% if fishery_facilities.rods == "One" %}
+                            <option value="One" selected>One</option>
+                            {% else %}
+                            <option value="One">One</option>
+                            {% endif %}
+                            {% if fishery_facilities.rods == "Two" %}
+                            <option value="Two" selected>Two</option>
+                            {% else %}
+                            <option value="Two">One</option>
+                            {% endif %}
+                            {% if fishery_facilities.rods == "Three" %}
+                            <option value="Three" selected>Three</option>
+                            {% else %}
+                            <option value="Three">One</option>
+                            {% endif %}
+                        </select>
+                        <label for="rods">Rods</label>
+                    </div>
                 </div>
-                <div class="row input-row">
-                    <!-- stock size -->
-                    <h3 class="center-align">Maximum Fish Stock Size</h3>
-                    <div class="col s6 m2">
-                        <label for="20">
-                            <input name="stock_size" id="20" type="radio" value="20" />
-                            <span>20</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="30">
-                            <input name="stock_size" id="30" type="radio" value="30" />
-                            <span>30lbs</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="40">
-                            <input name="stock_size" id="40" type="radio" value="40" />
-                            <span>40</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="50">
-                            <input name="stock_size" id="50" type="radio" value="50" />
-                            <span>50</span>lbs
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="60">
-                            <input name="stock_size" id="60" type="radio" value="60" />
-                            <span>60</span>lbs
-                        </label>
-                    </div>
-                </div>
-                <div class="row input-row">
-                    <h3 class="center-align">Number of Rods Allowed</h3>
-                    <div class="col s6 m2">
-                        <!-- number of rods allowes -->
-                        <label for="one-rod">
-                            <input name="rods" id="one-rod" type="radio" value="One" />
-                            <span>One</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="two-rods">
-                            <input name="rods" id="two-rods" type="radio" value="Two" />
-                            <span>Two</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="three-rods">
-                            <input name="rods" id="three-rods" type="radio" value="Three" />
-                            <span>Three</span>
-                        </label>
-                    </div>
-                </div>
-
-
-
 
                 <!-- Site facilities -->
                 <div class="row input-row">
