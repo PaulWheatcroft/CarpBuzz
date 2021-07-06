@@ -4,7 +4,7 @@
 
 {% for fishery in fisheries %}
 <div class="row">
-    <div class="card small fishery-card col s12 m10 offset-m1" data-aos="fade-in" >
+    <div class="card small fishery-card col s12 m8 offset-m2" data-aos="fade-in" >
         <!-- Primary details for the fishery -->
         <div class="card-content">
 
@@ -80,7 +80,7 @@
             <div class="row facilities-close-row">
                 <div class="col s12">                    
                     <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
-                    <span class="left"><i class="fas fa-edit facilities-close orange-text text-lighten-3"></i></span>
+                    <span class="left"><i class="fas fa-edit facilities-close yellow-text text-lighten-3"></i></span>
                     <span class="left"><i class="fas fa-trash-alt facilities-close red-text text-lighten-3"></i></span>
                 </div>
             </div>
@@ -106,66 +106,66 @@
             <!-- This list of facilities to only show if the are truthy -->
             <div class="row">
                 <div class="col s12 m12 l6 onsite-facilities">                    
-                    <div class="facilities-list">
+                    <div class="facilities-list row">
                         <h3 class="center-align">Onsite Facilities</h3>
                         {% if facility.onsite_tackle_shop %}                        
-                            <span class="facilities-item"><i class="fas fa-store-alt"></i><br>Tackle Shop</span>                        
+                            <span class="facilities-item col s4"><i class="fas fa-store-alt"></i><br>Tackle Shop</span>                        
                         {% endif %}
                         {% if facility.toilet %}
-                            <span class="facilities-item"><i class="fas fa-toilet"></i><br>toilet</span>
+                            <span class="facilities-item col s4"><i class="fas fa-toilet"></i><br>toilet</span>
                         {% endif %}
                         {% if facility.shower %}
-                            <span class="facilities-item"><i class="fas fa-shower"></i><br>shower</span>
+                            <span class="facilities-item col s4"><i class="fas fa-shower"></i><br>shower</span>
                         {% endif %}
                         {% if facility.cafe %}
-                            <span class="facilities-item"><i class="fas fa-coffee"></i><br>cafe</span>
+                            <span class="facilities-item col s4"><i class="fas fa-coffee"></i><br>cafe</span>
                         {% endif %}
                         {% if facility.fridge %}
-                            <span class="facilities-item"><i class="fas fa-snowflake"></i><br>fridge</span>
+                            <span class="facilities-item col s4"><i class="fas fa-snowflake"></i><br>fridge</span>
                         {% endif %}
                         {% if facility.tackle_rent %}
-                            <span class="facilities-item"><i class="fas fa-exchange-alt"></i><br>Rent Tackle</span>
+                            <span class="facilities-item col s4"><i class="fas fa-exchange-alt"></i><br>Rent Tackle</span>
                         {% endif %}
                         {% if facility.lakeside_huts %}
-                            <span class="facilities-item"><i class="fas fa-store"></i><br>Lakeside Huts</span>
+                            <span class="facilities-item col s4"><i class="fas fa-store"></i><br>Lakeside Huts</span>
                         {% endif %}
                         {% if facility.tuition %}
-                            <span class="facilities-item"><i class="fas fa-user-graduate"></i><br>Tuition</span>
+                            <span class="facilities-item col s4"><i class="fas fa-user-graduate"></i><br>Tuition</span>
                         {% endif %}
                         {% if facility.drive_to_swim %}
-                            <span class="facilities-item"><i class="fas fa-car-side"></i><br>Drive to Swim</span>
+                            <span class="facilities-item col s4"><i class="fas fa-car-side"></i><br>Drive to Swim</span>
                         {% endif %}
                         {% if facility.takeaway_delivery %}
-                            <span class="facilities-item"><i class="fas fa-pizza-slice"></i><br>Food Delivery</span>
+                            <span class="facilities-item col s4"><i class="fas fa-pizza-slice"></i><br>Food Delivery</span>
                         {% endif %}
                         {% if facility.dogs_allowed %}
-                            <span class="facilities-item"><i class="fas fa-dog"></i><br>Dogs Allowed</span>
+                            <span class="facilities-item col s4"><i class="fas fa-dog"></i><br>Dog Friendly</span>
                         {% endif %}
                         {% if facility.parking %}
-                            <span class="facilities-item"><i class="fas fa-parking"></i><br>Parking</span>
+                            <span class="facilities-item col s4"><i class="fas fa-parking"></i><br>Parking</span>
                         {% endif %}
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
                     
-                    <div class="facilities-list">
+                    <div class="facilities-list payment-list row">
                         <h3 class="center-align">Payment and Bookings</h3>
                         {% for payment in payments %}
                             {% if fishery._id|string == payment.fishery_id %}
                                 {% if payment.on_the_bank %}
-                                <span class="facilities-item"><i class="fas fa-water"></i><br>On the bank</span>
+                                    <span class="facilities-item col s4"><i class="fas fa-water"></i><br>On the bank</span>
                                 {% endif %}
                                 {% if payment.on_arrival %}
-                                    <span class="facilities-item"><i class="fas fa-door-open"></i><br>On arrival</span>
+                                    <span class="facilities-item col s4"><i class="fas fa-door-open"></i><br>On arrival</span>
                                 {% endif %}
                                 {% if payment.book_online %}
-                                    <span class="facilities-item"><i class="fas fa-globe"></i><br>Online</span>
+                                    <span class="facilities-item col s4"><i class="fas fa-globe"></i><br>Online</span>
                                 {% endif %}
                                 {% if payment.book_on_phone %}
-                                    <span class="facilities-item"><i class="fas fa-phone"></i><br>Over the phone</span>
+                                    <span class="facilities-item col s4"><i class="fas fa-phone"></i><br>Phone</span>
                                 {% endif %}
                                 {% if payment.tackle_shop %}
-                                    <span class="facilities-item"><i class="fas fa-store-alt"></i><br>Tackle Shop</span>
+                                    <span class="facilities-item col s4"><i class="fas fa-store-alt"></i><br>Tackle Shop</span>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
