@@ -322,6 +322,30 @@ def edit_fishery(fishery_id):
         fishery_facilities=fishery_facilities)
 
 
+@app.route("/reviews/<fishery_id>")
+def reviews(fishery_id):
+    fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_id)})
+    fishery_reviews = mongo.db.reviews.find({"fishery_id": fishery_id})
+    reviews = []
+    # loop through the reviews and for each one retrieve the username for the account_id
+    for doc in fishery_reviews:
+        author_id = doc['account_id']
+        username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
+        doc.update({"username": username})
+        reviews.append(doc)
+    return render_template(
+        "reviews.html", fishery_contact=fishery_contact,
+        reviews=reviews)
+
+
+@app.route("/add_review/<fishery_id>", methods=["GET", "POST"])
+def add_review(fishery_id):
+    fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_id)})
+    return render_template("add_review.html",fishery_contact=fishery_contact)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
