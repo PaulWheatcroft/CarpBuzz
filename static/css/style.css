@@ -45,22 +45,21 @@ h3 {
     z-index: 1;
     position: absolute;
     top: 30px;
-    border: 1px solid #a0a0a0;  
     border-radius: 5px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     color: #f7f7f7;
 }
 .error {
-    background-color: #a85757;
+    background-color: #d46161;
 }
 .warning {
-    background-color: #979660;;
+    background-color: #ecea49;;
 }
 .info {
-    background-color: #57a5a8;
+    background-color: #60cfd3;
 }
 .success {
-    background-color: #89A857;
+    background-color: #a6d35f;
 }
 .flashes h4 {
     font-family: 'Questrial', sans-serif;

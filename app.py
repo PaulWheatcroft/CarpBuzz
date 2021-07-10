@@ -69,8 +69,8 @@ def login():
             # check hashed passwords match
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("email")
-                flash(f"Welcome {session['user']}", 'info')
+                session["user"] = str(existing_user["_id"])
+                flash(f"Welcome {existing_user['username']}", 'info')
                 return redirect(url_for("profile", user=session["user"]))
             else:
                 # Invalid password
@@ -88,7 +88,7 @@ def login():
 @app.route("/profile/<user>", methods=["GET", "POST"])
 def profile(user):
     username = mongo.db.accounts.find_one(
-        {"email": user})["username"]
+        {"_id": ObjectId(user)})["username"]
 
     if session["user"]:
         return render_template("profile.html", username=username)
