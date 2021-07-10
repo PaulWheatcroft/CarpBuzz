@@ -3,7 +3,7 @@
 
 <h1>Reviews for {{ fishery_contact.name }}</h1>
 <div class="row">
-    <a href="{{ url_for('add_review', fishery_id=fishery_contact._id) }}" class="btn waves-effect waves-light col s12 m2 offset-m5">Add a Review</a>
+    <a href="{{ url_for('add_review', fishery_id=fishery_contact._id) }}" class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Add a Review</a>
 </div>
     
 
@@ -11,7 +11,6 @@
 {% for review in reviews %}
 <div class="row">
     <div class="col s12 m8 offset-m2 card">
-
 
         {% if review.rating == 1 %}
         <i class="fas fa-star"></i>
@@ -37,6 +36,9 @@
         <h3>I didn't like...</h3>
         <p>{{ review.con_text }}</p>
 
+    <div class="row">
+        <a href="{{ url_for('add_review', fishery_id=fishery_contact._id) }}" class="btn waves-effect yellow darken-2 col s12">Edit this Review</a>
+    </div>
     </div>
 </div>
 {% endfor %}

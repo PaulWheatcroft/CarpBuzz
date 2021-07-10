@@ -367,6 +367,7 @@ def add_review(fishery_id):
             username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
             doc.update({"username": username})
             reviews.append(doc)
+            reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
         return render_template("reviews.html", fishery_contact=fishery_contact,
         reviews=reviews)
 
