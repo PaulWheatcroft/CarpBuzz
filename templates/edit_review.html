@@ -45,9 +45,9 @@
           </div>
         </div>
         <div class="row input-row">
-          <button type="submit" class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update Review</button>
-          <a href="#" class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel Update</a>
-          <a href="#" class="col s12 m4 btn-large delete-button waves-effect red darken-2">Delete Review</a>
+          <button type="submit" class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update</button>
+          <a href="{{ url_for('reviews', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel</a>
+          <a href="#" class="col s12 m4 btn-large delete-button waves-effect red darken-2">Delete</a>
         </div>
 
       </form>
