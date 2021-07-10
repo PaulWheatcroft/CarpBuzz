@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Edit your review for {{ fishery_contact.name }}</h1>
+
+
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <form method="POST" action="{{ url_for('edit_review', review_id=fishery_review._id) }}">
+        <div class="row">
+          <div class="input-field">
+            <input id="review_heading" name="review_heading" type="text" class="validate" value="{{ fishery_review.heading }}" required>
+            <label for="review_heading">Review Heading</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field">
+            <textarea id="review_text" name="review_text" class="materialize-textarea" required>{{ fishery_review.main_text}}</textarea>
+            <label for="review_text">Review Text</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field">
+            <textarea id="pro_text" name="pro_text" class="materialize-textarea">{{ fishery_review.pro_text }}</textarea>
+            <label for="pro_text">What did you really like? (optional)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field">
+            <textarea id="con_text" name="con_text" class="materialize-textarea">{{ fishery_review.con_text }}</textarea>
+            <label for="con_text">Anything you didn't like? (optional)</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="range-field">
+            <label for="review_rating">Rating</label>
+            <input type="range" id="review_rating" name="review_rating" min="1" max="5" value="{{ fishery_review.rating }}" />            
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m2 offset-s3 offset-m5">
+            <input type="text" id="review_date" name="review_date" class="datepicker" value="{{ fishery_review.date.strftime('%d-%b-%Y') }}" required>   
+            <label for="review_date">Date</label>
+          </div>
+        </div>
+        <div class="row input-row">
+          <button type="submit" class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update Review</button>
+          <a href="#" class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel Update</a>
+          <a href="#" class="col s12 m4 btn-large delete-button waves-effect red darken-2">Delete Review</a>
+        </div>
+
+      </form>
+    </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

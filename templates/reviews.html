@@ -10,7 +10,7 @@
 
 {% for review in reviews %}
 <div class="row">
-    <div class="col s12 m8 offset-m2 card">
+    <div class="col s12 m8 offset-m2 card" data-aos="fade-in">
 
         {% if review.rating == 1 %}
         <i class="fas fa-star"></i>
@@ -37,7 +37,7 @@
         <p>{{ review.con_text }}</p>
 
     <div class="row">
-        <a href="{{ url_for('add_review', fishery_id=fishery_contact._id) }}" class="btn waves-effect yellow darken-2 col s12">Edit this Review</a>
+        <a href="{{ url_for('edit_review', review_id=review._id, fishery_id=fishery_contact._id) }}" class="btn waves-effect yellow darken-2 col s12">Edit this Review</a>
     </div>
     </div>
 </div>

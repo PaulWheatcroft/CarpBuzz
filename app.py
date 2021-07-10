@@ -371,14 +371,53 @@ def add_review(fishery_id):
         return render_template("reviews.html", fishery_contact=fishery_contact,
         reviews=reviews)
 
-    print(fishery_id)
     fishery_contact = mongo.db.fisheries.contact.find_one(
         {"_id": ObjectId(fishery_id)})
     return render_template("add_review.html",
     fishery_contact=fishery_contact, fishery_id=fishery_id)
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        updated_review = {
+            "fishery_id": fishery_review['fishery_id'],
+            "account_id": session["user"],
+            "rating": int(request.form.get("review_rating")),
+            "heading": request.form.get("review_heading"),
+            "main_text": request.form.get("review_text"),
+            "pro_text": request.form.get("pro_text"),
+            "con_text": request.form.get("con_text"),
+            "moderation": False,
+            "date": datetime.strptime(request.form.get("review_date"), '%d-%b-%Y')
+        }
+        # insert review
+        mongo.db.reviews.update({"_id": ObjectId(review_id)}, updated_review)            
+        flash('You have successfully updated the review', 'success')
+        fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_review["fishery_id"])})  
+        fishery_reviews = mongo.db.reviews.find({"fishery_id": fishery_review['fishery_id']})
+        reviews = []
+        # loop through the reviews and for each one retrieve the username for the account_id
+        for doc in fishery_reviews:
+            author_id = doc['account_id']
+            username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
+            doc.update({"username": username})
+            reviews.append(doc)
+            reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
+        return render_template("reviews.html", fishery_contact=fishery_contact,
+        reviews=reviews)
+
+    fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_review["fishery_id"])})    
+    return render_template(
+        "edit_review.html", fishery_review=fishery_review,
+        fishery_contact=fishery_contact)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=True) 
