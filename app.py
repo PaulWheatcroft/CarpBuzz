@@ -323,6 +323,18 @@ def edit_fishery(fishery_id):
         fishery_facilities=fishery_facilities)
 
 
+@app.route("/delete_fishery/<fishery_id>")
+def delete_fishery(fishery_id):
+    mongo.db.reviews.remove({"_id": ObjectId(fishery_id)})
+    fisheries = mongo.db.fisheries.contact.find()
+    facilities = list(mongo.db.fisheries.facilities.find())
+    tickets = list(mongo.db.fisheries.tickets.find())
+    payments = list(mongo.db.fisheries.payment.find())
+    return render_template(
+        "fisheries.html", fisheries=fisheries, facilities=facilities,
+        tickets=tickets, payments=payments)
+
+
 @app.route("/reviews/<fishery_id>")
 def reviews(fishery_id):
     fishery_contact = mongo.db.fisheries.contact.find_one(
@@ -415,6 +427,27 @@ def edit_review(review_id):
     return render_template(
         "edit_review.html", fishery_review=fishery_review,
         fishery_contact=fishery_contact)
+
+
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    # delete the review
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash('Your review as been deleted', 'info')    
+    fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_review["fishery_id"])})  
+    fishery_reviews = mongo.db.reviews.find({"fishery_id": fishery_review['fishery_id']})
+    reviews = []
+    # loop through the reviews and for each one retrieve the username for the account_id
+    for doc in fishery_reviews:
+        author_id = doc['account_id']
+        username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
+        doc.update({"username": username})
+        reviews.append(doc)
+        reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
+    return render_template("reviews.html", fishery_contact=fishery_contact,
+    reviews=reviews)
 
 
 if __name__ == "__main__":

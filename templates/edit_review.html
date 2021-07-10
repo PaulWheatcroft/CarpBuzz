@@ -3,6 +3,25 @@
 
 <h1>Edit your review for {{ fishery_contact.name }}</h1>
 
+  <!-- Modal Structure -->
+  <div class="row">
+
+      <div id="confirm_review_delete" class="modal">
+        <div class="modal-content center-align">
+          <div class="row">
+            <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>       
+          </div> 
+          <div class="row">
+            <h4 class="col s12">Are You Sure?</h4>
+          </div>         
+          <p>Are you sure that you want to delete the review for {{ fishery_contact.name }}?</p>
+          <a href="{{ url_for('delete_review', review_id=fishery_review._id) }}"
+          class="col s12 m4 offset-m4 btn-large padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
+        </div>
+      </div>
+  
+  </div>
+
 
 <div class="row">
   <div class="col s12">
@@ -47,7 +66,7 @@
         <div class="row input-row">
           <button type="submit" class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update</button>
           <a href="{{ url_for('reviews', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel</a>
-          <a href="#" class="col s12 m4 btn-large delete-button waves-effect red darken-2">Delete</a>
+          <a href="#confirm_review_delete" class="col s12 m4 btn-large delete-button waves-effect red darken-2 modal-trigger">Delete</a>
         </div>
 
       </form>

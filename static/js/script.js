@@ -9,4 +9,5 @@ $(document).ready(function(){
       draggable: true,
       closeOnClick: true
     });
+    $('.modal').modal();
   });
