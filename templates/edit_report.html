@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Edit your review for {{ fishery_contact.name }}</h1>
+
+  <!-- Modal Structure -->
+  <div class="row">
+
+      <div id="confirm_report_delete" class="modal">
+        <div class="modal-content center-align">
+          <div class="row">
+            <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>       
+          </div> 
+          <div class="row">
+            <h4 class="col s12">Are You Sure?</h4>
+          </div>         
+          <p>Are you sure that you want to delete the report for {{ fishery_contact.name }}?</p>
+          <a href="#"
+          class="col s12 m4 offset-m4 btn padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
+        </div>
+      </div>
+  
+  </div>
+
+
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <form method="POST" action="">
+        <div class="row">
+          <div class="input-field col12">
+            <input id="report_name" name="report_name" type="text" class="validate" value="{{ fishery_report.report_name }}" required>
+            <label for="report_name">Report Name</label>
+          </div>
+        </div>
+        
+        <div class="row input-row">
+          <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Update</button>
+          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          <a href="#confirm_report_delete" class="col s12 m4 btn delete-button waves-effect red darken-2 modal-trigger">Delete</a>
+        </div>
+
+      </form>
+    </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

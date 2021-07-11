@@ -351,6 +351,7 @@ def reviews(fishery_id):
         username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
         doc.update({"username": username})
         reviews.append(doc)
+        reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
     return render_template(
         "reviews.html", fishery_contact=fishery_contact,
         reviews=reviews)
@@ -466,10 +467,26 @@ def reports(fishery_id):
         username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
         report.update({"username": username})
         reports.append(report)
-    print(reports)
+        reports.sort(key = lambda report_date:report_date['date'], reverse=True)
     return render_template(
         "reports.html", fishery_contact=fishery_contact,
         reports=reports)
+
+
+@app.route("/add_report/<fishery_id>", methods=["GET", "POST"])
+def add_report(fishery_id):
+    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})    
+    return render_template(
+        "add_report.html", fishery_contact=fishery_contact)
+
+
+@app.route("/edit_report/<report_id>", methods=["GET", "POST"])
+def edit_report(report_id):
+    fishery_report = mongo.db.catch_reports.find_one({"_id": ObjectId(report_id)})
+    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_report["fishery_id"])})    
+    return render_template(
+        "edit_report.html", fishery_report=fishery_report,
+        fishery_contact=fishery_contact)
 
 
 if __name__ == "__main__":

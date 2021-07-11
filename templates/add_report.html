@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Create your report for {{ fishery_contact.name }}</h1>
+
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <form method="POST" action="">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="report_name" name="report_name" type="text" class="validate" required>
+            <label for="report_name">Report Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="report_date" name="report_date" class="datepicker" required>   
+            <label for="report_date">Date</label>
+          </div>
+        </div>
+        <div class="row">
+          <ul>
+            <li>              
+              <div class="col s4">
+                <input type="text" id="catch1" name="catch1" type="text" class="validate" required>   
+                <label for="catch1">Fish Type</label>
+              </div>
+              <div class="col s4">
+                <input type="text" id="weight1" name="catch1" type="text" class="validate" required>   
+              <label for="catch1">Weight</label>
+              </div>
+              <div class="col s4">
+                <input type="text" id="datetime1" name="datetime1" class="datepicker" required>   
+                <label for="datetime1">Date</label>
+              </div>
+                   
+            </li>
+          </ul>    
+        </div>
+          
+        <div class="row input-row">
+          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect blue darken-2">Add</a>
+          <button type="submit" class="col s12 m6 btn submit-button waves-effect light-green darken-2">Create</button>
+          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

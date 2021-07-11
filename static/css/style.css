@@ -200,13 +200,6 @@ h3 {
     margin-top: 10px;
     text-decoration: underline;
 }
-/*
-.facilities-item {
-    display: inline-block;
-    width: 110px;
-    height: 50px;
-    vertical-align: text-top;
-} */
 .facilities-close {
     font-size: 16px;
     line-height: 30px;
@@ -215,9 +208,7 @@ h3 {
 .payment-list {
     color: #faf9ae;
 }
-.modal-content {
-    height: 300px;
-}
+
 @media only screen and (min-width: 1025px) {
     .mobile-only {
         visibility: hidden;

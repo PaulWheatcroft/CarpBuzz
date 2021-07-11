@@ -16,7 +16,7 @@
           </div>         
           <p>Are you sure that you want to delete the review for {{ fishery_contact.name }}?</p>
           <a href="{{ url_for('delete_review', review_id=fishery_review._id) }}"
-          class="col s12 m4 offset-m4 btn-large padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
+          class="col s12 m4 offset-m4 btn padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
         </div>
       </div>
   
@@ -64,9 +64,9 @@
           </div>
         </div>
         <div class="row input-row">
-          <button type="submit" class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update</button>
-          <a href="{{ url_for('reviews', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel</a>
-          <a href="#confirm_review_delete" class="col s12 m4 btn-large delete-button waves-effect red darken-2 modal-trigger">Delete</a>
+          <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Update</button>
+          <a href="{{ url_for('reviews', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          <a href="#confirm_review_delete" class="col s12 m4 btn delete-button waves-effect red darken-2 modal-trigger">Delete</a>
         </div>
 
       </form>

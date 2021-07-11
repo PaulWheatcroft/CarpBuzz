@@ -3,8 +3,9 @@
 
 <h1>Reports for {{ fishery_contact.name }}</h1>
 <div class="row">
-
+    <a href="{{ url_for('add_report', fishery_id=fishery_contact._id) }}" class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Create a Report</a>
 </div>
+    
     
 
 {% for report in reports %}
@@ -13,14 +14,18 @@
 
         <div class="row">
             <div class="col s12">
-                <h1>{{ report.report_name }}</h1>
-                <p>by {{ report.username }} on the {{ report.date.strftime('%d-%b-%Y') }}</p>
+                <h2>{{ report.report_name }}</h2>
+                <h3>by {{ report.username }} on the {{ report.date.strftime('%d-%b-%Y') }}</h3>
                 <ul>
                 {% for fish in report.catch %}
-                    <l1>{{ fish.catch }} {{ fish.weight }} {{ fish.datetime }}</l1>
+                    <l1>{{ fish.weight }}lbs {{ fish.catch }} at {{ fish.datetime.strftime('%H:%M on the %d-%b-%Y') }}</l1><br>
                 {% endfor %}
                 </ul>
+                <div class="row">
+                    <a href="{{ url_for('edit_report', report_id=report._id, fishery_id=fishery_contact._id) }}" class="btn waves-effect yellow darken-2 col s12">Edit this Report</a>
+                </div>
             </div>
+            
         </div>
 
         <div class="row">
