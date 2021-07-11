@@ -325,7 +325,11 @@ def edit_fishery(fishery_id):
 
 @app.route("/delete_fishery/<fishery_id>")
 def delete_fishery(fishery_id):
-    mongo.db.reviews.remove({"_id": ObjectId(fishery_id)})
+    mongo.db.fishery.contact.delete_one({"_id": ObjectId(fishery_id)})
+    mongo.db.fishery.facilities.delete_one({"fishery_id": fishery_id})
+    mongo.db.fishery.payment.delete_one({"fishery_id": fishery_id})
+    mongo.db.fishery.tickets.delete_one({"fishery_id": fishery_id})
+    mongo.db.reviews.delete_many({"fishery_id": fishery_id})
     fisheries = mongo.db.fisheries.contact.find()
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
@@ -448,6 +452,24 @@ def delete_review(review_id):
         reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
     return render_template("reviews.html", fishery_contact=fishery_contact,
     reviews=reviews)
+
+
+@app.route("/reports/<fishery_id>")
+def reports(fishery_id):
+    fishery_contact = mongo.db.fisheries.contact.find_one(
+        {"_id": ObjectId(fishery_id)})
+    fishery_reports = mongo.db.catch_reports.find({"fishery_id": fishery_id})
+    reports = []
+    # loop through the reports and for each one retrieve the username for the account_id
+    for report in fishery_reports:        
+        author_id = report['account_id']
+        username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
+        report.update({"username": username})
+        reports.append(report)
+    print(reports)
+    return render_template(
+        "reports.html", fishery_contact=fishery_contact,
+        reports=reports)
 
 
 if __name__ == "__main__":

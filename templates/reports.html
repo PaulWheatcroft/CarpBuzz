@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Reports for {{ fishery_contact.name }}</h1>
+<div class="row">
+
+</div>
+    
+
+{% for report in reports %}
+<div class="row">
+    <div class="col s12 m8 offset-m2 card" data-aos="fade-in">
+
+        <div class="row">
+            <div class="col s12">
+                <h1>{{ report.report_name }}</h1>
+                <p>by {{ report.username }} on the {{ report.date.strftime('%d-%b-%Y') }}</p>
+                <ul>
+                {% for fish in report.catch %}
+                    <l1>{{ fish.catch }} {{ fish.weight }} {{ fish.datetime }}</l1>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
