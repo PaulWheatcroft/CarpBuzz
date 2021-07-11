@@ -29,6 +29,12 @@ h3 {
     padding: 10px 0 10px 0;
     font-family: 'Questrial', sans-serif;
 }
+h4 {
+    font-size: 0.8em;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    font-family: 'Questrial', sans-serif;
+}
 .valign-wrapper {
     display: -webkit-flex;
     display: -ms-flexbox;

@@ -4,6 +4,9 @@ $(document).ready(function(){
     $('.datepicker').datepicker({
       format: "dd-mmm-yyyy"  
     });
+    $('.timepicker').timepicker({
+      twelveHour: false
+    });
     $('.sidenav').sidenav({
       edge: 'right',
       draggable: true,

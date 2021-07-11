@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Add your catches to the report for {{ fishery_contact.name }}</h1>
+
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <h3 class="center-align">{{ report.name }}</h3>
+      <h4 class="center-align">{{ report.date.strftime('%d-%b-%Y') }}</h4>
+      <p class="center-align">{{ report.notes }}</p>
+      {% for catch in report_catches %}
+              <l1>{{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}</l1><br>
+      {% endfor %}
+      <form method="POST" action="">
+        <div class="row">
+          <div class="input-field col s12 m3">
+            <input id="fish" name="fish" type="text" class="validate" required>
+            <label for="fish">Fish Type</label>
+          </div>
+
+          <div class="input-field col s12 m3">
+            <input id="weight" name="weight" type="text" class="validate" required>
+            <label for="weight">Weight</label>
+          </div>
+
+
+          <div class="input-field col s6 m3">
+            <input type="text" id="catch_date" name="catch_date" class="datepicker" required>   
+            <label for="catch_date">Catch Date</label>
+          </div>
+
+
+          <div class="input-field col s6 m3">
+            <input type="text" id="catch_time" name="catch_time" class="timepicker" required>   
+            <label for="catch_time">Catch Time</label>
+          </div>
+        </div>  
+        <div class="row">
+          <button type="submit" class="col s12 m6 btn submit-button waves-effect light-green darken-2">Add Catch</button>
+          <a href="{{ url_for('add_fish', report_id=report._id) }}" class="col s12 m6 btn cancel-button waves-effect amber darken-2">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
