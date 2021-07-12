@@ -499,15 +499,15 @@ def add_report(fishery_id):
 def add_fish(report_id):
     if request.method == "POST":
         report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-        fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])}) 
+        fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
         catch = {
             "report_id": report_id,
             "account_id": session["user"],
             "fishery_id": report["fishery_id"],
             "fish": request.form.get("fish"),
             "weight": float(request.form.get("weight")),
-            "date": datetime.strptime(str(request.form.get("catch_date")), '%d-%b-%Y'),
-            "time": datetime.strptime(str(request.form.get("catch_time")), '%H:%M')
+            "date": datetime.strptime(request.form.get("catch_date"), '%d-%b-%Y'),
+            "time": datetime.strptime(request.form.get("catch_time"), '%H:%M')
         }
         mongo.db.catch.fish.insert_one(catch)
         report_catches = mongo.db.catch.fish.find({"report_id": report_id})
@@ -515,18 +515,31 @@ def add_fish(report_id):
         report=report, report_catches=report_catches)
 
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    report_catches = mongo.db.catch.fish.find({"report_id": report_id})
     fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
     return render_template("add_fish.html", fishery_contact=fishery_contact,
-        report=report)
+        report=report, report_catches=report_catches)
 
 
 @app.route("/edit_report/<report_id>", methods=["GET", "POST"])
 def edit_report(report_id):
-    fishery_report = mongo.db.catch_reports.find_one({"_id": ObjectId(report_id)})
-    fishery_contact = mongo.db.fisheries.contact.find_one(
-        {"_id": ObjectId(fishery_report["fishery_id"])})    
+    if request.method == "POST":
+        report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+        updated_report = {
+            "fishery_id": report["fishery_id"],
+            "account_id": session["user"],
+            "name": request.form.get("report_name"),
+            "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
+            "notes": request.form.get("report_notes")
+        }
+        mongo.db.catch.reports.update_one({"_id": ObjectId(report_id)}, updated_report)
+        
+
+    report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    report_catches = mongo.db.catch.fish.find({"report_id": report_id})
+    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])}) 
     return render_template(
-        "edit_report.html", fishery_report=fishery_report,
+        "edit_report.html", report=report, report_catches=report_catches,
         fishery_contact=fishery_contact)
 
 

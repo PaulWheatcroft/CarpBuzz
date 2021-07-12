@@ -214,7 +214,6 @@ h4 {
 .payment-list {
     color: #faf9ae;
 }
-
 @media only screen and (min-width: 1025px) {
     .mobile-only {
         visibility: hidden;

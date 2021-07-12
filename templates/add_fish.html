@@ -37,8 +37,9 @@
           </div>
         </div>  
         <div class="row">
-          <button type="submit" class="col s12 m6 btn submit-button waves-effect light-green darken-2">Add Catch</button>
-          <a href="{{ url_for('add_fish', report_id=report._id) }}" class="col s12 m6 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Add Catch</button>
+          <a href="{{ url_for('add_fish', report_id=report._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect blue darken-2">Close</a>
         </div>
 
       </form>

@@ -28,18 +28,56 @@
     <div class="card-panel">
       <form method="POST" action="">
         <div class="row">
-          <div class="input-field col12">
-            <input id="report_name" name="report_name" type="text" class="validate" value="{{ fishery_report.report_name }}" required>
+          <div class="input-field col s12">
+            <input id="report_name" name="report_name" type="text" class="validate" value="{{ report.name }}" required>
             <label for="report_name">Report Name</label>
           </div>
         </div>
-        
-        <div class="row input-row">
-          <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Update</button>
-          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
-          <a href="#confirm_report_delete" class="col s12 m4 btn delete-button waves-effect red darken-2 modal-trigger">Delete</a>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="report_date" name="report_date" class="datepicker" value=" {{ report.date.strftime('%d-%b-%Y') }}" required>   
+            <label for="report_date">Date</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="report_notes" name="report_notes" type="text" class="validate" value="{{ report.notes }}" required>
+            <label for="report_notes">Notes</label>
+          </div>
         </div>
 
+        <ul>
+          {% for catch in report_catches %}
+              {% if report._id|string == catch.report_id %}
+                  <li> 
+                    <div class="input-field col s6 m3">
+                      <input id="{{ catch._id }}weight" name="{{ catch._id }}weight" type="text" class="validate" value="{{ catch.weight }}" required>
+                      <label for="{{ catch._id }}weight">Weight</label>
+                    </div>
+
+                    <div class="input-field col s6 m3">
+                      <input id="{{ catch._id }}fish" name="{{ catch._id }}fish" type="text" class="validate" value="{{ catch.fish }}" required>
+                      <label for="{{ catch._id }}fish">Fish Type</label>
+                    </div>    
+          
+                    <div class="input-field col s6 m3">
+                      <input type="text" id="{{ catch._id }}catch_time" name="{{ catch._id }}catch_time" class="timepicker" value="{{ catch.time.strftime('%H:%M') }}" required>   
+                      <label for="{{ catch._id }}catch_time">Catch Time</label>
+                    </div>
+
+                    <div class="input-field col s6 m3">
+                      <input type="text" id="{{ catch._id }}catch_date" name="{{ catch._id }}catch_date" class="datepicker" value="{{ catch.date.strftime('%d-%b-%Y') }}" required>   
+                      <label for="{{ catch._id }}catch_date">Catch Date</label>
+                    </div>
+                  </li><br>
+              {% endif %}
+          {% endfor %}
+        </ul>
+          
+        <div class="row input-row">
+          <button type="submit" class="col s12 m6 btn submit-button waves-effect light-green darken-2">Update</button>
+          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m6 btn cancel-button waves-effect amber darken-2">Cancel</a>
+        </div>
       </form>
     </div>
 
