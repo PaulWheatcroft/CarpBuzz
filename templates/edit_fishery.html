@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
                         <input id="name" name="name" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$" class="validate"
+                            pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate"
                             value="{{ fishery_contact.name }}" required>
                         <label for="name">Fishery Name</label>
                     </div>
@@ -59,6 +59,15 @@
                 </div>
 
                 <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="county" name="county" type="text" minlength="2" maxlength="50"
+                            pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate"
+                            value="{{ fishery_contact.county }}" required>
+                        <label for="county">County</label>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="input-field col s12 m10 offset-m1 off-white">
                         <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
                             pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate"
@@ -69,7 +78,7 @@
 
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
-                        <input id="telephone" name="telephone" type="text" minlength="10" maxlength="20"
+                        <input id="telephone" name="telephone" type="tel" minlength="10" maxlength="20"
                             pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate"
                             value="{{ fishery_contact.telephone }}" required>
                         <label for="telephone">Telephone</label>
@@ -79,7 +88,7 @@
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
                         <input id="website" name="website" type="text" minlength="1"
-                            pattern="^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^.]+)(?:[.,]\w+)*\.(\w+)"
+                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                             class="validate" value="{{ fishery_contact.website }}">
                         <label for="website">Fishery Website</label>
                     </div>
@@ -88,7 +97,7 @@
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
                         <input id="facebook" name="facebook" type="text" minlength="1"
-                            pattern="^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$"
+                        pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                             class="validate" value="{{ fishery_contact.facebook }}">
                         <label for="facebook">Fishery Facebook Address</label>
                     </div>
