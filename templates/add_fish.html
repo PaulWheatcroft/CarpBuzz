@@ -6,20 +6,23 @@
 <div class="row">
   <div class="col s12">
     <div class="card-panel">
-      <h3 class="center-align">{{ report.name }}</h3>
+      <h2 class="center-align">{{ report.name }}</h2>
       <h4 class="center-align">{{ report.date.strftime('%d-%b-%Y') }}</h4>
       <p class="center-align">{{ report.notes }}</p>
       {% for catch in report_catches %}
-              <l1>{{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}</l1><br>
+        <div class="row catch-row">
+          <l1 class="col s12 center-align">{{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on {{ catch.date.strftime('%d-%b-%Y') }}</l1>
+        </div>
+
       {% endfor %}
       <form method="POST" action="">
         <div class="row">
-          <div class="input-field col s12 m3">
+          <div class="input-field col s6 m3">
             <input id="fish" name="fish" type="text" class="validate" required>
             <label for="fish">Fish Type</label>
           </div>
 
-          <div class="input-field col s12 m3">
+          <div class="input-field col s6 m3">
             <input id="weight" name="weight" type="text" class="validate" required>
             <label for="weight">Weight</label>
           </div>

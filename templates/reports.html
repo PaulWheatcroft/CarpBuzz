@@ -3,10 +3,11 @@
 
 <h1>Reports for {{ fishery_contact.name }}</h1>
 <div class="row">
-    <a href="{{ url_for('add_report', fishery_id=fishery_contact._id) }}" class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Create a Report</a>
+    <a href="{{ url_for('add_report', fishery_id=fishery_contact._id) }}"
+        class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Create a Report</a>
 </div>
-    
-    
+
+
 
 {% for report in reports %}
 <div class="row">
@@ -17,23 +18,29 @@
                 <h2>{{ report.name }}</h2>
                 <h3>by {{ report.username }} on the {{ report.date.strftime('%d-%b-%Y') }}</h3>
                 <p>{{ report.notes }}</p>
-                <ul>
-                    {% for catch in fishery_catches %}
-                        {% if report._id|string == catch.report_id %}
-                            <l1>{{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the {{ catch.date.strftime('%d-%b-%Y') }}</l1><br>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-                <div class="row">
-                    <a href="{{ url_for('edit_report', report_id=report._id) }}" class="btn waves-effect yellow darken-2 col s12">Edit this Report</a>
-                </div>
-            </div>
-            
+            </div>    
         </div>
 
         <div class="row">
-
+            <ul class="col s12">
+                {% for catch in fishery_catches %}
+                    {% if report._id|string == catch.report_id %}
+                    <l1 class="center-align">
+                            {{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the {{
+                            catch.date.strftime('%d-%b-%Y') }}
+                    </l1><br>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         </div>
+                
+        {% if report.account_id == session["user"] %}
+        <div class="row">
+            <a href="{{ url_for('edit_report', report_id=report._id) }}"
+                class="btn waves-effect yellow darken-2 col s12">Edit this Report</a>
+        </div>
+        {% endif %}
+
     </div>
 </div>
 {% endfor %}

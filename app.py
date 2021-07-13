@@ -404,39 +404,49 @@ def add_review(fishery_id):
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
-    if request.method == "POST":
-        fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-        updated_review = {
-            "fishery_id": fishery_review['fishery_id'],
-            "account_id": session["user"],
-            "rating": int(request.form.get("review_rating")),
-            "heading": request.form.get("review_heading"),
-            "main_text": request.form.get("review_text"),
-            "pro_text": request.form.get("pro_text"),
-            "con_text": request.form.get("con_text"),
-            "moderation": False,
-            "date": datetime.strptime(request.form.get("review_date"), '%d-%b-%Y')
-        }
-        # insert review
-        mongo.db.reviews.update({"_id": ObjectId(review_id)}, updated_review)            
-        flash('You have successfully updated the review', 'success')
-        return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
-
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    fishery_contact = mongo.db.fisheries.contact.find_one(
-        {"_id": ObjectId(fishery_review["fishery_id"])})    
-    return render_template(
-        "edit_review.html", fishery_review=fishery_review,
-        fishery_contact=fishery_contact)
+    if session["user"] == fishery_review["account_id"]:
+        if request.method == "POST":
+            updated_review = {
+                "fishery_id": fishery_review['fishery_id'],
+                "account_id": session["user"],
+                "rating": int(request.form.get("review_rating")),
+                "heading": request.form.get("review_heading"),
+                "main_text": request.form.get("review_text"),
+                "pro_text": request.form.get("pro_text"),
+                "con_text": request.form.get("con_text"),
+                "moderation": False,
+                "date": datetime.strptime(request.form.get("review_date"), '%d-%b-%Y')
+            }
+            # insert review
+            mongo.db.reviews.update({"_id": ObjectId(review_id)}, updated_review)            
+            flash('You have successfully updated the review', 'success')
+            return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
+
+        fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        fishery_contact = mongo.db.fisheries.contact.find_one(
+            {"_id": ObjectId(fishery_review["fishery_id"])})    
+        return render_template(
+            "edit_review.html", fishery_review=fishery_review,
+            fishery_contact=fishery_contact)
+
+    else:
+            flash('You are not authorised for this page', 'warning')
+            return redirect(url_for("get_fisheries"))
 
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    if session["user"] == fishery_review["account_id"]:
     # delete the review
-    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
-    flash('Your review as been deleted', 'info')    
-    return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
+        mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+        flash('Your review as been deleted', 'info')    
+        return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
+
+    else:
+        flash('You are not authorised for this page', 'warning')
+        return redirect(url_for("get_fisheries"))
 
 
 @app.route("/reports/<fishery_id>")
@@ -460,113 +470,135 @@ def reports(fishery_id):
 
 @app.route("/add_report/<fishery_id>", methods=["GET", "POST"])
 def add_report(fishery_id):
-    if request.method == "POST":
-        fishery_contact = mongo.db.fisheries.contact.find_one(
-        {"_id": ObjectId(fishery_id)})
-        report = {
-            "fishery_id": fishery_id,
-            "account_id": session["user"],
-            "name": request.form.get("report_name"),
-            "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
-            "notes": request.form.get("report_notes")
-        }
-        mongo.db.catch.reports.insert_one(report)
-        return redirect(url_for('add_fish', report_id=report["_id"]))
+    if session["user"]:
+        if request.method == "POST":
+            fishery_contact = mongo.db.fisheries.contact.find_one(
+            {"_id": ObjectId(fishery_id)})
+            report = {
+                "fishery_id": fishery_id,
+                "account_id": session["user"],
+                "name": request.form.get("report_name"),
+                "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
+                "notes": request.form.get("report_notes")
+            }
+            mongo.db.catch.reports.insert_one(report)
+            return redirect(url_for('add_fish', report_id=report["_id"]))
 
-    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})    
-    return render_template(
-        "add_report.html", fishery_contact=fishery_contact)
+        fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})    
+        return render_template(
+            "add_report.html", fishery_contact=fishery_contact)
+
+    else:
+            flash('You are not authorised for this page', 'warning')
+            return redirect(url_for("get_fisheries"))
 
 
 @app.route("/edit_report/<report_id>", methods=["GET", "POST"])
 def edit_report(report_id):
-    if request.method == "POST":
+    fishery_report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    if session["user"] == fishery_report["account_id"]:
+        if request.method == "POST":
+            report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+            report_catches = list(mongo.db.catch.fish.find({"report_id": report_id}))
+            updated_report = { "$set":
+            {
+                "fishery_id": report["fishery_id"],
+                "account_id": session["user"],
+                "name": request.form.get("report_name"),
+                "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
+                "notes": request.form.get("report_notes")
+            }
+            }
+            mongo.db.catch.reports.update_one({"_id": ObjectId(report_id)}, updated_report)
+            if not report_catches:
+                return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+
+            else:
+                for catch in report_catches:
+                    # each catch list item has it's own unique id name and label values
+                    str_catch_id = str(catch["_id"])
+                    marked_delete = bool(request.form.get(f"{str_catch_id}delete"))
+                    if marked_delete:
+                        print("")
+                        print("Delete")
+                        print(str_catch_id)
+                        print("")
+                        mongo.db.catch.fish.delete_one({"_id": ObjectId(str_catch_id)})
+
+                    else:
+                        print("") 
+                        print("Update")
+                        print("")
+                        updated_catch = { "$set":
+                        {
+                            "report_id": report_id,
+                            "account_id": session["user"],
+                            "fishery_id": report["fishery_id"],
+                            "fish": request.form.get(f"{str_catch_id}fish"),
+                            "weight": float(request.form.get(f"{str_catch_id}weight")),
+                            "date": datetime.strptime(request.form.get(f"{str_catch_id}catch_date"), '%d-%b-%Y'),
+                            "time": datetime.strptime(request.form.get(f"{str_catch_id}catch_time"), '%H:%M')
+                        }
+                        }
+                        mongo.db.catch.fish.update(catch, updated_catch)
+                        return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+            
+
         report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-        report_catches = list(mongo.db.catch.fish.find({"report_id": report_id}))
-        updated_report = { "$set":
-        {
-            "fishery_id": report["fishery_id"],
-            "account_id": session["user"],
-            "name": request.form.get("report_name"),
-            "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
-            "notes": request.form.get("report_notes")
-        }
-        }
-        mongo.db.catch.reports.update_one({"_id": ObjectId(report_id)}, updated_report)
-        if not report_catches:
-            return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+        report_catches = mongo.db.catch.fish.find({"report_id": report_id})
+        fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])}) 
+        return render_template(
+            "edit_report.html", report=report, report_catches=report_catches,
+            fishery_contact=fishery_contact)
 
-        else:
-            for catch in report_catches:
-                # each catch list item has it's own unique id name and label values
-                str_catch_id = str(catch["_id"])
-                marked_delete = bool(request.form.get(f"{str_catch_id}delete"))
-                if marked_delete:
-                    print("")
-                    print("Delete")
-                    print(str_catch_id)
-                    print("")
-                    mongo.db.catch.fish.delete_one({"_id": ObjectId(str_catch_id)})
-
-                else:
-                    print("") 
-                    print("Update")
-                    print("")
-                    updated_catch = { "$set":
-                    {
-                        "report_id": report_id,
-                        "account_id": session["user"],
-                        "fishery_id": report["fishery_id"],
-                        "fish": request.form.get(f"{str_catch_id}fish"),
-                        "weight": float(request.form.get(f"{str_catch_id}weight")),
-                        "date": datetime.strptime(request.form.get(f"{str_catch_id}catch_date"), '%d-%b-%Y'),
-                        "time": datetime.strptime(request.form.get(f"{str_catch_id}catch_time"), '%H:%M')
-                    }
-                    }
-                    mongo.db.catch.fish.update(catch, updated_catch)
-                    return redirect(url_for('reports', fishery_id=report["fishery_id"]))
-        
-
-    report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-    report_catches = mongo.db.catch.fish.find({"report_id": report_id})
-    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])}) 
-    return render_template(
-        "edit_report.html", report=report, report_catches=report_catches,
-        fishery_contact=fishery_contact)
+    else:
+        flash('You are not authorised for this page', 'warning')
+        return redirect(url_for("get_fisheries"))
 
 
 @app.route("/delete_report/<report_id>")
 def delete_report(report_id):
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-    mongo.db.catch.reports.delete_one({"_id": ObjectId(report_id)})
-    mongo.db.catch.fish.delete_many({"report_id": report_id})
-    flash('Your review as been deleted', 'info')    
-    return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+    if session["user"] == report["account_id"]:
+        mongo.db.catch.reports.delete_one({"_id": ObjectId(report_id)})
+        mongo.db.catch.fish.delete_many({"report_id": report_id})
+        flash('Your review as been deleted', 'info')    
+        return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+
+    else:
+        flash('You are not authorised for this page', 'warning')
+        return redirect(url_for("get_fisheries"))
+
 
 @app.route("/add_fish/<report_id>", methods=["GET", "POST"])
 def add_fish(report_id):
-    if request.method == "POST":
-        report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-        fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
-        catch = {
-            "report_id": report_id,
-            "account_id": session["user"],
-            "fishery_id": report["fishery_id"],
-            "fish": request.form.get("fish"),
-            "weight": float(request.form.get("weight")),
-            "date": datetime.strptime(request.form.get("catch_date"), '%d-%b-%Y'),
-            "time": datetime.strptime(request.form.get("catch_time"), '%H:%M')
-        }
-        mongo.db.catch.fish.insert_one(catch)
-        report_catches = mongo.db.catch.fish.find({"report_id": report_id})
-        return redirect(url_for('add_fish', report_id=report["_id"]))
-
-
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-    report_catches = mongo.db.catch.fish.find({"report_id": report_id})
-    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
-    return render_template("add_fish.html", fishery_contact=fishery_contact,
-        report=report, report_catches=report_catches)
+    if session["user"] == report["account_id"]:
+        if request.method == "POST":
+            fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
+            catch = {
+                "report_id": report_id,
+                "account_id": session["user"],
+                "fishery_id": report["fishery_id"],
+                "fish": request.form.get("fish"),
+                "weight": float(request.form.get("weight")),
+                "date": datetime.strptime(request.form.get("catch_date"), '%d-%b-%Y'),
+                "time": datetime.strptime(request.form.get("catch_time"), '%H:%M')
+            }
+            mongo.db.catch.fish.insert_one(catch)
+            report_catches = mongo.db.catch.fish.find({"report_id": report_id})
+            return redirect(url_for('add_fish', report_id=report["_id"]))
+
+
+        report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+        report_catches = mongo.db.catch.fish.find({"report_id": report_id})
+        fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
+        return render_template("add_fish.html", fishery_contact=fishery_contact,
+            report=report, report_catches=report_catches)
+
+    else:
+            flash('You are not authorised for this page', 'warning')
+            return redirect(url_for("get_fisheries"))
 
 
 if __name__ == "__main__":
