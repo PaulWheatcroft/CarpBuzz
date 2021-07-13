@@ -2,10 +2,12 @@
 {% block content %}
 <div class="container">
     <h1>Reports for {{ fishery_contact.name }}</h1>
+    {% if session.user %}
     <div class="row">
         <a href="{{ url_for('add_report', fishery_id=fishery_contact._id) }}"
             class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Create a Report</a>
     </div>
+    {% endif %}
     {% for report in reports %}
     <div class="row">
         <div class="col s12 m8 offset-m2 card" data-aos="fade-in">

@@ -35,14 +35,6 @@ h4 {
     padding: 10px 0 10px 0;
     font-family: 'Questrial', sans-serif;
 }
-.valign-wrapper {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
 .input-row {
     padding-top: 20px;
 }
@@ -107,7 +99,11 @@ h4 {
 }
 #mobile-logo {
     height: 200px;
+    background-image: url(/static/images/mobile.bk.jpg);
+    background-position-y: bottom;
+    background-position-x: -40px;
     background-color: #689DA8;
+    border-bottom: solid 1px #689DA8;
 }
 #mobile-logo img {
     margin-top: 70px;
@@ -158,11 +154,33 @@ h4 {
     text-transform: uppercase;
 }
 .search-row {
-    background-image: url(/static/images/cp-background.jpg);
+    background-image: url(/static/images/cp-background2.jpg);
     background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #a6d35f;
+    height: 60vh;
+    border-bottom: solid 2px #7d9950;
+}
+.search-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    height: 50vh;
+}
+.search-heading {
+    padding: 20px 0 20px 0;
+}
+.filter-checkbox span {
+    color: #1a1a1a;
+}
+.filter-button-row {
+    padding-top: 20px;
+}
+.filter-button {
+    background-color: #89A857;
+}
+.fishery-results {
+    padding-top: 20px;
 }
 .fishery-card {
     background-color: #f7f7f7;
@@ -259,5 +277,11 @@ h4 {
     }
     .card-content {
         font-size: 14px;
+    }
+    .search-row {
+        height: 40vh;
+    }
+    .search-card {
+        height: 30vh;
     }
 }

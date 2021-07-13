@@ -1,13 +1,70 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row search-row">
+<div class="row search-row valign-wrapper">
     <div class="container">
-        <div class="card small col s12 m8 offset-m2">
+        <div class="card col s12 m8 offset-m2 search-card">            
+            <div class="container">
+                <div class="row center-align">
+                    <h2 class="h3 search-heading">Find your perfect carp water in the South-West of England</h3>
+                </div>
+                <form action="#">
+                    <div class="row filter-checkbox">
+                        <div class="col s6 l4">
+                            <label for="wiltshire">
+                                <input type="checkbox" name="wiltshire" id="wiltshire" />
+                                <span>Wiltshire</span>
+                            </label>
+                        </div>
+                        <div class="col s6 l4">
+                            <label for="gloucestershire">
+                                <input type="checkbox" name="gloucestershire" id="gloucestershire" />
+                                <span>Gloucestershire</span>
+                            </label>
+                        </div>
+                        <div class="col s6 l4">
+                            <label for="north_somerset">
+                                <input type="checkbox" name="north_somerset" id="north_somerset" />
+                                <span>North Somerset</span>
+                            </label>
+                        </div>
+                        <div class="col s6 l4">
+                            <label for="somerset">
+                                <input type="checkbox" name="somerset" id="somerset" />
+                                <span>Somerset</span>
+                            </label>
+                        </div>
+                        <div class="col s6 l4">
+                            <label for="dorset">
+                                <input type="checkbox" name="dorset" id="dorset" />
+                                <span>Dorset</span>
+                            </label>
+                        </div>
+                        <div class="col s6 l4">
+                            <label for="devon">
+                                <input type="checkbox" name="devon" id="devon" />
+                                <span>Devon</span>
+                            </label>
+                        </div>
+                        <div class="col s6 l4">
+                            <label for="cornwall">
+                                <input type="checkbox" name="cornwall" id="cornwall" />
+                                <span>Cornwall</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row filter-button-row">
+                        <button type="submit"
+                            class="col s12 btn-large submit-button waves-effect">Filter Results</button>
+                    </div>
+    
+                </form> 
+            </div>
+           
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container fishery-results">
     {% for fishery in fisheries %}
     {% if not fishery.disabled %}
     <div class="row">
