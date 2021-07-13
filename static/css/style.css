@@ -159,12 +159,24 @@ h4 {
 .fishery-card {
     background-color: #f7f7f7;
 }
+.fishery-address h2 {
+    padding-top: 20px;
+}
+.fishery-links a {
+    line-height: 14px;
+    font-size: 14px;
+    padding-left: 10px;
+}
 .ticket-span {
     display: inline-block;
-    width: 40px;
+    background-color: #e2e7e2;
+    width: 100px;
     text-align: center;
-    font-size: 11px;
+    font-size: 14px;
     margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    bor
 }
 .reviews-button {
     background-color: #689DA8;

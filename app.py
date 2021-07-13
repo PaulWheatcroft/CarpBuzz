@@ -518,7 +518,7 @@ def edit_report(report_id):
 @app.route("/delete_report/<report_id>")
 def delete_report(report_id):
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-    mongo.db.catch.report.delete_one({"_id": ObjectId(report_id)})
+    mongo.db.catch.reports.delete_one({"_id": ObjectId(report_id)})
     mongo.db.catch.fish.delete_many({"report_id": report_id})
     flash('Your review as been deleted', 'info')    
     return redirect(url_for('reports', fishery_id=report["fishery_id"]))

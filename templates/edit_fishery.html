@@ -219,7 +219,7 @@
                     <!-- Lake type -->
                     <h3 class="center-align">Lake Type</h3>
                     <div class="input-field col s12 m4">
-                        <select name="lake_type">
+                        <select name="lake_type" required>
                             <option value="" disabled>Choose your option</option>
                             {% if fishery_facilities.lake_type == "single" %}
                             <option value="single" selected>Single Lake</option>
@@ -232,7 +232,7 @@
                         <label for="lake_type">Lake Type</label>
                     </div>
                     <div class="input-field col s12 m4">
-                        <select name="stock_size">
+                        <select name="stock_size" required>
                             <option value="" disabled>Choose your option</option>
                             {% if fishery_facilities.lake_type == "20" %}
                             <option value="20" selected>20lbs</option>
@@ -268,7 +268,7 @@
                         <label for="stock_size">Stock Size</label>
                     </div>
                     <div class="input-field col s12 m4">
-                        <select name="rods">
+                        <select name="rods" required>
                             <option value="" disabled>Choose your option</option>
                             {% if fishery_facilities.rods == "One" %}
                             <option value="One" selected>One</option>
@@ -278,7 +278,7 @@
                             {% if fishery_facilities.rods == "Two" %}
                             <option value="Two" selected>Two</option>
                             {% else %}
-                            <option value="Two">One</option>
+                            <option value="Two">Two</option>
                             {% endif %}
                             {% if fishery_facilities.rods == "Three" %}
                             <option value="Three" selected>Three</option>
