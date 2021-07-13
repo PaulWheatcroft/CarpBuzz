@@ -35,7 +35,7 @@
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input type="text" id="report_date" name="report_date" class="datepicker" value=" {{ report.date.strftime('%d-%b-%Y') }}" required>   
+            <input type="text" id="report_date" name="report_date" class="datepicker" value="{{ report.date.strftime('%d-%b-%Y') }}" required>   
             <label for="report_date">Date</label>
           </div>
         </div>
@@ -46,7 +46,7 @@
           </div>
         </div>
 
-        <ul>
+        <ul id="catch_list">
           {% for catch in report_catches %}
               {% if report._id|string == catch.report_id %}
                   <li> 

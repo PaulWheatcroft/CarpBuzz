@@ -487,12 +487,59 @@ def add_report(fishery_id):
             "notes": request.form.get("report_notes")
         }
         mongo.db.catch.reports.insert_one(report)
-        return render_template("add_fish.html", fishery_contact=fishery_contact,
-        report=report)
+        return redirect(url_for('add_fish', report_id=report["_id"]))
 
     fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})    
     return render_template(
         "add_report.html", fishery_contact=fishery_contact)
+
+
+@app.route("/edit_report/<report_id>", methods=["GET", "POST"])
+def edit_report(report_id):
+    if request.method == "POST":
+        report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+        report_catches = list(mongo.db.catch.fish.find({"report_id": report_id}))
+        updated_report = { "$set":
+        {
+            "fishery_id": report["fishery_id"],
+            "account_id": session["user"],
+            "name": request.form.get("report_name"),
+            "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
+            "notes": request.form.get("report_notes")
+        }
+        }
+        mongo.db.catch.reports.update_one({"_id": ObjectId(report_id)}, updated_report)
+        if not report_catches:
+            print("Caught nothing but this error")
+
+        else:
+            for catch in report_catches:
+                # each catch list item has it's own unique id name and label values
+                str_catch_id = str(catch["_id"])
+                updated_catch = { "$set":
+                {
+                    "report_id": report_id,
+                    "account_id": session["user"],
+                    "fishery_id": report["fishery_id"],
+                    "fish": request.form.get(f"{str_catch_id}fish"),
+                    "weight": float(request.form.get(f"{str_catch_id}weight")),
+                    "date": datetime.strptime(request.form.get(f"{str_catch_id}catch_date"), '%d-%b-%Y'),
+                    "time": datetime.strptime(request.form.get(f"{str_catch_id}catch_time"), '%H:%M')
+                }
+                }
+                mongo.db.catch.fish.update(catch, updated_catch)
+
+        print("")
+        print(report["fishery_id"])
+        print("")
+        return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+
+    report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    report_catches = mongo.db.catch.fish.find({"report_id": report_id})
+    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])}) 
+    return render_template(
+        "edit_report.html", report=report, report_catches=report_catches,
+        fishery_contact=fishery_contact)
 
 
 @app.route("/add_fish/<report_id>", methods=["GET", "POST"])
@@ -519,28 +566,6 @@ def add_fish(report_id):
     fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
     return render_template("add_fish.html", fishery_contact=fishery_contact,
         report=report, report_catches=report_catches)
-
-
-@app.route("/edit_report/<report_id>", methods=["GET", "POST"])
-def edit_report(report_id):
-    if request.method == "POST":
-        report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-        updated_report = {
-            "fishery_id": report["fishery_id"],
-            "account_id": session["user"],
-            "name": request.form.get("report_name"),
-            "date": datetime.strptime(request.form.get("report_date"), '%d-%b-%Y'),
-            "notes": request.form.get("report_notes")
-        }
-        mongo.db.catch.reports.update_one({"_id": ObjectId(report_id)}, updated_report)
-        
-
-    report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
-    report_catches = mongo.db.catch.fish.find({"report_id": report_id})
-    fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])}) 
-    return render_template(
-        "edit_report.html", report=report, report_catches=report_catches,
-        fishery_contact=fishery_contact)
 
 
 if __name__ == "__main__":
