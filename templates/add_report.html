@@ -1,44 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h1>Create your report for {{ fishery_contact.name }}</h1>
-
-<div class="row">
-  <div class="col s12">
-    <div class="card-panel">
-      <p class="center-align">Once the report is created you will be able to add the catch details</p>
-      <form method="POST" action="{{ url_for('add_report', fishery_id=fishery_contact._id) }}">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="report_name" name="report_name" type="text" class="validate" required>
-            <label for="report_name">Report Name</label>
+<div class="container">
+  <h1>Create your report for {{ fishery_contact.name }}</h1>
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel">
+        <p class="center-align">Once the report is created you will be able to add the catch details</p>
+        <form method="POST" action="{{ url_for('add_report', fishery_id=fishery_contact._id) }}">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="report_name" name="report_name" type="text" class="validate" required>
+              <label for="report_name">Report Name</label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input type="text" id="report_date" name="report_date" class="datepicker" required>   
-            <label for="report_date">Date</label>
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" id="report_date" name="report_date" class="datepicker" required>
+              <label for="report_date">Date</label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="report_notes" name="report_notes" type="text" class="validate" required>
-            <label for="report_notes">Notes</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="report_notes" name="report_notes" type="text" class="validate" required>
+              <label for="report_notes">Notes</label>
+            </div>
           </div>
-        </div>
-          
-        <div class="row input-row">
-          <button type="submit" class="col s12 m6 btn submit-button waves-effect light-green darken-2">Create</button>
-          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m6 btn cancel-button waves-effect amber darken-2">Cancel</a>
-        </div>
-
+          <div class="row input-row">
+            <button type="submit" class="col s12 m6 btn submit-button waves-effect light-green darken-2">Create</button>
+            <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}"
+              class="col s12 m6 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          </div>
+        </form>
+      </div>
       </form>
     </div>
-
-
-    </form>
   </div>
 </div>
-
 
 {% endblock %}

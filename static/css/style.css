@@ -157,6 +157,13 @@ h4 {
     transition: color .3s ease;
     text-transform: uppercase;
 }
+.search-row {
+    background-image: url(/static/images/cp-background.jpg);
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #a6d35f;
+}
 .fishery-card {
     background-color: #f7f7f7;
 }

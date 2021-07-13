@@ -1,439 +1,410 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h1 class="center-align">Edit Fishery</h1>
-
-<!-- Modal Structure -->
-<div class="row">
-
-    <div id="confirm_fishery_delete" class="modal">
-        <div class="modal-content center-align">
-            <div class="row">
-                <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>
-            </div>
-            <div class="row">
-                <h4 class="col s12">Are You Sure?</h4>
-            </div>
-            <div class="row">
-                <p>Are you sure that you want to delete {{ fishery_contact.name }}?</p>
-                <a href="{{ url_for('delete_fishery', fishery_id=fishery_contact._id) }}"
-                    class="col s12 m4 offset-m4 btn-large padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes
-                    Delete</a>
+<div class="container">
+    <h1 class="center-align">Edit Fishery</h1>
+    <!-- Modal Structure -->
+    <div class="row">
+        <div id="confirm_fishery_delete" class="modal">
+            <div class="modal-content center-align">
+                <div class="row">
+                    <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>
+                </div>
+                <div class="row">
+                    <h4 class="col s12">Are You Sure?</h4>
+                </div>
+                <div class="row">
+                    <p>Are you sure that you want to delete {{ fishery_contact.name }}?</p>
+                    <a href="{{ url_for('delete_fishery', fishery_id=fishery_contact._id) }}"
+                        class="col s12 m4 offset-m4 btn-large padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes
+                        Delete</a>
+                </div>
             </div>
         </div>
     </div>
-
-</div>
-
-<div class="row">
-    <div class="col s12">
-        <div class="card-panel">
-            <form method="POST" action="{{ url_for('edit_fishery', fishery_id=fishery_contact._id) }}">
-                <!-- Fishery Contact Details -->
-                <h2 class="center-align">Fishery Contact Details</h2>
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="name" name="name" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate"
-                            value="{{ fishery_contact.name }}" required>
-                        <label for="name">Fishery Name</label>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel">
+                <form method="POST" action="{{ url_for('edit_fishery', fishery_id=fishery_contact._id) }}">
+                    <!-- Fishery Contact Details -->
+                    <h2 class="center-align">Fishery Contact Details</h2>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="name" name="name" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate"
+                                value="{{ fishery_contact.name }}" required>
+                            <label for="name">Fishery Name</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="address" name="address" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate"
-                            value="{{ fishery_contact.address }}" required>
-                        <label for="address">First Line of the Address</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="address" name="address" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate"
+                                value="{{ fishery_contact.address }}" required>
+                            <label for="address">First Line of the Address</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="town" name="town" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate"
-                            value="{{ fishery_contact.town }}" required>
-                        <label for="town">Town</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="town" name="town" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate"
+                                value="{{ fishery_contact.town }}" required>
+                            <label for="town">Town</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="county" name="county" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate"
-                            value="{{ fishery_contact.county }}" required>
-                        <label for="county">County</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="county" name="county" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate"
+                                value="{{ fishery_contact.county }}" required>
+                            <label for="county">County</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1 off-white">
-                        <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
-                            pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate"
-                            value="{{ fishery_contact.postcode }}" required>
-                        <label for="postcode">Postcode</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1 off-white">
+                            <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
+                                pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate"
+                                value="{{ fishery_contact.postcode }}" required>
+                            <label for="postcode">Postcode</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="telephone" name="telephone" type="tel" minlength="10" maxlength="20"
-                            pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate"
-                            value="{{ fishery_contact.telephone }}" required>
-                        <label for="telephone">Telephone</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="telephone" name="telephone" type="tel" minlength="10" maxlength="20"
+                                pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate"
+                                value="{{ fishery_contact.telephone }}" required>
+                            <label for="telephone">Telephone</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="website" name="website" type="text" minlength="1"
-                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
-                            class="validate" value="{{ fishery_contact.website }}">
-                        <label for="website">Fishery Website</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="website" name="website" type="text" minlength="1"
+                                pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                                class="validate" value="{{ fishery_contact.website }}">
+                            <label for="website">Fishery Website</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="facebook" name="facebook" type="text" minlength="1"
-                        pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
-                            class="validate" value="{{ fishery_contact.facebook }}">
-                        <label for="facebook">Fishery Facebook Address</label>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="facebook" name="facebook" type="text" minlength="1"
+                                pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                                class="validate" value="{{ fishery_contact.facebook }}">
+                            <label for="facebook">Fishery Facebook Address</label>
+                        </div>
                     </div>
-                </div>
-
-
-
-                <!-- Ticket Prices -->
-                <h2 class="center-align">Fishery Ticket Prices</h2>
-                <div class="row">
-                    <div class="input-field col s6 m3">
-                        <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.day_dayonly }}">
-                        <label for="day_dayonly">Day Only</label>
+                    <!-- Ticket Prices -->
+                    <h2 class="center-align">Fishery Ticket Prices</h2>
+                    <div class="row">
+                        <div class="input-field col s6 m3">
+                            <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.day_dayonly }}">
+                            <label for="day_dayonly">Day Only</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.day_daynight }}">
+                            <label for="day_daynight">Day 24 Hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.lake_daynight }}">
+                            <label for="lake_daynight">Lake 24 Hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="syndicate_daynight" name="syndicate_daynight" type="text"
+                                pattern="\d+(\.\d{1,2})?" class="validate"
+                                value="{{ fishery_tickets.syndicate_daynight }}">
+                            <label for="syndicate_daynight">Syndicate 24hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.club_dayonly }}">
+                            <label for="club_dayonly">Club Day Only</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.club_daynight }}">
+                            <label for="club_daynight">Club 24 Hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="season_dayonly" name="season_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.season_dayonly }}">
+                            <label for="season_dayonly">Season Day Only</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="season_daynight" name="season_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate" value="{{ fishery_tickets.season_daynight }}">
+                            <label for="season_daynight">Club 24 Hours</label>
+                        </div>
                     </div>
-                    <div class="input-field col s6 m3">
-                        <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.day_daynight }}">
-                        <label for="day_daynight">Day 24 Hours</label>
+                    <!-- Payment methods -->
+                    <h2 class="center-align">Fishery Payment and Booking Methods</h2>
+                    <div class="row">
+                        <div class="col s6 m2">
+                            <label for="on_the_bank">
+                                {% if fishery_payment.on_the_bank %}
+                                <input type="checkbox" name="on_the_bank" id="on_the_bank" checked />
+                                {% else %}
+                                <input type="checkbox" name="on_the_bank" id="on_the_bank" />
+                                {% endif %}
+                                <span>Bank</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="on_arival">
+                                {% if fishery_payment.on_arival %}
+                                <input type="checkbox" name="on_arival" id="on_arival" checked />
+                                {% else %}
+                                <input type="checkbox" name="on_arival" id="on_arival" />
+                                {% endif %}
+                                <span>Arrival</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="book_online">
+                                {% if fishery_payment.book_online %}
+                                <input type="checkbox" name="book_online" id="book_online" checked />
+                                {% else %}
+                                <input type="checkbox" name="book_online" id="book_online" />
+                                {% endif %}
+                                <span>Online</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="book_on_phone">
+                                {% if fishery_payment.book_on_phone %}
+                                <input type="checkbox" name="book_on_phone" id="book_on_phone" checked />
+                                {% else %}
+                                <input type="checkbox" name="book_on_phone" id="book_on_phone" />
+                                {% endif %}
+                                <span>Phone</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="tackle_shop">
+                                {% if fishery_payment.tackle_shop %}
+                                <input type="checkbox" name="tackle_shop" id="tackle_shop" checked />
+                                {% else %}
+                                <input type="checkbox" name="tackle_shop" id="tackle_shop" />
+                                {% endif %}
+                                <span>Shop</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="input-field col s6 m3">
-                        <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.lake_daynight }}">
-                        <label for="lake_daynight">Lake 24 Hours</label>
+                    <!-- facilities -->
+                    <div class="row">
+                        <h2 class="center-align">Fishery Main Facilities</h2>
+                        <!-- Lake type -->
+                        <h3 class="center-align">Lake Type</h3>
+                        <div class="input-field col s12 m4">
+                            <select name="lake_type" required>
+                                <option value="" disabled>Choose your option</option>
+                                {% if fishery_facilities.lake_type == "single" %}
+                                <option value="single" selected>Single Lake</option>
+                                <option value="multiple">Multiple Lakes</option>
+                                {% else %}
+                                <option value="single" selected>Single Lake</option>
+                                <option value="multiple">Multiple Lakes</option>
+                                {% endif %}
+                            </select>
+                            <label for="lake_type">Lake Type</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <select name="stock_size" required>
+                                <option value="" disabled>Choose your option</option>
+                                {% if fishery_facilities.lake_type == "20" %}
+                                <option value="20" selected>20lbs</option>
+                                {% else %}
+                                <option value="20">20lbs</option>
+                                {% endif %}
+                                {% if fishery_facilities.lake_type == "30" %}
+                                <option value="30" selected>30lbs</option>
+                                {% else %}
+                                <option value="30">30lbs</option>
+                                {% endif %}
+                                {% if fishery_facilities.lake_type == "40" %}
+                                <option value="40" selected>40lbs</option>
+                                {% else %}
+                                <option value="40">40lbs</option>
+                                {% endif %}
+                                {% if fishery_facilities.lake_type == "50" %}
+                                <option value="50" selected>50lbs</option>
+                                {% else %}
+                                <option value="50">50lbs</option>
+                                {% endif %}
+                                {% if fishery_facilities.lake_type == "60" %}
+                                <option value="60" selected>60lbs</option>
+                                {% else %}
+                                <option value="60">60lbs</option>
+                                {% endif %}
+                                {% if fishery_facilities.lake_type == "70" %}
+                                <option value="70" selected>70lbs</option>
+                                {% else %}
+                                <option value="70">70lbs</option>
+                                {% endif %}
+                            </select>
+                            <label for="stock_size">Stock Size</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <select name="rods" required>
+                                <option value="" disabled>Choose your option</option>
+                                {% if fishery_facilities.rods == "One" %}
+                                <option value="One" selected>One</option>
+                                {% else %}
+                                <option value="One">One</option>
+                                {% endif %}
+                                {% if fishery_facilities.rods == "Two" %}
+                                <option value="Two" selected>Two</option>
+                                {% else %}
+                                <option value="Two">Two</option>
+                                {% endif %}
+                                {% if fishery_facilities.rods == "Three" %}
+                                <option value="Three" selected>Three</option>
+                                {% else %}
+                                <option value="Three">One</option>
+                                {% endif %}
+                            </select>
+                            <label for="rods">Rods</label>
+                        </div>
                     </div>
-
-
-                    <div class="input-field col s6 m3">
-                        <input id="syndicate_daynight" name="syndicate_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.syndicate_daynight }}">
-                        <label for="syndicate_daynight">Syndicate 24hours</label>
+                    <!-- Site facilities -->
+                    <div class="row input-row">
+                        <h2 class="center-align">Fishery Site Facilities</h2>
+                        <div class="col s6 m2">
+                            <label for="onsite_tackle_shop">
+                                {% if fishery_facilities.onsite_tackle_shop %}
+                                <input type="checkbox" name="onsite_tackle_shop" id="onsite_tackle_shop" checked />
+                                {% else %}
+                                <input type="checkbox" name="onsite_tackle_shop" id="onsite_tackle_shop" />
+                                {% endif %}
+                                <span>Shop</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="toilet">
+                                {% if fishery_facilities.toilet %}
+                                <input type="checkbox" name="toilet" id="toilet" checked />
+                                {% else %}
+                                <input type="checkbox" name="toilet" id="toilet" />
+                                {% endif %}
+                                <span>Toilet</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="shower">
+                                {% if fishery_facilities.shower %}
+                                <input type="checkbox" name="shower" id="shower" checked />
+                                {% else %}
+                                <input type="checkbox" name="shower" id="shower" />
+                                {% endif %}
+                                <span>Shower</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="cafe">
+                                {% if fishery_facilities.cafe %}
+                                <input type="checkbox" name="cafe" id="cafe" checked />
+                                {% else %}
+                                <input type="checkbox" name="cafe" id="cafe" />
+                                {% endif %}
+                                <span>Cafe</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="fridge">
+                                {% if fishery_facilities.fridge %}
+                                <input type="checkbox" name="fridge" id="fridge" checked />
+                                {% else %}
+                                <input type="checkbox" name="fridge" id="fridge" />
+                                {% endif %}
+                                <span>Fridge</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="tackle_rent">
+                                {% if fishery_facilities.tackle_rent %}
+                                <input type="checkbox" name="tackle_rent" id="tackle_rent" checked />
+                                {% else %}
+                                <input type="checkbox" name="tackle_rent" id="tackle_rent" />
+                                {% endif %}
+                                <span>Rent</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="lakeside_huts">
+                                {% if fishery_facilities.lakeside_huts %}
+                                <input type="checkbox" name="lakeside_huts" id="lakeside_huts" checked />
+                                {% else %}
+                                <input type="checkbox" name="lakeside_huts" id="lakeside_huts" />
+                                {% endif %}
+                                <span>Huts</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="drive_to_swim">
+                                {% if fishery_facilities.drive_to_swim %}
+                                <input type="checkbox" name="drive_to_swim" id="drive_to_swim" checked />
+                                {% else %}
+                                <input type="checkbox" name="drive_to_swim" id="drive_to_swim" />
+                                {% endif %}
+                                <span>DriveToSwim</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="tuition">
+                                {% if fishery_facilities.tuition %}
+                                <input type="checkbox" name="tuition" id="tuition" checked />
+                                {% else %}
+                                <input type="checkbox" name="tuition" id="tuition" />
+                                {% endif %}
+                                <span>Tuition</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="dogs_allowed">
+                                {% if fishery_facilities.dogs_allowed %}
+                                <input type="checkbox" name="dogs_allowed" id="dogs_allowed" checked />
+                                {% else %}
+                                <input type="checkbox" name="dogs_allowed" id="dogs_allowed" />
+                                {% endif %}
+                                <span>Dogs</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="takeaway_delivery">
+                                {% if fishery_facilities.takeaway_delivery %}
+                                <input type="checkbox" name="takeaway_delivery" id="takeaway_delivery" checked />
+                                {% else %}
+                                <input type="checkbox" name="takeaway_delivery" id="takeaway_delivery" />
+                                {% endif %}
+                                <span>Takeaway</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="parking">
+                                {% if fishery_facilities.parking %}
+                                <input type="checkbox" name="parking" id="parking" checked />
+                                {% else %}
+                                <input type="checkbox" name="parking" id="parking" />
+                                {% endif %}
+                                <span>Parking</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="input-field col s6 m3">
-                        <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.club_dayonly }}">
-                        <label for="club_dayonly">Club Day Only</label>
+                    <div class="row input-row">
+                        <button type="submit"
+                            class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update Fishery
+                            Details</button>
+                        <a href="{{ url_for('get_fisheries') }}"
+                            class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel Update</a>
+                        <a href="#confirm_fishery_delete"
+                            class="col s12 m4 btn-large delete-button waves-effect red darken-2 modal-trigger">Delete</a>
                     </div>
-                    <div class="input-field col s6 m3">
-                        <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.club_daynight }}">
-                        <label for="club_daynight">Club 24 Hours</label>
-                    </div>
-
-
-                    <div class="input-field col s6 m3">
-                        <input id="season_dayonly" name="season_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.season_dayonly }}">
-                        <label for="season_dayonly">Season Day Only</label>
-                    </div>
-                    <div class="input-field col s6 m3">
-                        <input id="season_daynight" name="season_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate" value="{{ fishery_tickets.season_daynight }}">
-                        <label for="season_daynight">Club 24 Hours</label>
-                    </div>
-                </div>
-
-                <!-- Payment methods -->
-                <h2 class="center-align">Fishery Payment and Booking Methods</h2>
-                <div class="row">
-                    <div class="col s6 m2">
-                        <label for="on_the_bank">
-                            {% if fishery_payment.on_the_bank %}
-                            <input type="checkbox" name="on_the_bank" id="on_the_bank" checked />
-                            {% else %}
-                            <input type="checkbox" name="on_the_bank" id="on_the_bank" />
-                            {% endif %}
-                            <span>Bank</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="on_arival">
-                            {% if fishery_payment.on_arival %}
-                            <input type="checkbox" name="on_arival" id="on_arival" checked />
-                            {% else %}
-                            <input type="checkbox" name="on_arival" id="on_arival" />
-                            {% endif %}
-                            <span>Arrival</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="book_online">
-                            {% if fishery_payment.book_online %}
-                            <input type="checkbox" name="book_online" id="book_online" checked />
-                            {% else %}
-                            <input type="checkbox" name="book_online" id="book_online" />
-                            {% endif %}
-                            <span>Online</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="book_on_phone">
-                            {% if fishery_payment.book_on_phone %}
-                            <input type="checkbox" name="book_on_phone" id="book_on_phone" checked />
-                            {% else %}
-                            <input type="checkbox" name="book_on_phone" id="book_on_phone" />
-                            {% endif %}
-                            <span>Phone</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="tackle_shop">
-                            {% if fishery_payment.tackle_shop %}
-                            <input type="checkbox" name="tackle_shop" id="tackle_shop" checked />
-                            {% else %}
-                            <input type="checkbox" name="tackle_shop" id="tackle_shop" />
-                            {% endif %}
-                            <span>Shop</span>
-                        </label>
-                    </div>
-                </div>
-
-
-
-                <!-- facilities -->
-
-
-                <div class="row">
-                    <h2 class="center-align">Fishery Main Facilities</h2>
-                    <!-- Lake type -->
-                    <h3 class="center-align">Lake Type</h3>
-                    <div class="input-field col s12 m4">
-                        <select name="lake_type" required>
-                            <option value="" disabled>Choose your option</option>
-                            {% if fishery_facilities.lake_type == "single" %}
-                            <option value="single" selected>Single Lake</option>
-                            <option value="multiple">Multiple Lakes</option>
-                            {% else %}
-                            <option value="single" selected>Single Lake</option>
-                            <option value="multiple">Multiple Lakes</option>
-                            {% endif %}
-                        </select>
-                        <label for="lake_type">Lake Type</label>
-                    </div>
-                    <div class="input-field col s12 m4">
-                        <select name="stock_size" required>
-                            <option value="" disabled>Choose your option</option>
-                            {% if fishery_facilities.lake_type == "20" %}
-                            <option value="20" selected>20lbs</option>
-                            {% else %}
-                            <option value="20">20lbs</option>
-                            {% endif %}
-                            {% if fishery_facilities.lake_type == "30" %}
-                            <option value="30" selected>30lbs</option>
-                            {% else %}
-                            <option value="30">30lbs</option>
-                            {% endif %}
-                            {% if fishery_facilities.lake_type == "40" %}
-                            <option value="40" selected>40lbs</option>
-                            {% else %}
-                            <option value="40">40lbs</option>
-                            {% endif %}
-                            {% if fishery_facilities.lake_type == "50" %}
-                            <option value="50" selected>50lbs</option>
-                            {% else %}
-                            <option value="50">50lbs</option>
-                            {% endif %}
-                            {% if fishery_facilities.lake_type == "60" %}
-                            <option value="60" selected>60lbs</option>
-                            {% else %}
-                            <option value="60">60lbs</option>
-                            {% endif %}
-                            {% if fishery_facilities.lake_type == "70" %}
-                            <option value="70" selected>70lbs</option>
-                            {% else %}
-                            <option value="70">70lbs</option>
-                            {% endif %}
-                        </select>
-                        <label for="stock_size">Stock Size</label>
-                    </div>
-                    <div class="input-field col s12 m4">
-                        <select name="rods" required>
-                            <option value="" disabled>Choose your option</option>
-                            {% if fishery_facilities.rods == "One" %}
-                            <option value="One" selected>One</option>
-                            {% else %}
-                            <option value="One">One</option>
-                            {% endif %}
-                            {% if fishery_facilities.rods == "Two" %}
-                            <option value="Two" selected>Two</option>
-                            {% else %}
-                            <option value="Two">Two</option>
-                            {% endif %}
-                            {% if fishery_facilities.rods == "Three" %}
-                            <option value="Three" selected>Three</option>
-                            {% else %}
-                            <option value="Three">One</option>
-                            {% endif %}
-                        </select>
-                        <label for="rods">Rods</label>
-                    </div>
-                </div>
-
-                <!-- Site facilities -->
-                <div class="row input-row">
-                    <h2 class="center-align">Fishery Site Facilities</h2>
-                    <div class="col s6 m2">
-                        <label for="onsite_tackle_shop">
-                            {% if fishery_facilities.onsite_tackle_shop %}
-                            <input type="checkbox" name="onsite_tackle_shop" id="onsite_tackle_shop" checked />
-                            {% else %}
-                            <input type="checkbox" name="onsite_tackle_shop" id="onsite_tackle_shop" />
-                            {% endif %}
-                            <span>Shop</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="toilet">
-                            {% if fishery_facilities.toilet %}
-                            <input type="checkbox" name="toilet" id="toilet" checked />
-                            {% else %}
-                            <input type="checkbox" name="toilet" id="toilet" />
-                            {% endif %}
-                            <span>Toilet</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="shower">
-                            {% if fishery_facilities.shower %}
-                            <input type="checkbox" name="shower" id="shower" checked />
-                            {% else %}
-                            <input type="checkbox" name="shower" id="shower" />
-                            {% endif %}
-                            <span>Shower</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="cafe">
-                            {% if fishery_facilities.cafe %}
-                            <input type="checkbox" name="cafe" id="cafe" checked />
-                            {% else %}
-                            <input type="checkbox" name="cafe" id="cafe" />
-                            {% endif %}
-                            <span>Cafe</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="fridge">
-                            {% if fishery_facilities.fridge %}
-                            <input type="checkbox" name="fridge" id="fridge" checked />
-                            {% else %}
-                            <input type="checkbox" name="fridge" id="fridge" />
-                            {% endif %}
-                            <span>Fridge</span>
-                        </label>
-                    </div>
-
-                    <div class="col s6 m2">
-                        <label for="tackle_rent">
-                            {% if fishery_facilities.tackle_rent %}
-                            <input type="checkbox" name="tackle_rent" id="tackle_rent" checked />
-                            {% else %}
-                            <input type="checkbox" name="tackle_rent" id="tackle_rent" />
-                            {% endif %}
-                            <span>Rent</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="lakeside_huts">
-                            {% if fishery_facilities.lakeside_huts %}
-                            <input type="checkbox" name="lakeside_huts" id="lakeside_huts" checked />
-                            {% else %}
-                            <input type="checkbox" name="lakeside_huts" id="lakeside_huts" />
-                            {% endif %}
-                            <span>Huts</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="drive_to_swim">
-                            {% if fishery_facilities.drive_to_swim %}
-                            <input type="checkbox" name="drive_to_swim" id="drive_to_swim" checked />
-                            {% else %}
-                            <input type="checkbox" name="drive_to_swim" id="drive_to_swim" />
-                            {% endif %}
-                            <span>DriveToSwim</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="tuition">
-                            {% if fishery_facilities.tuition %}
-                            <input type="checkbox" name="tuition" id="tuition" checked />
-                            {% else %}
-                            <input type="checkbox" name="tuition" id="tuition" />
-                            {% endif %}
-                            <span>Tuition</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="dogs_allowed">
-                            {% if fishery_facilities.dogs_allowed %}
-                            <input type="checkbox" name="dogs_allowed" id="dogs_allowed" checked />
-                            {% else %}
-                            <input type="checkbox" name="dogs_allowed" id="dogs_allowed" />
-                            {% endif %}
-                            <span>Dogs</span>
-                        </label>
-                    </div>
-
-                    <div class="col s6 m2">
-                        <label for="takeaway_delivery">
-                            {% if fishery_facilities.takeaway_delivery %}
-                            <input type="checkbox" name="takeaway_delivery" id="takeaway_delivery" checked />
-                            {% else %}
-                            <input type="checkbox" name="takeaway_delivery" id="takeaway_delivery" />
-                            {% endif %}
-                            <span>Takeaway</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="parking">
-                            {% if fishery_facilities.parking %}
-                            <input type="checkbox" name="parking" id="parking" checked />
-                            {% else %}
-                            <input type="checkbox" name="parking" id="parking" />
-                            {% endif %}
-                            <span>Parking</span>
-                        </label>
-                    </div>
-                </div>
-
-
-                <div class="row input-row">
-                    <button type="submit"
-                        class="col s12 m4 btn-large submit-button waves-effect light-green darken-2">Update Fishery
-                        Details</button>
-                    <a href="{{ url_for('get_fisheries') }}"
-                        class="col s12 m4 btn-large cancel-button waves-effect amber darken-2">Cancel Update</a>
-                    <a href="#confirm_fishery_delete"
-                        class="col s12 m4 btn-large delete-button waves-effect red darken-2 modal-trigger">Delete</a>
-                </div>
-
+                </form>
+            </div>
             </form>
         </div>
-
-
-        </form>
     </div>
+
 </div>
 
 {% endblock %}

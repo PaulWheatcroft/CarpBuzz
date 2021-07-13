@@ -1,297 +1,273 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="container">
+    <h1 class="center-align">Add a Fishery</h1>
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel">
+                <form method="POST" action="{{ url_for('add_fishery') }}">
+                    <!-- Fishery Contact Details -->
+                    <h2 class="center-align">Fishery Contact Details</h2>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="name" name="name" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate" required>
+                            <label for="name">Fishery Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="address" name="address" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
+                            <label for="address">First Line of the Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="town" name="town" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
+                            <label for="town">Town</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="county" name="county" type="text" minlength="2" maxlength="50"
+                                pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate" required>
+                            <label for="county">County</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1 off-white">
+                            <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
+                                pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate" required>
+                            <label for="postcode">Postcode</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="telephone" name="telephone" type="tel" minlength="10" maxlength="20"
+                                pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate" required>
+                            <label for="telephone">Telephone</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="website" name="website" type="text" minlength="1"
+                                pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                                class="validate">
+                            <label for="website">Fishery Website</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m10 offset-m1">
+                            <input id="facebook" name="facebook" type="text" minlength="1"
+                                pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                                class="validate">
+                            <label for="facebook">Fishery Facebook Address</label>
+                        </div>
+                    </div>
+                    <!-- Ticket Prices -->
+                    <h2 class="center-align">Fishery Ticket Prices</h2>
+                    <div class="row">
+                        <div class="input-field col s6 m3">
+                            <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="day_dayonly">Day Only</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="day_daynight">Day 24 Hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="lake_daynight">Lake 24 Hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="syndicate_daynight" name="syndicate_daynight" type="text"
+                                pattern="\d+(\.\d{1,2})?" class="validate">
+                            <label for="syndicate_daynight">Syndicate 24hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="club_dayonly">Club Day Only</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="club_daynight">Club 24 Hours</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="season_dayonly" name="season_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="season_dayonly">Season Day Only</label>
+                        </div>
+                        <div class="input-field col s6 m3">
+                            <input id="season_daynight" name="season_daynight" type="text" pattern="\d+(\.\d{1,2})?"
+                                class="validate">
+                            <label for="season_daynight">season_daynight</label>
+                        </div>
+                    </div>
+                    <!-- Payment methods -->
+                    <h2 class="center-align">Fishery Payment and Booking Methods</h2>
+                    <div class="row">
+                        <div class="col s6 m2">
+                            <label for="on_the_bank">
+                                <input type="checkbox" name="on_the_bank" id="on_the_bank" />
+                                <span>Bank</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="on_arival">
+                                <input type="checkbox" name="on_arival" id="on_arival" />
+                                <span>Arrival</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="book_online">
+                                <input type="checkbox" name="book_online" id="book_online" />
+                                <span>Online</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="book_on_phone">
+                                <input type="checkbox" name="book_on_phone" id="book_on_phone" />
+                                <span>Phone</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="tackle_shop">
+                                <input type="checkbox" name="tackle_shop" id="tackle_shop" />
+                                <span>Shop</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- facilities -->
+                    <div class="row">
+                        <h2 class="center-align">Fishery Main Facilities</h2>
+                        <!-- Lake type -->
+                        <h3 class="center-align">Lake Type</h3>
+                        <div class="input-field col s12 m4">
+                            <select name="lake_type">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="single">Single Lake</option>
+                                <option value="multiple">Multiple Lakes</option>
+                            </select>
+                            <label for="lake_type">Lake Type</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <select name="stock_size">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="20">20lbs</option>
+                                <option value="30">30lbs</option>
+                                <option value="40">40lbs</option>
+                                <option value="50">50lbs</option>
+                                <option value="60">60lbs</option>
+                                <option value="70">70lbs</option>
+                            </select>
+                            <label for="stock_size">Stock Size</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <select name="rods">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="One">One</option>
+                                <option value="Two">Two</option>
+                                <option value="Three">Three</option>
+                            </select>
+                            <label for="rods">Rods</label>
+                        </div>
+                    </div>
+                    <!-- Site facilities -->
+                    <div class="row input-row">
+                        <h2 class="center-align">Fishery Site Facilities</h2>
+                        <div class="col s6 m2">
+                            <label for="onsite_tackle_shop">
+                                <input type="checkbox" name="onsite_tackle_shop" id="onsite_tackle_shop" />
+                                <span>Shop</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="toilet">
+                                <input type="checkbox" name="toilet" id="toilet" />
+                                <span>Toilet</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="shower">
+                                <input type="checkbox" name="shower" id="shower" />
+                                <span>Shower</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="cafe">
+                                <input type="checkbox" name="cafe" id="cafe" />
+                                <span>Cafe</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="fridge">
+                                <input type="checkbox" name="fridge" id="fridge" />
+                                <span>Fridge</span>
+                            </label>
+                        </div>
 
-<h1 class="center-align">Add a Fishery</h1>
-
-<div class="row">
-    <div class="col s12">
-        <div class="card-panel">
-            <form method="POST" action="{{ url_for('add_fishery') }}">
-                <!-- Fishery Contact Details -->
-                <h2 class="center-align">Fishery Contact Details</h2>
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="name" name="name" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate" required>
-                        <label for="name">Fishery Name</label>
+                        <div class="col s6 m2">
+                            <label for="tackle_rent">
+                                <input type="checkbox" name="tackle_rent" id="tackle_rent" />
+                                <span>Rent</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="lakeside_huts">
+                                <input type="checkbox" name="lakeside_huts" id="lakeside_huts" />
+                                <span>Huts</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="drive_to_swim">
+                                <input type="checkbox" name="drive_to_swim" id="drive_to_swim" />
+                                <span>DriveToSwim</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="tuition">
+                                <input type="checkbox" name="tuition" id="tuition" />
+                                <span>Tuition</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="dogs_allowed">
+                                <input type="checkbox" name="dogs_allowed" id="dogs_allowed" />
+                                <span>Dogs</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="takeaway_delivery">
+                                <input type="checkbox" name="takeaway_delivery" id="takeaway_delivery" />
+                                <span>Takeaway</span>
+                            </label>
+                        </div>
+                        <div class="col s6 m2">
+                            <label for="parking">
+                                <input type="checkbox" name="parking" id="parking" />
+                                <span>Parking</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="address" name="address" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
-                        <label for="address">First Line of the Address</label>
+                    <div class="row input-row">
+                        <button type="submit"
+                            class="col s6 btn-large submit-button waves-effect light-green darken-2">Add</button>
+                        <a href="{{ url_for('get_fisheries') }}"
+                            class="col s6 btn-large cancel-button waves-effect amber darken-2">Cancel</a>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="town" name="town" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
-                        <label for="town">Town</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="county" name="county" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate" required>
-                        <label for="county">County</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1 off-white">
-                        <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
-                            pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate" required>
-                        <label for="postcode">Postcode</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="telephone" name="telephone" type="tel" minlength="10" maxlength="20"
-                            pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate" required>
-                        <label for="telephone">Telephone</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="website" name="website" type="text" minlength="1"
-                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
-                            class="validate">
-                        <label for="website">Fishery Website</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12 m10 offset-m1">
-                        <input id="facebook" name="facebook" type="text" minlength="1"
-                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
-                            class="validate">
-                        <label for="facebook">Fishery Facebook Address</label>
-                    </div>
-                </div>
-
-
-
-                <!-- Ticket Prices -->
-                <h2 class="center-align">Fishery Ticket Prices</h2>
-                <div class="row">
-                    <div class="input-field col s6 m3">
-                        <input id="day_dayonly" name="day_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="day_dayonly">Day Only</label>
-                    </div>
-                    <div class="input-field col s6 m3">
-                        <input id="day_daynight" name="day_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="day_daynight">Day 24 Hours</label>
-                    </div>
-                    <div class="input-field col s6 m3">
-                        <input id="lake_daynight" name="lake_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="lake_daynight">Lake 24 Hours</label>
-                    </div>
-
-
-                    <div class="input-field col s6 m3">
-                        <input id="syndicate_daynight" name="syndicate_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="syndicate_daynight">Syndicate 24hours</label>
-                    </div>
-                    <div class="input-field col s6 m3">
-                        <input id="club_dayonly" name="club_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="club_dayonly">Club Day Only</label>
-                    </div>
-                    <div class="input-field col s6 m3">
-                        <input id="club_daynight" name="club_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="club_daynight">Club 24 Hours</label>
-                    </div>
-
-
-                    <div class="input-field col s6 m3">
-                        <input id="season_dayonly" name="season_dayonly" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="season_dayonly">Season Day Only</label>
-                    </div>
-                    <div class="input-field col s6 m3">
-                        <input id="season_daynight" name="season_daynight" type="text" pattern="\d+(\.\d{1,2})?"
-                            class="validate">
-                        <label for="season_daynight">season_daynight</label>
-                    </div>
-                </div>
-
-                <!-- Payment methods -->
-                <h2 class="center-align">Fishery Payment and Booking Methods</h2>
-                <div class="row">
-                    <div class="col s6 m2">
-                        <label for="on_the_bank">
-                            <input type="checkbox" name="on_the_bank" id="on_the_bank" />
-                            <span>Bank</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="on_arival">
-                            <input type="checkbox" name="on_arival" id="on_arival" />
-                            <span>Arrival</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="book_online">
-                            <input type="checkbox" name="book_online" id="book_online" />
-                            <span>Online</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="book_on_phone">
-                            <input type="checkbox" name="book_on_phone" id="book_on_phone" />
-                            <span>Phone</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="tackle_shop">
-                            <input type="checkbox" name="tackle_shop" id="tackle_shop" />
-                            <span>Shop</span>
-                        </label>
-                    </div>
-                </div>
-
-
-
-                <!-- facilities -->
-
-
-                <div class="row">
-                    <h2 class="center-align">Fishery Main Facilities</h2>
-                    <!-- Lake type -->
-                    <h3 class="center-align">Lake Type</h3>
-                    <div class="input-field col s12 m4">
-                        <select name="lake_type">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="single">Single Lake</option>
-                            <option value="multiple">Multiple Lakes</option>
-                        </select>
-                        <label for="lake_type">Lake Type</label>
-                    </div>
-                    <div class="input-field col s12 m4">
-                        <select name="stock_size">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="20">20lbs</option>
-                            <option value="30">30lbs</option>
-                            <option value="40">40lbs</option>
-                            <option value="50">50lbs</option>
-                            <option value="60">60lbs</option>
-                            <option value="70">70lbs</option>
-                        </select>
-                        <label for="stock_size">Stock Size</label>
-                    </div>
-                    <div class="input-field col s12 m4">
-                        <select name="rods">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="One">One</option>
-                            <option value="Two">Two</option>
-                            <option value="Three">Three</option>
-                        </select>
-                        <label for="rods">Rods</label>
-                    </div>
-                </div>
-               
-                <!-- Site facilities -->
-                <div class="row input-row">
-                    <h2 class="center-align">Fishery Site Facilities</h2>
-                    <div class="col s6 m2">
-                        <label for="onsite_tackle_shop">
-                            <input type="checkbox" name="onsite_tackle_shop" id="onsite_tackle_shop" />
-                            <span>Shop</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="toilet">
-                            <input type="checkbox" name="toilet" id="toilet" />
-                            <span>Toilet</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="shower">
-                            <input type="checkbox" name="shower" id="shower" />
-                            <span>Shower</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="cafe">
-                            <input type="checkbox" name="cafe" id="cafe" />
-                            <span>Cafe</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="fridge">
-                            <input type="checkbox" name="fridge" id="fridge" />
-                            <span>Fridge</span>
-                        </label>
-                    </div>
-
-                    <div class="col s6 m2">
-                        <label for="tackle_rent">
-                            <input type="checkbox" name="tackle_rent" id="tackle_rent" />
-                            <span>Rent</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="lakeside_huts">
-                            <input type="checkbox" name="lakeside_huts" id="lakeside_huts" />
-                            <span>Huts</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="drive_to_swim">
-                            <input type="checkbox" name="drive_to_swim" id="drive_to_swim" />
-                            <span>DriveToSwim</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="tuition">
-                            <input type="checkbox" name="tuition" id="tuition" />
-                            <span>Tuition</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="dogs_allowed">
-                            <input type="checkbox" name="dogs_allowed" id="dogs_allowed" />
-                            <span>Dogs</span>
-                        </label>
-                    </div>
-
-                    <div class="col s6 m2">
-                        <label for="takeaway_delivery">
-                            <input type="checkbox" name="takeaway_delivery" id="takeaway_delivery" />
-                            <span>Takeaway</span>
-                        </label>
-                    </div>
-                    <div class="col s6 m2">
-                        <label for="parking">
-                            <input type="checkbox" name="parking" id="parking" />
-                            <span>Parking</span>
-                        </label>
-                    </div>
-                </div>
-
-
-                <div class="row input-row">
-                    <button type="submit" class="col s6 btn-large submit-button waves-effect light-green darken-2">Add</button>
-                    <a href="{{ url_for('get_fisheries') }}" class="col s6 btn-large cancel-button waves-effect amber darken-2">Cancel</a>
-                </div>
-
+                </form>
+            </div>
             </form>
         </div>
-
-
-        </form>
     </div>
 </div>
+
 
 {% endblock %}
