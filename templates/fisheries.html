@@ -3,6 +3,7 @@
 <h1>{{ session["user_id"] }}</h1>
 
 {% for fishery in fisheries %}
+{% if not fishery.disabled %}
 <div class="row">
     <div class="card small fishery-card col s12 m8 offset-m2" data-aos="fade-in" >
         <!-- Primary details for the fishery -->
@@ -180,7 +181,7 @@
     </div>
 </div>
 
-
+{% endif %}
 {% endfor %}
 
 
