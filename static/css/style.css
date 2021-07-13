@@ -54,12 +54,13 @@ h4 {
     border-radius: 5px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     color: #f7f7f7;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 .error {
     background-color: #d46161;
 }
 .warning {
-    background-color: #ecea49;;
+    background-color: #e0dd28;;
 }
 .info {
     background-color: #60cfd3;
@@ -106,7 +107,7 @@ h4 {
 }
 #mobile-logo {
     height: 200px;
-    background-color: #444F59;
+    background-color: #689DA8;
 }
 #mobile-logo img {
     margin-top: 70px;
@@ -159,24 +160,30 @@ h4 {
 .fishery-card {
     background-color: #f7f7f7;
 }
+.fishery-address-row {
+    padding-bottom: 20px;
+}
 .fishery-address h2 {
     padding-top: 20px;
+}
+.fishery-links {
+    padding-top: 10px;
 }
 .fishery-links a {
     line-height: 14px;
     font-size: 14px;
-    padding-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .ticket-span {
     display: inline-block;
     background-color: #e2e7e2;
     width: 100px;
     text-align: center;
+    margin-top: 5px;
     font-size: 14px;
-    margin: 10px;
     padding: 5px;
     border-radius: 5px;
-    bor
 }
 .reviews-button {
     background-color: #689DA8;
@@ -199,6 +206,7 @@ h4 {
 }
 .main-facilities {
     background-color: #7d9950;
+    margin-top: 20px;
     padding-top: 10px;
     border-radius: 5px;
 }

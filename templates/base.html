@@ -20,16 +20,11 @@
 
     <header>
         <!-- Dropdown Structure -->
+        {% if session.user %}
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="{{ url_for('add_fishery') }}">Add Fishery</a></li>
             <li><a href="#!">Moderate Reviews</a></li>
             <li><a href="#!">User Admin</a></li>
-        </ul>
-        {% if session.user %}
-        <ul id="dropdown2" class="dropdown-content">
-            <li><a href="{{ url_for('profile', user=session['user']) }}">View Profile</a></li>
-            <li><a href="#!">Write a Review</a></li>
-            <li><a href="#!">Create a Catch Report</a></li>
         </ul>
         {% endif %}
         <nav>
@@ -40,11 +35,12 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_fisheries') }}">Fisheries</a></li>
                     <!-- Dropdown Trigger -->
+                    {% if session.user %}
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Admin <i
                                 class="fas fa-sort-down right"></i></a></li>
-                    {% if session.user %}
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Account <i
-                                class="fas fa-sort-down right"></i></a></li>
+
+
+                    <li><a href="{{ url_for('profile', user=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     {% else %}
                     <li><a href="{{ url_for('login') }}">Login</a></li>
@@ -56,17 +52,12 @@
         </nav>
 
         <!-- Sidebar Nav Element Dropdown -->
+        {% if session.user %}
         <ul id="dropdown1-mobile" class="dropdown-content">
             <li><a href="{{ url_for('add_fishery') }}"><i class="fas fa-plus-square"></i>Add Fishery</a></li>
             <li><a href="#!"><i class="fas fa-pen-square"></i>Moderate Reviews</a></li>
             <li><a href="#!"><i class="fas fa-user-cog"></i>User Admin</a></li>
-        </ul>
-        {% if session.user %}
-        <ul id="dropdown2-mobile" class="dropdown-content">
-            <li><a href="{{ url_for('profile', user=session['user']) }}">View Profile</a></li>
-            <li><a href="#!">Write a Review</a></li>
-            <li><a href="#!">Create a Catch Report</a></li>
-        </ul>
+        </ul>        
         {% endif %}
         <!-- Sidebar Nav Element-->
         <ul class="sidenav" id="mobile-menu">
@@ -79,8 +70,7 @@
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile">Admin <i
                         class="fas fa-sort-down right"></i></a></li>
             {% if session.user %}
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2-mobile">Account <i
-                            class="fas fa-sort-down right"></i></a></li>
+            <li><a href="{{ url_for('profile', user=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>

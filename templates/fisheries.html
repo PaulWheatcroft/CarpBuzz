@@ -10,7 +10,7 @@
         <div class="card-content">
 
             <!-- Fishery contact details -->
-            <div class="row">
+            <div class="row fishery-address-row">
                 <div class="col s12 fishery-address">
                     <h2>{{ fishery.name }}</h2>
                     <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
@@ -25,28 +25,28 @@
                     {% for ticket in tickets %}
                         {% if fishery._id|string == ticket.fishery_id %}
                             {% if ticket.day_dayonly|string != "0.0" %}
-                                <span class="ticket-span">Day<br>Ticket<br>£{{ ticket.day_dayonly }}</span> 
+                                <span class="ticket-span">Day<br>£{{ ticket.day_dayonly }}</span> 
                             {% endif %}
                             {% if ticket.day_daynigh|string != "0.0" %}
-                                <span class="ticket-span">24hrs<br>Ticket<br>£{{ ticket.day_daynight }}</span>
+                                <span class="ticket-span">24hrs<br>£{{ ticket.day_daynight }}</span>
                             {% endif %}
                             {% if ticket.lake_daynight|string != "0.0" %}
-                                <span class="ticket-span">Lake Day<br>Ticket<br>£{{ ticket.lake_daynight }}</span>
+                                <span class="ticket-span">Lake Day<br>£{{ ticket.lake_daynight }}</span>
                             {% endif %}
                             {% if ticket.syndicate_daynight|string != "0.0" %}
-                                <span class="ticket-span">24hrs Syndicate<br>Ticket<br>£{{ ticket.syndicate_daynight }}</span>
+                                <span class="ticket-span">24hrs Syndicate£{{ ticket.syndicate_daynight }}</span>
                             {% endif %}
                             {% if ticket.club_dayonly|string != "0.0" %}
-                                <span class="ticket-span">Club Day<br>Ticket<br>£{{ ticket.club_dayonly }}</span>
+                                <span class="ticket-span">Club Day<br>£{{ ticket.club_dayonly }}</span>
                             {% endif %}
                             {% if ticket.club_daynight|string != "0.0" %}
-                                <span class="ticket-span">24hrs Club<br>Ticket<br>£{{ ticket.club_daynight }}</span>
+                                <span class="ticket-span">24hrs Club<br>£{{ ticket.club_daynight }}</span>
                             {% endif %}
                             {% if ticket.season_dayonly|string != "0.0" %}
-                                <span class="ticket-span">Season Day<br>Ticket<br>£{{ ticket.season_dayonly }}</span>
+                                <span class="ticket-span">Season Day<br>£{{ ticket.season_dayonly }}</span>
                             {% endif %}
                             {% if ticket.season_daynight|string != "0.0" %}
-                                <span class="ticket-span">24hrs Season Ticket<br>£{{ ticket.season_daynight }}</span>
+                                <span class="ticket-span">24hrs Season<br>£{{ ticket.season_daynight }}</span>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -86,7 +86,6 @@
                 <div class="col s12">                    
                     <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
                     <a href="{{ url_for('edit_fishery', fishery_id=fishery._id) }}" class="left"><i class="fas fa-edit facilities-close yellow-text text-lighten-3"></i></a>
-                    <span class="left"><i class="fas fa-trash-alt facilities-close red-text text-lighten-4"></i></span>
                 </div>
             </div>
 
