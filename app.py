@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_fisheries")
 def get_fisheries():
-    fisheries = mongo.db.fisheries.contact.find()
+    fisheries = list(mongo.db.fisheries.contact.find())
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
     payments = list(mongo.db.fisheries.payment.find())
@@ -325,18 +325,16 @@ def edit_fishery(fishery_id):
 
 @app.route("/delete_fishery/<fishery_id>")
 def delete_fishery(fishery_id):
-    mongo.db.fishery.contact.delete_one({"_id": ObjectId(fishery_id)})
-    mongo.db.fishery.facilities.delete_one({"fishery_id": fishery_id})
-    mongo.db.fishery.payment.delete_one({"fishery_id": fishery_id})
-    mongo.db.fishery.tickets.delete_one({"fishery_id": fishery_id})
+    # add disable to the contact document to preserve report and catch history
+    disable_fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})
+    disable_fishery_contact["disabled"] = True
+    mongo.db.fisheries.contact.update_one({"_id": ObjectId(fishery_id)}, { "$set": disable_fishery_contact })
+    # delete the rest
+    mongo.db.fisheries.facilities.delete_one({"fishery_id": fishery_id})
+    mongo.db.fisheries.payment.delete_one({"fishery_id": fishery_id})
+    mongo.db.fisheries.tickets.delete_one({"fishery_id": fishery_id})
     mongo.db.reviews.delete_many({"fishery_id": fishery_id})
-    fisheries = mongo.db.fisheries.contact.find()
-    facilities = list(mongo.db.fisheries.facilities.find())
-    tickets = list(mongo.db.fisheries.tickets.find())
-    payments = list(mongo.db.fisheries.payment.find())
-    return render_template(
-        "fisheries.html", fisheries=fisheries, facilities=facilities,
-        tickets=tickets, payments=payments)
+    return redirect(url_for("get_fisheries"))
 
 
 @app.route("/reviews/<fishery_id>")

@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
                         <input id="name" name="name" type="text" minlength="2" maxlength="50"
-                            pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$" class="validate" required>
+                            pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate" required>
                         <label for="name">Fishery Name</label>
                     </div>
                 </div>
@@ -30,6 +30,14 @@
                         <input id="town" name="town" type="text" minlength="2" maxlength="50"
                             pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
                         <label for="town">Town</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m10 offset-m1">
+                        <input id="county" name="county" type="text" minlength="2" maxlength="50"
+                            pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate" required>
+                        <label for="county">County</label>
                     </div>
                 </div>
 
@@ -52,7 +60,7 @@
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
                         <input id="website" name="website" type="text" minlength="1"
-                            pattern="^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^.]+)(?:[.,]\w+)*\.(\w+)"
+                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                             class="validate">
                         <label for="website">Fishery Website</label>
                     </div>
@@ -61,7 +69,7 @@
                 <div class="row">
                     <div class="input-field col s12 m10 offset-m1">
                         <input id="facebook" name="facebook" type="text" minlength="1"
-                            pattern="^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$"
+                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                             class="validate">
                         <label for="facebook">Fishery Facebook Address</label>
                     </div>
@@ -114,7 +122,7 @@
                     <div class="input-field col s6 m3">
                         <input id="season_daynight" name="season_daynight" type="text" pattern="\d+(\.\d{1,2})?"
                             class="validate">
-                        <label for="season_daynight">Club 24 Hours</label>
+                        <label for="season_daynight">season_daynight</label>
                     </div>
                 </div>
 
