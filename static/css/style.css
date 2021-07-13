@@ -214,6 +214,12 @@ h4 {
 .payment-list {
     color: #faf9ae;
 }
+.catch-row {
+    background-color: #f7f7f7;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
 @media only screen and (min-width: 1025px) {
     .mobile-only {
         visibility: hidden;

@@ -3,24 +3,25 @@
 
 <h1>Edit your review for {{ fishery_contact.name }}</h1>
 
-  <!-- Modal Structure -->
-  <div class="row">
-
-      <div id="confirm_review_delete" class="modal">
-        <div class="modal-content center-align">
-          <div class="row">
-            <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>       
-          </div> 
-          <div class="row">
-            <h4 class="col s12">Are You Sure?</h4>
-          </div>         
-          <p>Are you sure that you want to delete the review for {{ fishery_contact.name }}?</p>
-          <a href="{{ url_for('delete_review', review_id=fishery_review._id) }}"
-          class="col s12 m4 offset-m4 btn padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
-        </div>
+<!-- Modal Structure -->
+<div class="row">
+  <div id="confirm_review_delete" class="modal">
+    <div class="modal-content center-align">
+      <div class="row">
+        <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>
       </div>
-  
+      <div class="row">
+        <h4 class="col s12">Are You Sure?</h4>
+      </div>
+      <div class="row">
+        <p>Are you sure that you want to delete the review for {{ fishery_contact.name }}?</p>
+        <a href="{{ url_for('delete_review', review_id=fishery_review._id) }}"
+          class="col s12 m4 offset-m4 btn padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes
+          Delete</a>
+      </div>
+    </div>
   </div>
+</div>
 
 
 <div class="row">
@@ -29,44 +30,52 @@
       <form method="POST" action="{{ url_for('edit_review', review_id=fishery_review._id) }}">
         <div class="row">
           <div class="input-field">
-            <input id="review_heading" name="review_heading" type="text" class="validate" value="{{ fishery_review.heading }}" required>
+            <input id="review_heading" name="review_heading" type="text" class="validate"
+              value="{{ fishery_review.heading }}" required>
             <label for="review_heading">Review Heading</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field">
-            <textarea id="review_text" name="review_text" class="materialize-textarea" required>{{ fishery_review.main_text}}</textarea>
+            <textarea id="review_text" name="review_text" class="materialize-textarea"
+              required>{{ fishery_review.main_text}}</textarea>
             <label for="review_text">Review Text</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field">
-            <textarea id="pro_text" name="pro_text" class="materialize-textarea">{{ fishery_review.pro_text }}</textarea>
+            <textarea id="pro_text" name="pro_text"
+              class="materialize-textarea">{{ fishery_review.pro_text }}</textarea>
             <label for="pro_text">What did you really like? (optional)</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field">
-            <textarea id="con_text" name="con_text" class="materialize-textarea">{{ fishery_review.con_text }}</textarea>
+            <textarea id="con_text" name="con_text"
+              class="materialize-textarea">{{ fishery_review.con_text }}</textarea>
             <label for="con_text">Anything you didn't like? (optional)</label>
           </div>
         </div>
         <div class="row">
           <div class="range-field">
             <label for="review_rating">Rating</label>
-            <input type="range" id="review_rating" name="review_rating" min="1" max="5" value="{{ fishery_review.rating }}" />            
+            <input type="range" id="review_rating" name="review_rating" min="1" max="5"
+              value="{{ fishery_review.rating }}" />
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6 m2 offset-s3 offset-m5">
-            <input type="text" id="review_date" name="review_date" class="datepicker" value="{{ fishery_review.date.strftime('%d-%b-%Y') }}" required>   
+            <input type="text" id="review_date" name="review_date" class="datepicker"
+              value="{{ fishery_review.date.strftime('%d-%b-%Y') }}" required>
             <label for="review_date">Date</label>
           </div>
         </div>
         <div class="row input-row">
           <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Update</button>
-          <a href="{{ url_for('reviews', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
-          <a href="#confirm_review_delete" class="col s12 m4 btn delete-button waves-effect red darken-2 modal-trigger">Delete</a>
+          <a href="{{ url_for('reviews', fishery_id=fishery_contact._id) }}"
+            class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          <a href="#confirm_review_delete"
+            class="col s12 m4 btn delete-button waves-effect red darken-2 modal-trigger">Delete</a>
         </div>
 
       </form>

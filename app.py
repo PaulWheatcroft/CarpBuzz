@@ -374,19 +374,7 @@ def add_review(fishery_id):
         # insert review
         mongo.db.reviews.insert_one(review)
         flash('You have successfully added the review', 'success')
-        fishery_contact = mongo.db.fisheries.contact.find_one(
-        {"_id": ObjectId(fishery_id)})
-        fishery_reviews = mongo.db.reviews.find({"fishery_id": fishery_id})
-        reviews = []
-        # loop through the reviews and for each one retrieve the username for the account_id
-        for doc in fishery_reviews:
-            author_id = doc['account_id']
-            username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
-            doc.update({"username": username})
-            reviews.append(doc)
-            reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
-        return render_template("reviews.html", fishery_contact=fishery_contact,
-        reviews=reviews)
+        return redirect(url_for('reviews', fishery_id=review["fishery_id"]))
 
     fishery_contact = mongo.db.fisheries.contact.find_one(
         {"_id": ObjectId(fishery_id)})
@@ -412,19 +400,7 @@ def edit_review(review_id):
         # insert review
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, updated_review)            
         flash('You have successfully updated the review', 'success')
-        fishery_contact = mongo.db.fisheries.contact.find_one(
-        {"_id": ObjectId(fishery_review["fishery_id"])})  
-        fishery_reviews = mongo.db.reviews.find({"fishery_id": fishery_review['fishery_id']})
-        reviews = []
-        # loop through the reviews and for each one retrieve the username for the account_id
-        for doc in fishery_reviews:
-            author_id = doc['account_id']
-            username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
-            doc.update({"username": username})
-            reviews.append(doc)
-            reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
-        return render_template("reviews.html", fishery_contact=fishery_contact,
-        reviews=reviews)
+        return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
 
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     fishery_contact = mongo.db.fisheries.contact.find_one(
@@ -440,19 +416,7 @@ def delete_review(review_id):
     # delete the review
     mongo.db.reviews.remove({"_id": ObjectId(review_id)})
     flash('Your review as been deleted', 'info')    
-    fishery_contact = mongo.db.fisheries.contact.find_one(
-        {"_id": ObjectId(fishery_review["fishery_id"])})  
-    fishery_reviews = mongo.db.reviews.find({"fishery_id": fishery_review['fishery_id']})
-    reviews = []
-    # loop through the reviews and for each one retrieve the username for the account_id
-    for doc in fishery_reviews:
-        author_id = doc['account_id']
-        username = mongo.db.accounts.find_one({"_id": ObjectId(author_id)})['username']
-        doc.update({"username": username})
-        reviews.append(doc)
-        reviews.sort(key = lambda review_date:review_date['date'], reverse=True)
-    return render_template("reviews.html", fishery_contact=fishery_contact,
-    reviews=reviews)
+    return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
 
 
 @app.route("/reports/<fishery_id>")
@@ -510,28 +474,37 @@ def edit_report(report_id):
         }
         mongo.db.catch.reports.update_one({"_id": ObjectId(report_id)}, updated_report)
         if not report_catches:
-            print("Caught nothing but this error")
+            return
 
         else:
             for catch in report_catches:
                 # each catch list item has it's own unique id name and label values
                 str_catch_id = str(catch["_id"])
-                updated_catch = { "$set":
-                {
-                    "report_id": report_id,
-                    "account_id": session["user"],
-                    "fishery_id": report["fishery_id"],
-                    "fish": request.form.get(f"{str_catch_id}fish"),
-                    "weight": float(request.form.get(f"{str_catch_id}weight")),
-                    "date": datetime.strptime(request.form.get(f"{str_catch_id}catch_date"), '%d-%b-%Y'),
-                    "time": datetime.strptime(request.form.get(f"{str_catch_id}catch_time"), '%H:%M')
-                }
-                }
-                mongo.db.catch.fish.update(catch, updated_catch)
+                marked_delete = bool(request.form.get(f"{str_catch_id}delete"))
+                if marked_delete:
+                    print("")
+                    print("Delete")
+                    print(str_catch_id)
+                    print("")
+                    mongo.db.catch.fish.delete_one({"_id": ObjectId(str_catch_id)})
 
-        print("")
-        print(report["fishery_id"])
-        print("")
+                else:
+                    print("") 
+                    print("Update")
+                    print("")
+                    updated_catch = { "$set":
+                    {
+                        "report_id": report_id,
+                        "account_id": session["user"],
+                        "fishery_id": report["fishery_id"],
+                        "fish": request.form.get(f"{str_catch_id}fish"),
+                        "weight": float(request.form.get(f"{str_catch_id}weight")),
+                        "date": datetime.strptime(request.form.get(f"{str_catch_id}catch_date"), '%d-%b-%Y'),
+                        "time": datetime.strptime(request.form.get(f"{str_catch_id}catch_time"), '%H:%M')
+                    }
+                    }
+                    mongo.db.catch.fish.update(catch, updated_catch)
+
         return redirect(url_for('reports', fishery_id=report["fishery_id"]))
 
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
@@ -541,6 +514,14 @@ def edit_report(report_id):
         "edit_report.html", report=report, report_catches=report_catches,
         fishery_contact=fishery_contact)
 
+
+@app.route("/delete_report/<report_id>")
+def delete_report(report_id):
+    report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    mongo.db.catch.report.delete_one({"_id": ObjectId(report_id)})
+    mongo.db.catch.fish.delete_many({"report_id": report_id})
+    flash('Your review as been deleted', 'info')    
+    return redirect(url_for('reports', fishery_id=report["fishery_id"]))
 
 @app.route("/add_fish/<report_id>", methods=["GET", "POST"])
 def add_fish(report_id):
@@ -558,8 +539,8 @@ def add_fish(report_id):
         }
         mongo.db.catch.fish.insert_one(catch)
         report_catches = mongo.db.catch.fish.find({"report_id": report_id})
-        return render_template("add_fish.html", fishery_contact=fishery_contact,
-        report=report, report_catches=report_catches)
+        return redirect(url_for('add_fish', report_id=report["_id"]))
+
 
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
     report_catches = mongo.db.catch.fish.find({"report_id": report_id})

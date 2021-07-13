@@ -1,26 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Edit your review for {{ fishery_contact.name }}</h1>
+<h1>Edit your report for {{ fishery_contact.name }}</h1>
 
-  <!-- Modal Structure -->
-  <div class="row">
+<!-- Modal Structure -->
+<div class="row">
 
-      <div id="confirm_report_delete" class="modal">
-        <div class="modal-content center-align">
-          <div class="row">
-            <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>       
-          </div> 
-          <div class="row">
-            <h4 class="col s12">Are You Sure?</h4>
-          </div>         
-          <p>Are you sure that you want to delete the report for {{ fishery_contact.name }}?</p>
-          <a href="#"
-          class="col s12 m4 offset-m4 btn padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
-        </div>
+  <div id="confirm_report_delete" class="modal">
+    <div class="modal-content center-align">
+      <div class="row">
+        <a href="#!" class="modal-close waves-effect btn-flat right">Close</a>
       </div>
-  
+      <div class="row">
+        <h4 class="col s12">Are You Sure?</h4>
+      </div>
+      <p>Are you sure that you want to delete the report for {{ fishery_contact.name }}? This will also delete any fish caught on this report</p>
+      <div class="row">
+        <a href="{{ url_for('delete_report', report_id=report._id) }}"
+        class="col s12 m4 offset-m4 btn padding-bottom delete-button waves-effect red darken-2 modal-trigger">Yes Delete</a>
+      </div>
+      
+    </div>
   </div>
+
+</div>
 
 
 <div class="row">
@@ -35,49 +38,64 @@
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input type="text" id="report_date" name="report_date" class="datepicker" value="{{ report.date.strftime('%d-%b-%Y') }}" required>   
+            <input type="text" id="report_date" name="report_date" class="datepicker"
+              value="{{ report.date.strftime('%d-%b-%Y') }}" required>
             <label for="report_date">Date</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="report_notes" name="report_notes" type="text" class="validate" value="{{ report.notes }}" required>
+            <input id="report_notes" name="report_notes" type="text" class="validate" value="{{ report.notes }}"
+              required>
             <label for="report_notes">Notes</label>
           </div>
         </div>
 
         <ul id="catch_list">
           {% for catch in report_catches %}
-              {% if report._id|string == catch.report_id %}
-                  <li> 
-                    <div class="input-field col s6 m3">
-                      <input id="{{ catch._id }}weight" name="{{ catch._id }}weight" type="text" class="validate" value="{{ catch.weight }}" required>
-                      <label for="{{ catch._id }}weight">Weight</label>
-                    </div>
-
-                    <div class="input-field col s6 m3">
-                      <input id="{{ catch._id }}fish" name="{{ catch._id }}fish" type="text" class="validate" value="{{ catch.fish }}" required>
-                      <label for="{{ catch._id }}fish">Fish Type</label>
-                    </div>    
-          
-                    <div class="input-field col s6 m3">
-                      <input type="text" id="{{ catch._id }}catch_time" name="{{ catch._id }}catch_time" class="timepicker" value="{{ catch.time.strftime('%H:%M') }}" required>   
-                      <label for="{{ catch._id }}catch_time">Catch Time</label>
-                    </div>
-
-                    <div class="input-field col s6 m3">
-                      <input type="text" id="{{ catch._id }}catch_date" name="{{ catch._id }}catch_date" class="datepicker" value="{{ catch.date.strftime('%d-%b-%Y') }}" required>   
-                      <label for="{{ catch._id }}catch_date">Catch Date</label>
-                    </div>
-                  </li><br>
-              {% endif %}
+          {% if report._id|string == catch.report_id %}
+          <div class="row catch-row">
+            <li>
+              <div class="input-field col s6 m1">
+                <input id="{{ catch._id }}weight" name="{{ catch._id }}weight" type="text" class="validate"
+                  value="{{ catch.weight }}" required>
+                <label for="{{ catch._id }}weight">Weight</label>
+              </div>
+              <div class="input-field col s6 m2">
+                <input id="{{ catch._id }}fish" name="{{ catch._id }}fish" type="text" class="validate"
+                  value="{{ catch.fish }}" required>
+                <label for="{{ catch._id }}fish">Fish Type</label>
+              </div>
+              <div class="input-field col s6 m2">
+                <input type="text" id="{{ catch._id }}catch_time" name="{{ catch._id }}catch_time" class="timepicker"
+                  value="{{ catch.time.strftime('%H:%M') }}" required>
+                <label for="{{ catch._id }}catch_time">Catch Time</label>
+              </div>
+              <div class="input-field col s6 m2">
+                <input type="text" id="{{ catch._id }}catch_date" name="{{ catch._id }}catch_date" class="datepicker"
+                  value="{{ catch.date.strftime('%d-%b-%Y') }}" required>
+                <label for="{{ catch._id }}catch_date">Catch Date</label>
+              </div>
+              <div class="switch">
+                <label for="{{ catch._id }}delete">
+                  <input id="{{ catch._id }}delete" name="{{ catch._id }}delete" type="checkbox">
+                  <span class="lever"></span>
+                  Delete Entry
+                </label>
+              </div>
+            </li><br>
+          </div>
+          {% endif %}
           {% endfor %}
         </ul>
-          
+
         <div class="row input-row">
-          <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Update</button>
-          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}" class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
-          <a href="{{ url_for('add_fish', report_id=report._id) }}" class="col s12 m4 btn cancel-button waves-effect blue darken-2">Add Fish</a>
+          <button type="submit" class="col s12 m3 btn submit-button waves-effect light-green darken-2">Update</button>
+          <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}"
+            class="col s12 m3 btn cancel-button waves-effect amber darken-2">Cancel</a>
+          <a href="{{ url_for('add_fish', report_id=report._id) }}"
+            class="col s12 m3 btn cancel-button waves-effect blue darken-2">Add Fish</a>
+          <a href="#confirm_report_delete" class="col s12 m3 btn delete-button waves-effect red darken-2 modal-trigger">Delete Report</a>
         </div>
       </form>
     </div>
