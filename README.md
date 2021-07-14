@@ -6,7 +6,7 @@
 > Carp Buzz is a directory of fisheries in the South West of England.
 >
 
-The live site has been deployed via GitHub to
+The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
 
 ## User Experience (UX)
 
