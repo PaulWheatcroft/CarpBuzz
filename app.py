@@ -72,7 +72,7 @@ def login():
                     existing_user["password"], request.form.get("password")):
                 session["user"] = str(existing_user["_id"])
                 flash(f"Welcome {existing_user['username']}", 'info')
-                return redirect(url_for("profile", user=session["user"]))
+                return redirect(url_for("get_fisheries", user=session["user"]))
             else:
                 # Invalid password
                 flash("Incorrrect email and or password", 'error')
