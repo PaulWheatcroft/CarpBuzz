@@ -10,7 +10,10 @@
     {% endif %}
     {% for report in reports %}
     <div class="row">
-        <div class="col s12 m8 offset-m2 card" data-aos="fade-in">
+        <div class="col s12 m8 offset-m2 card center-align" data-aos="fade-in">
+            <div class="container">
+                
+            </div>
             <div class="row">
                 <div class="col s12">
                     <h2>{{ report.name }}</h2>
@@ -19,14 +22,17 @@
                 </div>
             </div>
             <div class="row">
-                <ul class="col s12">
+                <ul class="col s10 offset-s1">
                     {% for catch in fishery_catches %}
                     {% if report._id|string == catch.report_id %}
-                    <l1 class="center-align">
-                        {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
-                        {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the
-                        {{ catch.date.strftime('%d-%b-%Y') }}
-                    </l1><br>
+                    <div class="row catch-row">
+                        <l1>
+                            {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
+                            {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the
+                            {{ catch.date.strftime('%d-%b-%Y') }}
+                        </l1>
+                    </div>
+                   
                     {% endif %}
                     {% endfor %}
                 </ul>

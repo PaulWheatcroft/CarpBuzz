@@ -64,10 +64,40 @@
                   <label for="{{ catch._id }}weight_oz">oz</label>
                 </div>
 
-                <div class="input-field col s6 m2">
-                  <input id="{{ catch._id }}fish" name="{{ catch._id }}fish" type="text" class="validate"
-                    value="{{ catch.fish }}" required>
-                  <label for="{{ catch._id }}fish">Fish Type</label>
+                <div class="input-field col s6 m3">
+                  <select name="{{ catch._id }}fish" name="{{ catch._id }}fish" required>
+                      <option value="" disabled selected>Choose your option</option>
+                      {% if catch.fish == "Common" %}
+                      <option value="Common" selected>Common</option>
+                      {% else %}
+                      <option value="Common">Common</option>
+                      {% endif %}
+
+                      {% if catch.fish == "Fully Scaled" %}
+                      <option value="Fully Scaled" selected>Fully Scaled</option>
+                      {% else %}
+                      <option value="Fully Scaled">Fully Scaled</option>
+                      {% endif %}
+
+                      {% if catch.fish == "Leather" %}
+                      <option value="Leather" selected>Leather</option>
+                      {% else %}
+                      <option value="Leather">Leather</option>
+                      {% endif %}
+
+                      {% if catch.fish == "Linear" %}
+                      <option value="Linear" selected>Linear</option>
+                      {% else %}
+                      <option value="Linear">Linear</option>
+                      {% endif %}
+
+                      {% if catch.fish == "Mirror" %}
+                      <option value="Mirror" selected>Mirror</option>
+                      {% else %}
+                      <option value="Mirror">Mirror</option>
+                      {% endif %}
+                  </select>
+                  <label for="{{ catch._id }}fish">Carp Type</label>
                 </div>
                 <div class="input-field col s6 m2">
                   <input type="text" id="{{ catch._id }}catch_time" name="{{ catch._id }}catch_time" class="timepicker"

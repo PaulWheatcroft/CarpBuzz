@@ -19,10 +19,20 @@
         {% endfor %}
         <form method="POST" action="">
           <div class="row">
-            <div class="input-field col s6 m2 offset-m2">
-              <input id="fish" name="fish" type="text" class="validate" required>
-              <label for="fish">Fish Type</label>
+         
+            <div class="input-field col s12 m4 offset-m1">
+              <select name="fish" name="fish" required>
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="Common">Common</option>
+                  <option value="Fully Scaled">Fully Scaled</option>
+                  <option value="Leather">Leather</option>
+                  <option value="Linear">Linear</option>
+                  <option value="Mirror">Mirror</option>
+              </select>
+              <label for="fish">Carp Type</label>
             </div>
+
+
             <div class="input-field col s6 m1">
               <input id="weight_lbs" name="weight_lbs" type="number" class="validate" pattern="([0-9]+)" required>
               <label for="weight_lbs">lbs</label>
