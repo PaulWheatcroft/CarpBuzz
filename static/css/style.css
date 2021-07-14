@@ -165,7 +165,6 @@ h4 {
 .search-card {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    height: 50vh;
 }
 .search-heading {
     padding: 20px 0 20px 0;
@@ -174,7 +173,7 @@ h4 {
     color: #1a1a1a;
 }
 .filter-button-row {
-    padding-top: 20px;
+    padding: 20px 0 40px 0;
 }
 .filter-button {
     background-color: #89A857;
@@ -280,8 +279,5 @@ h4 {
     }
     .search-row {
         height: 40vh;
-    }
-    .search-card {
-        height: 30vh;
     }
 }

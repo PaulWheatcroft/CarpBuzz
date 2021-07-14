@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- search/filter fishery directory -->
 <div class="row search-row valign-wrapper">
     <div class="container">
         <div class="card col s12 m8 offset-m2 search-card">            
@@ -10,43 +10,43 @@
                 </div>
                 <form action="#">
                     <div class="row filter-checkbox">
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="wiltshire">
                                 <input type="checkbox" name="wiltshire" id="wiltshire" />
                                 <span>Wiltshire</span>
                             </label>
                         </div>
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="gloucestershire">
                                 <input type="checkbox" name="gloucestershire" id="gloucestershire" />
                                 <span>Gloucestershire</span>
                             </label>
                         </div>
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="north_somerset">
                                 <input type="checkbox" name="north_somerset" id="north_somerset" />
                                 <span>North Somerset</span>
                             </label>
                         </div>
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="somerset">
                                 <input type="checkbox" name="somerset" id="somerset" />
                                 <span>Somerset</span>
                             </label>
                         </div>
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="dorset">
                                 <input type="checkbox" name="dorset" id="dorset" />
                                 <span>Dorset</span>
                             </label>
                         </div>
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="devon">
                                 <input type="checkbox" name="devon" id="devon" />
                                 <span>Devon</span>
                             </label>
                         </div>
-                        <div class="col s6 l4">
+                        <div class="col s6 xl4">
                             <label for="cornwall">
                                 <input type="checkbox" name="cornwall" id="cornwall" />
                                 <span>Cornwall</span>
@@ -64,6 +64,7 @@
         </div>
     </div>
 </div>
+<!-- fishery directory -->
 <div class="container fishery-results">
     {% for fishery in fisheries %}
     {% if not fishery.disabled %}
@@ -139,8 +140,10 @@
                 <div class="row facilities-close-row">
                     <div class="col s12">
                         <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
+                        {% if session.user %}
                         <a href="{{ url_for('edit_fishery', fishery_id=fishery._id) }}" class="left"><i
                                 class="fas fa-edit facilities-close yellow-text text-lighten-3"></i></a>
+                        {% endif %}
                     </div>
                 </div>
                 <!-- Main facilities -->
