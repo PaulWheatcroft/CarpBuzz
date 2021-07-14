@@ -23,8 +23,9 @@
                     {% for catch in fishery_catches %}
                     {% if report._id|string == catch.report_id %}
                     <l1 class="center-align">
-                        {{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the {{
-                        catch.date.strftime('%d-%b-%Y') }}
+                        {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
+                        {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the
+                        {{ catch.date.strftime('%d-%b-%Y') }}
                     </l1><br>
                     {% endif %}
                     {% endfor %}

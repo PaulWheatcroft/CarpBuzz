@@ -86,28 +86,28 @@
                         {% for ticket in tickets %}
                         {% if fishery._id|string == ticket.fishery_id %}
                         {% if ticket.day_dayonly|string != "0.0" %}
-                        <span class="ticket-span">Day<br>£{{ ticket.day_dayonly }}</span>
+                        <span class="ticket-span">Day<br>£{{ ticket.day_dayonly }}0</span>
                         {% endif %}
-                        {% if ticket.day_daynigh|string != "0.0" %}
-                        <span class="ticket-span">24hrs<br>£{{ ticket.day_daynight }}</span>
+                        {% if ticket.day_daynight|string != "0.0" %}
+                        <span class="ticket-span">24hrs<br>£{{ ticket.day_daynight }}0</span>
                         {% endif %}
                         {% if ticket.lake_daynight|string != "0.0" %}
-                        <span class="ticket-span">Lake Day<br>£{{ ticket.lake_daynight }}</span>
+                        <span class="ticket-span">Lake Day<br>£{{ ticket.lake_daynight }}0</span>
                         {% endif %}
                         {% if ticket.syndicate_daynight|string != "0.0" %}
-                        <span class="ticket-span">24hrs Syndicate£{{ ticket.syndicate_daynight }}</span>
+                        <span class="ticket-span">24hrs Syndicate£{{ ticket.syndicate_daynight }}0</span>
                         {% endif %}
                         {% if ticket.club_dayonly|string != "0.0" %}
-                        <span class="ticket-span">Club Day<br>£{{ ticket.club_dayonly }}</span>
+                        <span class="ticket-span">Club Day<br>£{{ ticket.club_dayonly }}0</span>
                         {% endif %}
                         {% if ticket.club_daynight|string != "0.0" %}
-                        <span class="ticket-span">24hrs Club<br>£{{ ticket.club_daynight }}</span>
+                        <span class="ticket-span">24hrs Club<br>£{{ ticket.club_daynight }}0</span>
                         {% endif %}
                         {% if ticket.season_dayonly|string != "0.0" %}
-                        <span class="ticket-span">Season Day<br>£{{ ticket.season_dayonly }}</span>
+                        <span class="ticket-span">Season Day<br>£{{ ticket.season_dayonly }}0</span>
                         {% endif %}
                         {% if ticket.season_daynight|string != "0.0" %}
-                        <span class="ticket-span">24hrs Season<br>£{{ ticket.season_daynight }}</span>
+                        <span class="ticket-span">24hrs Season<br>£{{ ticket.season_daynight }}0</span>
                         {% endif %}
                         {% endif %}
                         {% endfor %}
@@ -130,7 +130,7 @@
                     <!-- Fishery details reveal link -->
                     <div class="row">
                         <button class="col s12 view-facilities activator">
-                            View facilities
+                            More Information
                         </button>
                     </div>
                 </div>
@@ -152,7 +152,11 @@
                 <div class="row main-facilities">
                     <div class="col s4 main-facility">
                         <i class="fas fa-water"></i>
-                        <p>{{ facility.lake_type }}</p>
+                        {% if facility.lake == single %}
+                        <p>{{ facility.lake_type|capitalize }} Lake</p>
+                        {% else %}
+                        <p>{{ facility.lake_type|upper }} Lakes</p>
+                        {% endif %}
                     </div>
                     <div class="col s4 main-facility">
                         <i class="fas fa-fish"></i>

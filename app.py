@@ -519,23 +519,19 @@ def edit_report(report_id):
                     str_catch_id = str(catch["_id"])
                     marked_delete = bool(request.form.get(f"{str_catch_id}delete"))
                     if marked_delete:
-                        print("")
-                        print("Delete")
-                        print(str_catch_id)
-                        print("")
                         mongo.db.catch.fish.delete_one({"_id": ObjectId(str_catch_id)})
 
                     else:
-                        print("") 
-                        print("Update")
-                        print("")
+                        weight_lbs = int(request.form.get(f"{str_catch_id}weight_lbs")) *16
+                        weight_oz = int(request.form.get(f"{str_catch_id}weight_oz"))
+                        weight = weight_oz + weight_lbs
                         updated_catch = { "$set":
                         {
                             "report_id": report_id,
                             "account_id": session["user"],
                             "fishery_id": report["fishery_id"],
                             "fish": request.form.get(f"{str_catch_id}fish"),
-                            "weight": float(request.form.get(f"{str_catch_id}weight")),
+                            "weight": weight,
                             "date": datetime.strptime(request.form.get(f"{str_catch_id}catch_date"), '%d-%b-%Y'),
                             "time": datetime.strptime(request.form.get(f"{str_catch_id}catch_time"), '%H:%M')
                         }
@@ -576,12 +572,15 @@ def add_fish(report_id):
     if session["user"] == report["account_id"]:
         if request.method == "POST":
             fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
+            weight_lbs = int(request.form.get("weight_lbs")) *16
+            weight_oz = int(request.form.get("weight_oz"))
+            weight = weight_oz + weight_lbs
             catch = {
                 "report_id": report_id,
                 "account_id": session["user"],
                 "fishery_id": report["fishery_id"],
                 "fish": request.form.get("fish"),
-                "weight": float(request.form.get("weight")),
+                "weight": weight,
                 "date": datetime.strptime(request.form.get("catch_date"), '%d-%b-%Y'),
                 "time": datetime.strptime(request.form.get("catch_time"), '%H:%M')
             }

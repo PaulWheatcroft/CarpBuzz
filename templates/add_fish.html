@@ -11,25 +11,31 @@
         <p class="center-align">{{ report.notes }}</p>
         {% for catch in report_catches %}
         <div class="row catch-row">
-          <l1 class="col s12 center-align">{{ catch.weight }}lbs {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}
+          <l1 class="col s12 center-align">
+            {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
+            {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}
             on {{ catch.date.strftime('%d-%b-%Y') }}</l1>
         </div>
         {% endfor %}
         <form method="POST" action="">
           <div class="row">
-            <div class="input-field col s6 m3">
+            <div class="input-field col s6 m2 offset-m2">
               <input id="fish" name="fish" type="text" class="validate" required>
               <label for="fish">Fish Type</label>
             </div>
-            <div class="input-field col s6 m3">
-              <input id="weight" name="weight" type="text" class="validate" required>
-              <label for="weight">Weight</label>
+            <div class="input-field col s6 m1">
+              <input id="weight_lbs" name="weight_lbs" type="number" class="validate" pattern="([0-9]+)" required>
+              <label for="weight_lbs">lbs</label>
             </div>
-            <div class="input-field col s6 m3">
+            <div class="input-field col s6 m1">
+              <input id="weight_oz" name="weight_oz" type="number" class="validate" min="0" max="15" pattern="([0-9]+)" required>
+              <label for="weight_oz">oz</label>
+            </div>
+            <div class="input-field col s6 m2">
               <input type="text" id="catch_date" name="catch_date" class="datepicker" required>
               <label for="catch_date">Catch Date</label>
             </div>
-            <div class="input-field col s6 m3">
+            <div class="input-field col s6 m2">
               <input type="text" id="catch_time" name="catch_time" class="timepicker" required>
               <label for="catch_time">Catch Time</label>
             </div>
