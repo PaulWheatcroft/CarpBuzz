@@ -59,7 +59,7 @@
                   <label for="{{ catch._id }}weight_lbs">lbs</label>
                 </div>
                 <div class="input-field col s6 m1">
-                  <input id="{{ catch._id }}weight_oz" name="{{ catch._id }}weight_oz" type="number" class="validate" min="1" max="15" pattern="([0-9]+){1,16}" 
+                  <input id="{{ catch._id }}weight_oz" name="{{ catch._id }}weight_oz" type="number" class="validate" min="0" max="15" pattern="([0-9]+)" 
                   value="{{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}" required>
                   <label for="{{ catch._id }}weight_oz">oz</label>
                 </div>
