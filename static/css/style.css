@@ -264,6 +264,18 @@ h4 {
     padding: 10px 0 10px 0;
     border-radius: 5px;
 }
+.rating-star i {
+    color: #ece928;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding-top: 20px;
+}
+.rating-star p {
+    margin-top: 0;
+}
+.rating-star h3 i {
+    color: #111;
+    text-shadow: 0 0 0;
+}
 @media only screen and (min-width: 1025px) {
     .mobile-only {
         visibility: hidden;
