@@ -141,7 +141,7 @@
                 <div class="row facilities-close-row">
                     <div class="col s12">
                         <span class="card-title right"><i class="fas fa-times-circle facilities-close"></i></span>
-                        {% if session.user %}
+                        {% if session.is_admin %}
                         <a href="{{ url_for('edit_fishery', fishery_id=fishery._id) }}" class="left"><i
                                 class="fas fa-edit facilities-close yellow-text text-lighten-3"></i></a>
                         {% endif %}

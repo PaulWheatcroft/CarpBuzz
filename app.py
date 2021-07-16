@@ -105,6 +105,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = str(existing_user["_id"])
+                if existing_user["is_admin"]:
+                    session["is_admin"] = True
                 flash(f"Welcome {existing_user['username']}", 'info')
                 return redirect(url_for("get_fisheries", user=session["user"]))
             else:

@@ -36,9 +36,10 @@
                     <li><a href="{{ url_for('get_fisheries') }}">Fisheries</a></li>
                     <!-- Dropdown Trigger -->
                     {% if session.user %}
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Admin <i
-                                class="fas fa-sort-down right"></i></a></li>
-
+                        {% if session.is_admin %}
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Admin <i
+                                    class="fas fa-sort-down right"></i></a></li>
+                        {% endif %}
 
                     <li><a href="{{ url_for('profile', user=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -68,9 +69,10 @@
             <li><a href="{{ url_for('get_fisheries') }}">Fisheries</a></li>
             <!-- Dropdown Trigger -->
             {% if session.user %}
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile">Admin <i
-                        class="fas fa-sort-down right"></i></a></li>
-            
+                {% if session.is_admin %}
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile">Admin <i
+                            class="fas fa-sort-down right"></i></a></li>
+                {% endif %}            
             <li><a href="{{ url_for('profile', user=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
