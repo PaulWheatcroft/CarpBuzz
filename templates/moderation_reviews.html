@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>All Review reported for Moderation</h1>
+    {% if session.is_admin %}
+        {% if fishery_reviews|length == 0 %}
+            <h2 class="center-align">There are No Reviews Needing Moderation</h2>
+        {% else %}
+            {% for review in fishery_reviews %}
+                {% if review.moderation %}
+                <div class="row">
+                    <div class="col s12 m8 offset-m2 card rating-star" data-aos="fade-in">
+                        {% if review.rating == 1 %}
+                        <i class="fas fa-star"></i>
+                        {% endif %}
+                        {% if review.rating == 2 %}
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        {% endif %}
+                        {% if review.rating == 3 %}
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        {% endif %}
+                        {% if review.rating == 4 %}
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        {% endif %}
+                        {% if review.rating == 5 %}
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                        {% endif %}
+                        <p>by {{ review.username }} on the {{ review.date.strftime('%d-%b-%Y') }}</p>
+                        <h2>{{ review.heading }}</h2>
+                        <p>{{ review.main_text }}</p>
+                        <h3><i class="fas fa-check-circle green-text"></i> I liked...</h3>
+                        <p>{{ review.pro_text }}</p>
+                        <h3><i class="fas fa-times-circle red-text"></i> I didn't like...</h3>
+                        <p>{{ review.con_text }}</p>
+                        
+                        <div class="row center-align">
+                            
+                        </div>
+            
+                        <div class="row">
+                            <a href="{{ url_for('keep_review', review_id=review._id) }}" class="btn waves-effect green darken-2 col s12">Keep Review</a>
+                            <a href="{{ url_for('delete_review', review_id=review._id) }}"
+                                class="btn waves-effect red darken-2 col s12">Delete this Review</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</div>
+
+{% endblock %}

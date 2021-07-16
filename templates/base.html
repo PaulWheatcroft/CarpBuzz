@@ -23,7 +23,7 @@
         {% if session.user %}
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="{{ url_for('add_fishery') }}">Add Fishery</a></li>
-            <li><a href="#!">Moderate Reviews</a></li>
+            <li><a href="{{ url_for('moderate_reviews') }}">Moderate Reviews</a></li>
             <li><a href="#!">User Admin</a></li>
         </ul>
         {% endif %}
@@ -91,16 +91,10 @@
         <div class="row">
             <div data-aos="fade-down" data-aos-easing="ease"
                 class="col s10 offset-s1 m4 offset-m1 flashes {{ category }}">
-                <div class="row">
-                    <i class="fas fa-times-circle facilities-close right col s1" onclick=delete_flash(this)></i>
-                    <h4 class="center-align col s10">{{ message }}</h4>
-                </div>
 
-                    
-
- 
-                    
-
+                    <i class="fas fa-times-circle facilities-close right" onclick=delete_flash(this)></i>
+                    <p class="center-align col s12">{{ message }}</hp>
+         
             </div>
         </div>
         {% endfor %}

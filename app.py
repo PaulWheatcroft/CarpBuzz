@@ -420,7 +420,6 @@ def add_review(fishery_id):
                 "main_text": request.form.get("review_text"),
                 "pro_text": request.form.get("pro_text"),
                 "con_text": request.form.get("con_text"),
-                "moderation": False,
                 "date": datetime.strptime(request.form.get("review_date"), '%d-%b-%Y')
             }
             # insert review
@@ -451,7 +450,6 @@ def edit_review(review_id):
                 "main_text": request.form.get("review_text"),
                 "pro_text": request.form.get("pro_text"),
                 "con_text": request.form.get("con_text"),
-                "moderation": False,
                 "date": datetime.strptime(request.form.get("review_date"), '%d-%b-%Y')
             }
             # insert review
@@ -474,7 +472,7 @@ def edit_review(review_id):
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    if session["user"] == fishery_review["account_id"]:
+    if session["user"] == fishery_review["account_id"] or session["is_admin"]:
     # delete the review
         mongo.db.reviews.remove({"_id": ObjectId(review_id)})
         flash('Your review as been deleted', 'info')    
@@ -483,6 +481,30 @@ def delete_review(review_id):
     else:
         flash('You are not authorised for this page', 'warning')
         return redirect(url_for("get_fisheries"))
+
+
+@app.route("/report_review/<review_id>")
+def report_review(review_id):
+    fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    fishery_review["moderation"] = True
+    mongo.db.reviews.update({"_id": ObjectId(review_id)}, fishery_review)
+    flash("Thank you. This review has been submitted to the website administrators for review", 'info')    
+    return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
+
+
+@app.route("/moderate_reviews")
+def moderate_reviews():
+    fishery_reviews = list(mongo.db.reviews.find({"moderation": True}))
+    return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
+
+
+@app.route("/keep_review/<review_id>")
+def keep_review(review_id):
+    fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    fishery_review.pop('moderation', True) 
+    mongo.db.reviews.update({"_id": ObjectId(review_id)}, fishery_review)
+    flash("Moderation flag removed", 'success')    
+    return redirect(url_for('moderate_reviews'))
 
 
 @app.route("/reports/<fishery_id>")
