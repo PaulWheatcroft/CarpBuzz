@@ -34,30 +34,29 @@ def get_fisheries():
 
 @app.route("/filter_fisheries", methods=["GET", "POST"])
 def filter_fisheries():
-    # filter_list = []
-    print(request.form.get("wiltshire"))
-    # if bool(request.form.get("wiltshire"):
-    #     filter_list.append({"county": "wiltshire"})
-    # if bool(request.form.get("gloucestershire")):
-    #     filter_list.append({"county": "south gloucestershire"})
-    # if bool(request.form.get("north_somerset")):
-    #     filter_list.append({"county": "north somerset"})
-    # if bool(request.form.get("somerset")):
-    #     filter_list.append({"county": "somerset"})
-    # if bool(request.form.get("dorset")):
-    #     filter_list.append({"county": "dorset"})
-    # if bool(request.form.get("devon")):
-    #     filter_list.append({"county": "devon"})
-    # if bool(request.form.get("cornwall")):
-    #     filter_list.append({"county": "cornwall"})
-    # fisheries = mongo.db.fisheries.contact.find({"$and": filter_list})
-    # facilities = list(mongo.db.fisheries.facilities.find())
-    # tickets = list(mongo.db.fisheries.tickets.find())
-    # payments = list(mongo.db.fisheries.payment.find())
-    # return render_template(
-    #     "fisheries.html", fisheries=fisheries, facilities=facilities,
-    #     tickets=tickets, payments=payments)
-    return redirect(url_for("get_fisheries"))
+    filter_list = []
+    if bool(request.form.get("wiltshire")):
+        filter_list.append({"county": "wiltshire"})
+    if bool(request.form.get("gloucestershire")):
+        filter_list.append({"county": "south gloucestershire"})
+    if bool(request.form.get("north_somerset")):
+        filter_list.append({"county": "north somerset"})
+    if bool(request.form.get("somerset")):
+        filter_list.append({"county": "somerset"})
+    if bool(request.form.get("dorset")):
+        filter_list.append({"county": "dorset"})
+    if bool(request.form.get("devon")):
+        filter_list.append({"county": "devon"})
+    if bool(request.form.get("cornwall")):
+        filter_list.append({"county": "cornwall"})
+    print(filter_list)
+    fisheries = mongo.db.fisheries.contact.find({"$or":filter_list})
+    facilities = list(mongo.db.fisheries.facilities.find())
+    tickets = list(mongo.db.fisheries.tickets.find())
+    payments = list(mongo.db.fisheries.payment.find())
+    return render_template(
+        "fisheries.html", fisheries=fisheries, facilities=facilities,
+        tickets=tickets, payments=payments)
 
 
 @app.route("/register", methods=["GET", "POST"])

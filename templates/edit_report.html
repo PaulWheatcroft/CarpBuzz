@@ -25,7 +25,7 @@
   <div class="row">
     <div class="col s12">
       <div class="card-panel">
-        <form method="POST" action="">
+        <form method="POST" action="{{ url_for('edit_report', report_id=report._id) }}">
           <div class="row">
             <div class="input-field col s12">
               <input id="report_name" name="report_name" type="text" class="validate" value="{{ report.name }}"
@@ -132,7 +132,6 @@
           </div>
         </form>
       </div>
-      </form>
     </div>
   </div>
 </div>

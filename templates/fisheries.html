@@ -6,9 +6,9 @@
         <div class="card col s12 m8 offset-m2 search-card">            
             <div class="container">
                 <div class="row center-align">
-                    <h2 class="h3 search-heading">Find your perfect carp water in the South-West of England</h3>
+                    <h2 class="h3 search-heading">Find your perfect carp water in the South West of England</h3>
                 </div>
-                <form action="#">
+                <form action="{{ url_for('filter_fisheries') }}" method="POST">
                     <div class="row filter-checkbox">
                         <div class="col s6 xl4">
                             <label for="wiltshire">
@@ -54,8 +54,8 @@
                         </div>
                     </div>
                     <div class="row filter-button-row">
-                        <a href="{{ url_for('filter_fisheries') }}"
-                            class="col s12 btn-large submit-button waves-effect">Filter Results</a>
+                        <button type="submit"
+                            class="col s12 btn-large submit-button waves-effect">Filter Results</button>
                     </div>
     
                 </form> 
