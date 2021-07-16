@@ -77,7 +77,7 @@
                 <div class="row fishery-address-row">
                     <div class="col s12 fishery-address">
                         <h2>{{ fishery.name }}</h2>
-                        <p>{{ fishery.address }}, {{ fishery.town }}, {{ fishery.county }}, {{ fishery.postcode }}</p>
+                        <p>{{ fishery.address|title }}, {{ fishery.town|title }}, {{ fishery.county|title }}, {{ fishery.postcode }}</p>
                         <p>{{ fishery.telephone }}</p>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                         <span class="ticket-span">Lake Day<br>£{{ ticket.lake_daynight }}0</span>
                         {% endif %}
                         {% if ticket.syndicate_daynight|string != "0.0" %}
-                        <span class="ticket-span">24hrs Syndicate£{{ ticket.syndicate_daynight }}0</span>
+                        <span class="ticket-span">Syndicate<br>£{{ ticket.syndicate_daynight }}0</span>
                         {% endif %}
                         {% if ticket.club_dayonly|string != "0.0" %}
                         <span class="ticket-span">Club Day<br>£{{ ticket.club_dayonly }}0</span>
@@ -115,8 +115,8 @@
                     </div>
                 </div>
                 <div class="row fishery-links">
-                    <a href="{{ fishery.website }}" target="_blank"><i class="fas fa-globe"></i> visit website</a>
-                    <a href="{{ fishery.facebook }}" target="_blank"><i class="fab fa-facebook"></i> visit Facebook</a>
+                    <a href="http://{{ fishery.website }}" target="_blank"><i class="fas fa-globe"></i> visit website</a>
+                    <a href="https://{{ fishery.facebook }}" target="_blank"><i class="fab fa-facebook"></i> visit Facebook</a>
                 </div>
                 <div class="card-action">
                     <!-- Review and Reports buttons -->

@@ -148,10 +148,10 @@ def add_fishery():
             # create fishery contact dict
             fishery_contact = {
                 "name": request.form.get("name"),
-                "address": request.form.get("address"),
-                "town": request.form.get("town"),
-                "county": request.form.get("county"),
-                "postcode": request.form.get("postcode"),
+                "address": request.form.get("address").lower(),
+                "town": request.form.get("town").lower(),
+                "county": request.form.get("county").lower(),
+                "postcode": request.form.get("postcode").upper(),
                 "telephone": request.form.get("telephone"),
                 "website": request.form.get("website"),
                 "facebook": request.form.get("facebook")
@@ -254,11 +254,11 @@ def edit_fishery(fishery_id):
         if request.method == "POST":
             # create fishery contact dict
             submit_fishery_contact = {
-                "name": request.form.get("name"),
-                "address": request.form.get("address"),
-                "town": request.form.get("town"),
-                "county": request.form.get("county"),
-                "postcode": request.form.get("postcode"),
+                "name": request.form.get("name").lower(),
+                "address": request.form.get("address").lower(),
+                "town": request.form.get("town").lower(),
+                "county": request.form.get("county").lower(),
+                "postcode": request.form.get("postcode").upper(),
                 "telephone": request.form.get("telephone"),
                 "website": request.form.get("website"),
                 "facebook": request.form.get("facebook")

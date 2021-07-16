@@ -49,16 +49,17 @@ h4 {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 .error {
-    background-color: #d46161;
+    background-color: #e74c3c;
 }
 .warning {
-    background-color: #e0dd28;;
+    background-color: #f1cc81;
+    color: #1f1f1f;
 }
 .info {
-    background-color: #60cfd3;
+    background-color: #057cbc;
 }
 .success {
-    background-color: #a6d35f;
+    background-color: #5db899;
 }
 .flashes h4 {
     font-family: 'Questrial', sans-serif;

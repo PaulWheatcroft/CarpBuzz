@@ -36,10 +36,10 @@
                     <li><a href="{{ url_for('get_fisheries') }}">Fisheries</a></li>
                     <!-- Dropdown Trigger -->
                     {% if session.user %}
-                        {% if session.is_admin %}
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Admin <i
-                                    class="fas fa-sort-down right"></i></a></li>
-                        {% endif %}
+                    {% if session.is_admin %}
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Admin <i
+                                class="fas fa-sort-down right"></i></a></li>
+                    {% endif %}
 
                     <li><a href="{{ url_for('profile', user=session['user']) }}">Profile</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -54,11 +54,11 @@
 
         <!-- Sidebar Nav Element Dropdown -->
 
-            <ul id="dropdown1-mobile" class="dropdown-content">
-                <li><a href="{{ url_for('add_fishery') }}"><i class="fas fa-plus-square"></i>Add Fishery</a></li>
-                <li><a href="#!"><i class="fas fa-pen-square"></i>Moderate Reviews</a></li>
-                <li><a href="#!"><i class="fas fa-user-cog"></i>User Admin</a></li>
-            </ul>        
+        <ul id="dropdown1-mobile" class="dropdown-content">
+            <li><a href="{{ url_for('add_fishery') }}"><i class="fas fa-plus-square"></i>Add Fishery</a></li>
+            <li><a href="#!"><i class="fas fa-pen-square"></i>Moderate Reviews</a></li>
+            <li><a href="#!"><i class="fas fa-user-cog"></i>User Admin</a></li>
+        </ul>
 
         <!-- Sidebar Nav Element-->
         <ul class="sidenav" id="mobile-menu">
@@ -69,15 +69,15 @@
             <li><a href="{{ url_for('get_fisheries') }}">Fisheries</a></li>
             <!-- Dropdown Trigger -->
             {% if session.user %}
-                {% if session.is_admin %}
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile">Admin <i
-                            class="fas fa-sort-down right"></i></a></li>
-                {% endif %}            
+            {% if session.is_admin %}
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1-mobile">Admin <i
+                        class="fas fa-sort-down right"></i></a></li>
+            {% endif %}
             <li><a href="{{ url_for('profile', user=session['user']) }}">Profile</a></li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
             <li><a href="#">Contact</a></li>
         </ul>
@@ -86,16 +86,25 @@
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="row">
+            <div data-aos="fade-down" data-aos-easing="ease"
+                class="col s10 offset-s1 m4 offset-m1 flashes {{ category }}">
                 <div class="row">
-                    <div data-aos="fade-down" data-aos-easing="ease" class="col s10 offset-s1 m4 offset-m1 flashes {{ category }}">
-                                <i class="fas fa-times-circle facilities-close right" onclick=delete_flash(this)></i>
-                                <h4 class="center-align">{{ message }}</h4>
-                    </div>                    
+                    <i class="fas fa-times-circle facilities-close right col s1" onclick=delete_flash(this)></i>
+                    <h4 class="center-align col s10">{{ message }}</h4>
                 </div>
-                {% endfor %}
-            {% endif %}
+
+                    
+
+ 
+                    
+
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
     </section>
 
@@ -112,10 +121,10 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
     <script>
-        function delete_flash(flash){
+        function delete_flash(flash) {
             $(flash).parent().remove()
         }
     </script>
