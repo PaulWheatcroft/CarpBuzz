@@ -49,7 +49,9 @@ def filter_fisheries():
         filter_list.append({"county": "devon"})
     if bool(request.form.get("cornwall")):
         filter_list.append({"county": "cornwall"})
-    print(filter_list)
+    if len(filter_list) == 0:
+        flash("There were no fisheries found", 'info')
+        return redirect(url_for("get_fisheries"))
     fisheries = mongo.db.fisheries.contact.find({"$or":filter_list})
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
@@ -57,6 +59,11 @@ def filter_fisheries():
     return render_template(
         "fisheries.html", fisheries=fisheries, facilities=facilities,
         tickets=tickets, payments=payments)
+
+
+@app.route("/clear_filter")
+def clear_filter():
+    return redirect(url_for("get_fisheries"))
 
 
 @app.route("/register", methods=["GET", "POST"])

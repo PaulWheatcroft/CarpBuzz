@@ -12,7 +12,7 @@
                     <div class="row filter-checkbox">
                         <div class="col s6 xl4">
                             <label for="wiltshire">
-                                <input type="checkbox" name="wiltshire" id="wiltshire" />
+                                <input type="checkbox" name="wiltshire" id="wiltshire"  />
                                 <span>Wiltshire</span>
                             </label>
                         </div>
@@ -55,7 +55,8 @@
                     </div>
                     <div class="row filter-button-row">
                         <button type="submit"
-                            class="col s12 btn-large submit-button waves-effect">Filter Results</button>
+                            class="col s10 btn-large submit-button waves-effect"><i class="fas fa-filter"></i> Filter Results</button>
+                        <a href="{{ url_for('clear_filter') }}" class="col s2 btn-large yellow lighten-2 waves-effect grey-text text-darken-2"><i class="fas fa-undo-alt"></i> Reset</a>
                     </div>
     
                 </form> 

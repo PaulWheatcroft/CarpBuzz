@@ -175,6 +175,12 @@ h4 {
 .filter-button-row {
     padding: 20px 0 40px 0;
 }
+.filter-button-row button i {
+    font-size: 12px;
+}
+.filter-button-row a i {
+    font-size: 12px;
+}
 .filter-button {
     background-color: #89A857;
 }
