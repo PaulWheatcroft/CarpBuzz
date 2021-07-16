@@ -38,8 +38,7 @@ h4 {
 .input-row {
     padding-top: 20px;
 }
-.flashes {
-    line-height: 20px;    
+.flashes { 
     z-index: 1;
     position: absolute;
     top: 30px;
@@ -47,6 +46,7 @@ h4 {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     color: #f7f7f7;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    height: 100px;
 }
 .error {
     background-color: #e74c3c;
@@ -60,13 +60,6 @@ h4 {
 }
 .success {
     background-color: #5db899;
-}
-.flashes h4 {
-    font-family: 'Questrial', sans-serif;
-    font-size: 18px;
-    line-height: 50px;
-    margin: 0;
-    font-weight: 400;
 }
 .submit-button {
     background-color: #689DA8;

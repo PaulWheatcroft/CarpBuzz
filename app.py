@@ -494,8 +494,13 @@ def report_review(review_id):
 
 @app.route("/moderate_reviews")
 def moderate_reviews():
-    fishery_reviews = list(mongo.db.reviews.find({"moderation": True}))
-    return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
+    if session["user"]:
+        fishery_reviews = list(mongo.db.reviews.find({"moderation": True}))
+        return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
+
+    else:
+        flash('You are not authorised for this page', 'warning')
+        return redirect(url_for("get_fisheries"))   
 
 
 @app.route("/keep_review/<review_id>")
