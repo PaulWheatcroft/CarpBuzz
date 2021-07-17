@@ -1,13 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <h1>{{ username }}'s Profile</h1>
+    <h1>{{ account.username }}'s Profile</h1>
 
     <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align">
-                </h3>
+        <div class="col s12 card-panel">
+            <div class="row center-align">
+                <h2>My Stats</h2>
+                    {% if catches|length == 0 %}
+                    <p>You haven't registered that you've caught anything?</p>
+                    <p>Get out there and get fishing!!!</p>
+                    {% else %}
+                    <p>In total you have caught {{ catches|length }} fish</p>
+                    <p>This is a total weight of {{ (total_fish_weight/16)|round(0, 'floor')|int }}lbs and 
+                        {{ (((total_fish_weight/16) - (total_fish_weight/16)|round(0, 'floor')) * 16)|int }}oz
+                    </p>
+                    <p>
+                        This is an average weight of {{ (average_fish_weight/16)|round(0, 'floor')|int }}lbs and 
+                        {{ (((average_fish_weight/16) - (average_fish_weight/16)|round(0, 'floor')) * 16)|int }}oz
+                    </p>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 card-panel">
+            <div class="row center-align">
+                <h2>My Details</h2>
+
             </div>
         </div>
     </div>

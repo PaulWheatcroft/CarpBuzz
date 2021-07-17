@@ -36,7 +36,6 @@ def get_fisheries():
         {"county": "devon"},
         {"county": "cornwall"}
         ]
-    print(filter_list)
     return render_template(
         "fisheries.html", fisheries=fisheries, facilities=facilities,
         tickets=tickets, payments=payments)
@@ -131,11 +130,17 @@ def login():
 
 @app.route("/profile/<user>", methods=["GET", "POST"])
 def profile(user):
-    username = mongo.db.accounts.find_one(
-        {"_id": ObjectId(user)})["username"]
-
+    account = mongo.db.accounts.find_one(
+        {"_id": ObjectId(user)})
+    catches = list(mongo.db.catch.fish.find({"account_id": session["user"]}))
+    total_fish_weight = 0
+    for catch in catches:
+        fish_weight = int(catch["weight"])
+        total_fish_weight = fish_weight + total_fish_weight
+        average_fish_weight = total_fish_weight/len(catches)
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", account=account, catches=catches,
+        total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight)
 
     return redirect(url_for("login"))
 
