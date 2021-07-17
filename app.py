@@ -501,7 +501,7 @@ def report_review(review_id):
 
 @app.route("/moderate_reviews")
 def moderate_reviews():
-    if session["user"]:
+    if session["is_admin"]:
         fishery_reviews = list(mongo.db.reviews.find({"moderation": True}))
         return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
 
@@ -512,11 +512,12 @@ def moderate_reviews():
 
 @app.route("/keep_review/<review_id>")
 def keep_review(review_id):
-    fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    fishery_review.pop('moderation', True) 
-    mongo.db.reviews.update({"_id": ObjectId(review_id)}, fishery_review)
-    flash("Moderation flag removed", 'success')    
-    return redirect(url_for('moderate_reviews'))
+    if session["is_admin"]:
+        fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        fishery_review.pop('moderation', True) 
+        mongo.db.reviews.update({"_id": ObjectId(review_id)}, fishery_review)
+        flash("Moderation flag removed", 'success')    
+        return redirect(url_for('moderate_reviews'))
 
 
 @app.route("/reports/<fishery_id>")
@@ -690,6 +691,14 @@ def messages():
     messages = list(mongo.db.messages.find())
     return render_template("messages.html", messages=messages)
 
+
+@app.route("/hide_message/<message_id>")
+def hide_message(message_id):
+    if session["is_admin"]:
+        message = mongo.db.messages.find_one({"_id": ObjectId(message_id)})
+        message["hidden"] = True
+        mongo.db.messages.update({"_id": ObjectId(message_id)}, message)
+        return redirect(url_for('messages'))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
