@@ -27,6 +27,16 @@ def get_fisheries():
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
     payments = list(mongo.db.fisheries.payment.find())
+    filter_list = [
+        {"county": "wiltshire"},
+        {"county": "south gloucestershire"},
+        {"county": "north somerset"},
+        {"county": "somerset"},
+        {"county": "dorset"},
+        {"county": "devon"},
+        {"county": "cornwall"}
+        ]
+    print(filter_list)
     return render_template(
         "fisheries.html", fisheries=fisheries, facilities=facilities,
         tickets=tickets, payments=payments)
@@ -49,16 +59,13 @@ def filter_fisheries():
         filter_list.append({"county": "devon"})
     if bool(request.form.get("cornwall")):
         filter_list.append({"county": "cornwall"})
-    if len(filter_list) == 0:
-        flash("There were no fisheries found", 'info')
-        return redirect(url_for("get_fisheries"))
-    fisheries = mongo.db.fisheries.contact.find({"$or":filter_list})
+    fisheries = list(mongo.db.fisheries.contact.find({"$or":filter_list}))
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
     payments = list(mongo.db.fisheries.payment.find())
     return render_template(
         "fisheries.html", fisheries=fisheries, facilities=facilities,
-        tickets=tickets, payments=payments)
+        tickets=tickets, payments=payments, filter_list=filter_list)
 
 
 @app.route("/clear_filter")

@@ -6,52 +6,83 @@
         <div class="card col s12 m8 offset-m2 search-card">            
             <div class="container">
                 <div class="row center-align">
-                    <h2 class="h3 search-heading">Find your perfect carp water in the South West of England</h3>
+                    <h3 class="h3 search-heading">Find your perfect carp water in the South West of England</h3>
                 </div>
                 <form action="{{ url_for('filter_fisheries') }}" method="POST">
                     <div class="row filter-checkbox">
                         <div class="col s6 xl4">
+                            
                             <label for="wiltshire">
-                                <input type="checkbox" name="wiltshire" id="wiltshire"  />
+                                {% if "wiltshire" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="wiltshire" id="wiltshire" checked />
+                                {% else %}
+                                <input type="checkbox" name="wiltshire" id="wiltshire" />
+                                {% endif %}
                                 <span>Wiltshire</span>
                             </label>
+                            
                         </div>
                         <div class="col s6 xl4">
                             <label for="gloucestershire">
+                                {% if "south gloucestershire" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="gloucestershire" id="gloucestershire" checked />
+                                {% else %}
                                 <input type="checkbox" name="gloucestershire" id="gloucestershire" />
+                                {% endif %}
                                 <span>Gloucestershire</span>
                             </label>
                         </div>
                         <div class="col s6 xl4">
                             <label for="north_somerset">
+                                {% if "north somerset" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="north_somerset" id="north_somerset" checked />
+                                {% else %}
                                 <input type="checkbox" name="north_somerset" id="north_somerset" />
+                                {% endif %}
                                 <span>North Somerset</span>
                             </label>
                         </div>
                         <div class="col s6 xl4">
                             <label for="somerset">
+                                {% if "somerset" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="somerset" id="somerset" checked />
+                                {% else %}
                                 <input type="checkbox" name="somerset" id="somerset" />
+                                {% endif %}
                                 <span>Somerset</span>
                             </label>
                         </div>
                         <div class="col s6 xl4">
                             <label for="dorset">
+                                {% if "dorset" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="dorset" id="dorset" checked />
+                                {% else %}
                                 <input type="checkbox" name="dorset" id="dorset" />
+                                {% endif %}
                                 <span>Dorset</span>
                             </label>
                         </div>
                         <div class="col s6 xl4">
                             <label for="devon">
+                                {% if "devon" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="devon" id="devon" checked />
+                                {% else %}
                                 <input type="checkbox" name="devon" id="devon" />
+                                {% endif %}
                                 <span>Devon</span>
                             </label>
                         </div>
                         <div class="col s6 xl4">
                             <label for="cornwall">
+                                {% if "devon" in filter_list|map(attribute="county") %}
+                                <input type="checkbox" name="cornwall" id="cornwall" checked />
+                                {% else %}
                                 <input type="checkbox" name="cornwall" id="cornwall" />
+                                {% endif %}
                                 <span>Cornwall</span>
                             </label>
                         </div>
+
                     </div>
                     <div class="row filter-button-row">
                         <button type="submit"
@@ -67,6 +98,7 @@
 </div>
 <!-- fishery directory -->
 <div class="container fishery-results">
+    <h3 class="center-align">Showing {{ fisheries|length }} Results</h3>
     {% for fishery in fisheries %}
     {% if not fishery.disabled %}
     <div class="row">

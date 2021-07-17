@@ -8,46 +8,50 @@
             class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Add a Review</a>
     </div>
     {% endif %}
-    {% for review in reviews %}
-    <div class="row">
-        <div class="col s12 m8 offset-m2 card rating-star" data-aos="fade-in">
-            {% if review.rating == 1 %}
-            <i class="fas fa-star"></i>
-            {% endif %}
-            {% if review.rating == 2 %}
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            {% endif %}
-            {% if review.rating == 3 %}
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            {% endif %}
-            {% if review.rating == 4 %}
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            {% endif %}
-            {% if review.rating == 5 %}
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i><i class="fas fa-star"></i>
-            {% endif %}
-            <p>by {{ review.username }} on the {{ review.date.strftime('%d-%b-%Y') }}</p>
-            <h2>{{ review.heading }}</h2>
-            <p>{{ review.main_text }}</p>
-            <h3><i class="fas fa-check-circle green-text"></i> I liked...</h3>
-            <p>{{ review.pro_text }}</p>
-            <h3><i class="fas fa-times-circle red-text"></i> I didn't like...</h3>
-            <p>{{ review.con_text }}</p>
-            
-            <div class="row center-align">
-                <a href="{{ url_for('report_review', review_id=review._id) }}" class="report-this">report this review</a>
+    {% if reviews|length == 0 %}
+        <h3 class="center-align">There are no reviews for this fishery</h3>
+    {% else %}
+        {% for review in reviews %}
+        <div class="row">
+            <div class="col s12 m8 offset-m2 card rating-star" data-aos="fade-in">
+                {% if review.rating == 1 %}
+                <i class="fas fa-star"></i>
+                {% endif %}
+                {% if review.rating == 2 %}
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                {% endif %}
+                {% if review.rating == 3 %}
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                {% endif %}
+                {% if review.rating == 4 %}
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                {% endif %}
+                {% if review.rating == 5 %}
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                {% endif %}
+                <p>by {{ review.username }} on the {{ review.date.strftime('%d-%b-%Y') }}</p>
+                <h2>{{ review.heading }}</h2>
+                <p>{{ review.main_text }}</p>
+                <h3><i class="fas fa-check-circle green-text"></i> I liked...</h3>
+                <p>{{ review.pro_text }}</p>
+                <h3><i class="fas fa-times-circle red-text"></i> I didn't like...</h3>
+                <p>{{ review.con_text }}</p>
+                
+                <div class="row center-align">
+                    <a href="{{ url_for('report_review', review_id=review._id) }}" class="report-this">report this review</a>
+                </div>
+                
+                {% if review.account_id == session["user"] %}   
+                <div class="row">
+                    <a href="{{ url_for('edit_review', review_id=review._id, fishery_id=fishery_contact._id) }}"
+                        class="btn waves-effect yellow darken-2 col s12">Edit this Review</a>
+                </div>
+                {% endif %}
             </div>
-            
-            {% if review.account_id == session["user"] %}   
-            <div class="row">
-                <a href="{{ url_for('edit_review', review_id=review._id, fishery_id=fishery_contact._id) }}"
-                    class="btn waves-effect yellow darken-2 col s12">Edit this Review</a>
-            </div>
-            {% endif %}
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}
