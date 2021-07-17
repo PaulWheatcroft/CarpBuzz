@@ -23,13 +23,68 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col s12 card-panel">
+
             <div class="row center-align">
                 <h2>My Details</h2>
+                <h3>Section still being developed</h3>
+                <div class="row">
+                    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+                        <div class="card-panel">
+                            <!-- First name -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="fname" name="fname" type="text" minlength="2" maxlength="20"
+                                        pattern="^[a-zA-Z-]{2,20}$" class="validate" value="{{ account.fname }}" required>
+                                    <label for="fname">First Name</label>
+                                </div>
+                            </div>
+                            <!-- Last name -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="lname" name="lname" type="text" minlength="2" maxlength="20"
+                                        pattern="^[a-zA-Z-]{2,20}$" class="validate" value="{{ account.lname }}" required>
+                                    <label for="fname">Last Name</label>
+                                </div>
+                            </div>
+                            <!-- email -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" name="email" type="email"
+                                        pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" value="{{ account.email }}"
+                                        class="validate">
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+                            <!-- Username -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="username" name="username" minlength="5" maxlength="20"
+                                        pattern="[a-zA-Z0-9]{5,20}" type="text" class="validate" value="{{ account.username }}">
+                                    <label for="username">Username</label>
+                                </div>
+                            </div>
+                            <!-- Password -->
+                            <div class="row">
+                                <p class="center-align grey-text">Minimum eight characters, at least one letter and one number</p>
+                                <div class="input-field col s12">
+                                <div class="input-field col s12">
+                                    <input id="password" name="password" type="password" minlength="8"
+                                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" class="validate" value="{{ account.password }}" required>
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                            <!-- submit form -->
+                            <div class="row">
+                                <button type="submit" class="col s8 offset-s2 btn-large submit-button">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
 
-            </div>
-        </div>
+
     </div>
 </div>
 

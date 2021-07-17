@@ -27,15 +27,6 @@ def get_fisheries():
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
     payments = list(mongo.db.fisheries.payment.find())
-    filter_list = [
-        {"county": "wiltshire"},
-        {"county": "south gloucestershire"},
-        {"county": "north somerset"},
-        {"county": "somerset"},
-        {"county": "dorset"},
-        {"county": "devon"},
-        {"county": "cornwall"}
-        ]
     return render_template(
         "fisheries.html", fisheries=fisheries, facilities=facilities,
         tickets=tickets, payments=payments)
