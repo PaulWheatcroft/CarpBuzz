@@ -125,13 +125,19 @@ def profile(user):
         {"_id": ObjectId(user)})
     catches = list(mongo.db.catch.fish.find({"account_id": session["user"]}))
     total_fish_weight = 0
-    for catch in catches:
-        fish_weight = int(catch["weight"])
-        total_fish_weight = fish_weight + total_fish_weight
-        average_fish_weight = total_fish_weight/len(catches)
-    if session["user"]:
+    if len(catches) == 0:
+        average_fish_weight = 0
         return render_template("profile.html", account=account, catches=catches,
-        total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight)
+            total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight)
+
+    else:    
+        for catch in catches:
+            fish_weight = int(catch["weight"])
+            total_fish_weight = fish_weight + total_fish_weight
+            average_fish_weight = total_fish_weight/len(catches)
+        if session["user"]:
+            return render_template("profile.html", account=account, catches=catches,
+            total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight)
 
     return redirect(url_for("login"))
 
