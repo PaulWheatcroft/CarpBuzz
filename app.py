@@ -670,6 +670,27 @@ def add_fish(report_id):
             return redirect(url_for("get_fisheries"))
 
 
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        contact_form = {
+            "email": request.form.get("email"),
+            "heading": request.form.get("heading"),
+            "text": request.form.get("contact_text")
+        }
+        mongo.db.messages.insert(contact_form)
+        flash('Your message has been sent. Thank you for getting in touch', 'info')
+        return render_template("contact.html")
+
+    return render_template("contact.html")
+
+
+@app.route("/messages")
+def messages():
+    messages = list(mongo.db.messages.find())
+    return render_template("messages.html", messages=messages)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

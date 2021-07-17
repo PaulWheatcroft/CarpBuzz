@@ -24,7 +24,7 @@
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="{{ url_for('add_fishery') }}">Add Fishery</a></li>
             <li><a href="{{ url_for('moderate_reviews') }}">Moderate Reviews</a></li>
-            <li><a href="#!">User Admin</a></li>
+            <li><a href="{{ url_for('messages') }}">Messages</a></li>
         </ul>
         {% endif %}
         <nav>
@@ -47,7 +47,7 @@
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -57,7 +57,7 @@
         <ul id="dropdown1-mobile" class="dropdown-content">
             <li><a href="{{ url_for('add_fishery') }}"><i class="fas fa-plus-square"></i>Add Fishery</a></li>
             <li><a href="{{ url_for('moderate_reviews') }}"><i class="fas fa-pen-square"></i>Moderate Reviews</a></li>
-            <li><a href="#!"><i class="fas fa-user-cog"></i>User Admin</a></li>
+            <li><a href="#!"><i class="fas fa-user-cog"></i>Messages</a></li>
         </ul>
 
         <!-- Sidebar Nav Element-->
@@ -79,7 +79,7 @@
             <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
-            <li><a href="#">Contact</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </header>
 

@@ -115,7 +115,7 @@ h4 {
     padding: 0px;
 }
 .card.small {
-    height: 375px;
+    min-height: 390px;
 }
 .card-content {
     text-align: center;
