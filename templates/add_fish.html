@@ -17,7 +17,7 @@
             on {{ catch.date.strftime('%d-%b-%Y') }}</l1>
         </div>
         {% endfor %}
-        <form method="POST" action="">
+        <form method="POST" action="{{ url_for('add_fish', report_id=report._id) }}">
           <div class="row">
          
             <div class="input-field col s12 m4 offset-m1">
@@ -56,11 +56,10 @@
             <a href="{{ url_for('add_fish', report_id=report._id) }}"
               class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
             <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}"
-              class="col s12 m4 btn cancel-button waves-effect blue darken-2">Close</a>
+              class="col s12 m4 btn cancel-button waves-effect blue darken-2">Save and Close</a>
           </div>
         </form>
       </div>
-      </form>
     </div>
   </div>
 </div>

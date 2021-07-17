@@ -87,7 +87,7 @@ def register():
         }
         mongo.db.accounts.insert_one(register)
 
-        flash("Your account has been registered. Please log in.", 'error')
+        flash("Your account has been registered. Please log in.", 'info')
         return redirect(url_for("login"))
 
     return render_template("register.html")
@@ -600,7 +600,7 @@ def edit_report(report_id):
                         }
                         }
                         mongo.db.catch.fish.update(catch, updated_catch)
-                        return redirect(url_for('reports', fishery_id=report["fishery_id"]))
+                return redirect(url_for('reports', fishery_id=report["fishery_id"]))
             
 
         report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
