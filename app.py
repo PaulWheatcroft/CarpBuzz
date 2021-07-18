@@ -19,10 +19,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# The websites initial view is a list of fisheries
 @app.route("/")
 @app.route("/get_fisheries")
 def get_fisheries():
+    # Fishery data is kept across 4 sub-collections
     fisheries = list(mongo.db.fisheries.contact.find())
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
@@ -31,7 +32,7 @@ def get_fisheries():
         "fisheries.html", fisheries=fisheries, facilities=facilities,
         tickets=tickets, payments=payments)
 
-
+# Using the checkboxes on the main fisheries page the results can be filtered
 @app.route("/filter_fisheries", methods=["GET", "POST"])
 def filter_fisheries():
     filter_list = []
@@ -68,7 +69,7 @@ def filter_fisheries():
 def clear_filter():
     return redirect(url_for("get_fisheries"))
 
-
+# Register for a user account
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -85,7 +86,8 @@ def register():
             "fname": request.form.get("fname").lower(),
             "lname": request.form.get("lname").lower(),
             "username": request.form.get("username"),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "is_admin": False
         }
         mongo.db.accounts.insert_one(register)
 
@@ -94,22 +96,25 @@ def register():
 
     return render_template("register.html")
 
-
+# User login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # Check if the email exists
+        # Get the existing account if it exists
         existing_user = mongo.db.accounts.find_one(
             {"email": request.form.get("email").lower()})
 
         if existing_user:
-            # check hashed passwords match
+            # check hashed passwords match (werkzeug)
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
+                # Add a session item "user" 
                 session["user"] = str(existing_user["_id"])
+                # If the user is an admin add this to the session object
                 if existing_user["is_admin"]:
                     session["is_admin"] = True
                 flash(f"Welcome {existing_user['username']}", 'info')
+                # The default is to return to the main fisheries page
                 return redirect(url_for("get_fisheries", user=session["user"]))
             else:
                 # Invalid password
@@ -117,17 +122,19 @@ def login():
                 return redirect(url_for("login"))
 
         else:
-            # Invalid password
+            # Invalid account
             flash("Incorrrect email and or password", 'error')
             return redirect(url_for("login"))
 
     return render_template("login.html")
 
-
+# User profile page
 @app.route("/profile/<user>", methods=["GET", "POST"])
 def profile(user):
     if request.method == "POST":
+        # Get the current user profile
         profile = mongo.db.accounts.find_one({"_id": ObjectId(user)})
+        # If a user changes items in the profile capture this and update the profile
         updated_profile = { "$set":
         {
             "email": request.form.get("email").lower(),
@@ -135,13 +142,14 @@ def profile(user):
             "lname": request.form.get("lname").lower(),
             "username": request.form.get("username"),
             "password": generate_password_hash(request.form.get("password")),
+            "is_admin": False
         }
         }
         mongo.db.accounts.update_one(profile, updated_profile)
 
-
     account = mongo.db.accounts.find_one(
         {"_id": ObjectId(user)})
+    # The profile page displays a summary of fish caught
     catches = list(mongo.db.catch.fish.find({"account_id": session["user"]}))
     sorted_catches = sorted(catches, key=lambda catch: catch["weight"], reverse=True)
     total_fish_weight = 0
@@ -153,15 +161,18 @@ def profile(user):
     else:    
         for catch in catches:
             fish_weight = int(catch["weight"])
+            # Sum the total weight caught
             total_fish_weight = fish_weight + total_fish_weight
+            # Average of the total weight caught
             average_fish_weight = total_fish_weight/len(catches)
+        # Make sure the person executing this function is a session user
         if session["user"]:
             return render_template("profile.html", account=account, catches=catches,
             total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight, sorted_catches=sorted_catches)
 
     return redirect(url_for("login"))
 
-
+# Logging a user out of the site
 @app.route("/logout")
 def logout():
     # Remove all sessions cookies
@@ -169,9 +180,10 @@ def logout():
     flash('You have been successfully logged out', 'info')
     return redirect(url_for("login"))
 
-
+# ################### Fishery Functions ######################
 @app.route("/add_fishery", methods=["GET", "POST"])
 def add_fishery():
+    # Make sure the person executing this function is an admin
     if "is_admin" in mongo.db.accounts.find_one({"_id": ObjectId(session["user"])}):
         if request.method == "POST":
             # create fishery contact dict
@@ -279,6 +291,7 @@ def add_fishery():
 
 @app.route("/edit_fishery/<fishery_id>", methods=["GET", "POST"])
 def edit_fishery(fishery_id):
+    # Make sure the person executing this function is an admin
     if "is_admin" in mongo.db.accounts.find_one({"_id": ObjectId(session["user"])}):
         if request.method == "POST":
             # create fishery contact dict
@@ -402,6 +415,7 @@ def edit_fishery(fishery_id):
 
 @app.route("/delete_fishery/<fishery_id>")
 def delete_fishery(fishery_id):
+    # Make sure the person executing this function is an admin
     if "is_admin" in mongo.db.accounts.find_one({"_id": ObjectId(session["user"])}):
         # add disable to the contact document to preserve report and catch history
         disable_fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})
@@ -418,7 +432,7 @@ def delete_fishery(fishery_id):
         flash('You are not authorised for this page', 'warning')
         return redirect(url_for("get_fisheries"))
 
-
+# ################### Review Functions ######################
 @app.route("/reviews/<fishery_id>")
 def reviews(fishery_id):
     fishery_contact = mongo.db.fisheries.contact.find_one(
@@ -439,6 +453,7 @@ def reviews(fishery_id):
 
 @app.route("/add_review/<fishery_id>", methods=["GET", "POST"])
 def add_review(fishery_id):
+    # Make sure the person executing this function is a session user
     if session["user"]:
         if request.method == "POST":
             review = {
@@ -469,6 +484,7 @@ def add_review(fishery_id):
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    # Make sure the person executing this function is a session user
     if session["user"] == fishery_review["account_id"]:
         if request.method == "POST":
             updated_review = {
@@ -501,20 +517,28 @@ def edit_review(review_id):
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    # Make sure the person executing this function is the person that wrote the review
+    # or an admin
     if session["user"] == fishery_review["account_id"] or session["is_admin"]:
     # delete the review
         mongo.db.reviews.remove({"_id": ObjectId(review_id)})
-        flash('Your review as been deleted', 'info')    
-        return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
+        flash('Your review as been deleted', 'info')
+        # If this is the user return them back to the reviews for that fishery
+        if session["user"] == fishery_review["account_id"]:
+            return redirect(url_for('reviews', fishery_id=fishery_review["fishery_id"]))
+        # If the delete was created by an admin take the admin back to the moderation page
+        elif session["is_admin"]:
+            return redirect(url_for('moderate_reviews'))
 
     else:
         flash('You are not authorised for this page', 'warning')
         return redirect(url_for("get_fisheries"))
 
-
+# Anyone can report a review to be reviewed due to its content
 @app.route("/report_review/<review_id>")
 def report_review(review_id):
     fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    # The following entry is added to the review document
     fishery_review["moderation"] = True
     mongo.db.reviews.update({"_id": ObjectId(review_id)}, fishery_review)
     flash("Thank you. This review has been submitted to the website administrators for review", 'info')    
@@ -523,9 +547,19 @@ def report_review(review_id):
 
 @app.route("/moderate_reviews")
 def moderate_reviews():
+    # Make sure the person executing this function is an admin
     if session["is_admin"]:
         fishery_reviews = list(mongo.db.reviews.find({"moderation": True}))
-        return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
+        if len(fishery_reviews) == 0:
+            return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
+
+        else:
+            accounts = []   
+            for account_id in fishery_reviews:
+                accounts.append({"account_id": account_id["account_id"]})
+            accounts_list = list(mongo.db.accounts.find({"$or":accounts}))
+            return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews,
+            accounts_list=accounts_list)
 
     else:
         flash('You are not authorised for this page', 'warning')
@@ -534,6 +568,7 @@ def moderate_reviews():
 
 @app.route("/keep_review/<review_id>")
 def keep_review(review_id):
+    # Make sure the person executing this function is an admin
     if session["is_admin"]:
         fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
         fishery_review.pop('moderation', True) 
@@ -541,7 +576,7 @@ def keep_review(review_id):
         flash("Moderation flag removed", 'success')    
         return redirect(url_for('moderate_reviews'))
 
-
+# ################### Report Functions ######################
 @app.route("/reports/<fishery_id>")
 def reports(fishery_id):
     fishery_contact = mongo.db.fisheries.contact.find_one(
@@ -563,6 +598,7 @@ def reports(fishery_id):
 
 @app.route("/add_report/<fishery_id>", methods=["GET", "POST"])
 def add_report(fishery_id):
+    # Make sure the person executing this function is a session user
     if session["user"]:
         if request.method == "POST":
             fishery_contact = mongo.db.fisheries.contact.find_one(
@@ -589,6 +625,7 @@ def add_report(fishery_id):
 @app.route("/edit_report/<report_id>", methods=["GET", "POST"])
 def edit_report(report_id):
     fishery_report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    # Make sure the person executing this function the person that created the report
     if session["user"] == fishery_report["account_id"]:
         if request.method == "POST":
             report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
@@ -648,6 +685,7 @@ def edit_report(report_id):
 @app.route("/delete_report/<report_id>")
 def delete_report(report_id):
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    # Make sure the person executing this function is the same person deleting it
     if session["user"] == report["account_id"]:
         mongo.db.catch.reports.delete_one({"_id": ObjectId(report_id)})
         mongo.db.catch.fish.delete_many({"report_id": report_id})
@@ -662,6 +700,7 @@ def delete_report(report_id):
 @app.route("/add_fish/<report_id>", methods=["GET", "POST"])
 def add_fish(report_id):
     report = mongo.db.catch.reports.find_one({"_id": ObjectId(report_id)})
+    # Make sure the person executing this function is the same person that created the report
     if session["user"] == report["account_id"]:
         if request.method == "POST":
             fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
@@ -692,7 +731,7 @@ def add_fish(report_id):
             flash('You are not authorised for this page', 'warning')
             return redirect(url_for("get_fisheries"))
 
-
+# ################### Contact and Message Functions ######################
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
@@ -716,6 +755,7 @@ def messages():
 
 @app.route("/hide_message/<message_id>")
 def hide_message(message_id):
+    # Make sure the person executing this function is an admin
     if session["is_admin"]:
         message = mongo.db.messages.find_one({"_id": ObjectId(message_id)})
         message["hidden"] = True

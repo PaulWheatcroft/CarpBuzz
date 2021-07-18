@@ -27,7 +27,7 @@
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                         {% endif %}
-                        <p>by {{ review.username }} on the {{ review.date.strftime('%d-%b-%Y') }}</p>
+                        <p>by {{ review.account_id }} on the {{ review.date.strftime('%d-%b-%Y') }}</p>
                         <h2>{{ review.heading }}</h2>
                         <p>{{ review.main_text }}</p>
                         <h3><i class="fas fa-check-circle green-text"></i> I liked...</h3>
