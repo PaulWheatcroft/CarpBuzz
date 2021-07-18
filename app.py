@@ -49,10 +49,16 @@ def filter_fisheries():
         filter_list.append({"county": "devon"})
     if bool(request.form.get("cornwall")):
         filter_list.append({"county": "cornwall"})
-    fisheries = list(mongo.db.fisheries.contact.find({"$or":filter_list}))
+    if len(filter_list) == 0:
+        fisheries = list(mongo.db.fisheries.contact.find())
+
+    else:
+        fisheries = list(mongo.db.fisheries.contact.find({"$or":filter_list}))
+
     facilities = list(mongo.db.fisheries.facilities.find())
     tickets = list(mongo.db.fisheries.tickets.find())
     payments = list(mongo.db.fisheries.payment.find())
+
     return render_template(
         "fisheries.html", fisheries=fisheries, facilities=facilities,
         tickets=tickets, payments=payments, filter_list=filter_list)
