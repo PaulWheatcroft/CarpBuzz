@@ -160,7 +160,7 @@
                         <!-- Lake type -->
                         <h3 class="center-align">Lake Type</h3>
                         <div class="input-field col s12 m4">
-                            <select name="lake_type">
+                            <select name="lake_type" id="lake_type" required>
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="single">Single Lake</option>
                                 <option value="multiple">Multiple Lakes</option>
@@ -168,7 +168,7 @@
                             <label for="lake_type">Lake Type</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <select name="stock_size">
+                            <select name="stock_size" id="stock_size" required>
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="20">20lbs</option>
                                 <option value="30">30lbs</option>
@@ -180,7 +180,7 @@
                             <label for="stock_size">Stock Size</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <select name="rods">
+                            <select name="rods" id="rods" required>
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="One">One</option>
                                 <option value="Two">Two</option>
@@ -274,7 +274,6 @@
                     </div>
                 </form>
             </div>
-            </form>
         </div>
     </div>
 </div>
