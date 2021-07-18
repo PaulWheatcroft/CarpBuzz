@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if session["user"] %}
 <div class="container">
   <h1>Edit your review for {{ fishery_contact.name }}</h1>
   <!-- Modal Structure -->
@@ -80,6 +81,5 @@
     </div>
   </div>
 </div>
-
-
+{% endif %}
 {% endblock %}

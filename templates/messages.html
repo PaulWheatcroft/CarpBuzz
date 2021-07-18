@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if session["is_admin"] %}
 <div class="container">
     <h1>All Open Messages</h1>
     {% if session.is_admin %}
@@ -26,5 +27,5 @@
         {% endif %}
     {% endif %}
 </div>
-
+{% endif %}
 {% endblock %}

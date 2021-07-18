@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if session["user"] %}
 <div class="container">
     <h1>{{ account.username }}'s Profile</h1>
 
@@ -93,5 +94,5 @@
     </div>
 </div>
 
-
+{% endif %}
 {% endblock %}

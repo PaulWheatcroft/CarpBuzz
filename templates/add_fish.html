@@ -1,44 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if session["user"] %}
 <div class="container">
   <h1>Add your catches to the report for {{ fishery_contact.name }}</h1>
   <div class="row">
     <div class="col s12">
       <div class="card-panel">
+        <!-- report information -->
         <h2 class="center-align">{{ report.name }}</h2>
         <h4 class="center-align">{{ report.date.strftime('%d-%b-%Y') }}</h4>
         <p class="center-align">{{ report.notes }}</p>
+        <!-- show individual fish caught -->
         {% for catch in report_catches %}
         <div class="row catch-row">
           <l1 class="col s12 center-align">
-            {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
+            {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0,
+            'floor')) * 16)|int }}oz
             {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}
             on {{ catch.date.strftime('%d-%b-%Y') }}</l1>
         </div>
         {% endfor %}
+        <!-- form to add individual fish as they are caught -->
         <form method="POST" action="{{ url_for('add_fish', report_id=report._id) }}">
           <div class="row">
-         
             <div class="input-field col s12 m4 offset-m1">
               <select name="fish" name="fish" required>
-                  <option value="" disabled selected>Choose your option</option>
-                  <option value="Common">Common</option>
-                  <option value="Fully Scaled">Fully Scaled</option>
-                  <option value="Leather">Leather</option>
-                  <option value="Linear">Linear</option>
-                  <option value="Mirror">Mirror</option>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="Common">Common</option>
+                <option value="Fully Scaled">Fully Scaled</option>
+                <option value="Leather">Leather</option>
+                <option value="Linear">Linear</option>
+                <option value="Mirror">Mirror</option>
               </select>
               <label for="fish">Carp Type</label>
             </div>
-
-
             <div class="input-field col s6 m1">
               <input id="weight_lbs" name="weight_lbs" type="number" class="validate" pattern="([0-9]+)" required>
               <label for="weight_lbs">lbs</label>
             </div>
             <div class="input-field col s6 m1">
-              <input id="weight_oz" name="weight_oz" type="number" class="validate" min="0" max="15" pattern="([0-9]+)" required>
+              <input id="weight_oz" name="weight_oz" type="number" class="validate" min="0" max="15" pattern="([0-9]+)"
+                required>
               <label for="weight_oz">oz</label>
             </div>
             <div class="input-field col s6 m2">
@@ -52,9 +54,9 @@
           </div>
           <div class="row">
             <a href="{{ url_for('reports', fishery_id=fishery_contact._id) }}"
-              class="col s12 m4 btn cancel-button waves-effect blue darken-2">Save Report and Close</a>           
+              class="col s12 m4 btn cancel-button waves-effect blue darken-2">Save Report and Close</a>
             <a href="{{ url_for('add_fish', report_id=report._id) }}"
-              class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>            
+              class="col s12 m4 btn cancel-button waves-effect amber darken-2">Cancel</a>
             <button type="submit" class="col s12 m4 btn submit-button waves-effect light-green darken-2">Add
               Catch</button>
           </div>
@@ -63,5 +65,5 @@
     </div>
   </div>
 </div>
-
+{% endif %}
 {% endblock %}

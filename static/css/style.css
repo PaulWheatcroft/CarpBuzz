@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
-
-body {
-    color: #383838;
-    
-}
+/**************************************************** General Site Wide CSS ***/
 .desktop-only {
     visibility: hidden;
 }
@@ -43,6 +39,17 @@ h4 {
 .input-row {
     padding-top: 20px;
 }
+.bold-text {
+    font-family: 'Otomanopee One', sans-serif;
+    font-size: 1.5em;
+}
+.row {
+    margin: 0;
+}
+.row .col {
+    padding: 0 10px 0 10px;
+}
+/**************************************************** Flashes ***/
 .flashes { 
     z-index: 1;
     position: absolute;
@@ -66,23 +73,11 @@ h4 {
 .success {
     background-color: #5db899;
 }
-.bold-text {
-    font-family: 'Otomanopee One', sans-serif;
-    font-size: 1.5em;
-}
+
 .submit-button {
     background-color: #689DA8;
 }
-.center-button {
-    margin-left: auto;
-    margin-right: auto;
-}
-.row {
-    margin: 0;
-}
-.row .col {
-    padding: 0 10px 0 10px;
-}
+/**************************************************** Navigation ***/
 .nav-wrapper{
     background-color: #537e86;
 }
@@ -115,6 +110,7 @@ h4 {
 .dropdown-content {
     background-color: #f7f7f7;
 }
+/**************************************************** card styling ***/
 .card .card-content {
     padding: 0px;
 }
@@ -156,6 +152,7 @@ h4 {
     transition: color .3s ease;
     text-transform: uppercase;
 }
+/**************************************************** Search and filter area styling card ***/
 .search-row {
     background-image: url(/static/images/cp-background2.jpg);
     background-position: right;
@@ -187,6 +184,7 @@ h4 {
 .filter-button {
     background-color: #89A857;
 }
+/**************************************************** Main fishery results and card ***/
 .fishery-results {
     padding-top: 20px;
 }
@@ -274,15 +272,14 @@ h4 {
 .payment-list {
     color: #faf9ae;
 }
+/**************************************************** Styling of fish caught used throught the site ***/
 .catch-row {
     background-color: #f7f7f7;
     margin-bottom: 5px;
     padding: 10px 0 10px 0;
     border-radius: 5px;
 }
-.materialize-textarea {
-    min-height: 50px;
-}
+/**************************************************** Specific css for the review page ***/
 .rating-star i {
     color: #ece928;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);

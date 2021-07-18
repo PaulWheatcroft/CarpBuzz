@@ -19,7 +19,9 @@ The following personas and user stories have been identified:
 >
 
 - As someone who wants to go carp fishing, I can view a directory of fisheries in the South West of England
-- As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on my requirements
+- As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on location
+- As someone who wants to go carp fishing, I can view any reviews a fishery has
+- As someone who wants to go carp fishing, I can view any catch reports a fishery has
 
 >
 > Registered Users
@@ -27,18 +29,22 @@ The following personas and user stories have been identified:
 
 - As someone who wants to go carp fishing, who is registered to the site, I can leave a review of a fishery
     - I can edit my review at a later date
-    - I can delete my review
+    - I can delete my reviews
 - As someone who wants to go carp fishing, who is registered to the site, I can log the fish I catch on a fishing trip to one of the fisheries in the directory
-- As an administrator of the site, I can add new fisheries to the directory
-- I can amend existing fishery entries
-    - I can delete fisheries from the directory
+    - I can amend this report at a later dade
+    - I can delete my reports
 
 >
 > Administrator
 >
-
+- As an administrator of the site, I can add new fisheries to the directory
+- As an administrator of the site,I can amend existing fishery entries
+- As an administrator of the site,I can delete fisheries from the directory
 - An administrator of the site, I can moderate fishery reviews when notified by someone who uses the “report review” function.
     - I can deleted the review
+    - I can remove the review from moderation should it be OK to do so
+- As an administrator of the site, I can view any messages that have been sent using the contact form
+
 
 
 ## Design Choices

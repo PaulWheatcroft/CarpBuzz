@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if session["is_admin"] %}
 <div class="container">
     <h1 class="center-align">Edit Fishery</h1>
     <!-- Modal Structure -->
@@ -406,5 +407,5 @@
     </div>
 
 </div>
-
+{% endif %}
 {% endblock %}
