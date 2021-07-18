@@ -11,21 +11,22 @@
         <h4 class="center-align">{{ report.date.strftime('%d-%b-%Y') }}</h4>
         <p class="center-align">{{ report.notes }}</p>
         <!-- show individual fish caught -->
+        <ul class="row">
         {% for catch in report_catches %}
-        <div class="row catch-row">
-          <!-- because weight is store in pounds this needs to be converted back out to pounds and ounces -->
-          <l1 class="col s12 center-align">
-            {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0,
-            'floor')) * 16)|int }}oz
-            {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}
-            on {{ catch.date.strftime('%d-%b-%Y') }}</l1>
-        </div>
+        <!-- because weight is store in pounds this needs to be converted back out to pounds and ounces -->
+        <li class="col s12 center-align catch-row">
+          {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0,
+          'floor')) * 16)|int }}oz
+          {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }}
+          on {{ catch.date.strftime('%d-%b-%Y') }}
+        </li>
         {% endfor %}
+        </ul>
         <!-- form to add individual fish as they are caught -->
         <form method="POST" action="{{ url_for('add_fish', report_id=report._id) }}">
           <div class="row">
             <div class="input-field col s12 m4 offset-m1">
-              <select name="fish" name="fish" required>
+              <select name="fish" id="fish" required>
                 <option value="" disabled selected>Choose your option</option>
                 <option value="Common">Common</option>
                 <option value="Fully Scaled">Fully Scaled</option>
@@ -36,12 +37,11 @@
               <label for="fish">Carp Type</label>
             </div>
             <div class="input-field col s6 m1">
-              <input id="weight_lbs" name="weight_lbs" type="number" class="validate" pattern="([0-9]+)" required>
+              <input id="weight_lbs" name="weight_lbs" type="number" class="validate" required>
               <label for="weight_lbs">lbs</label>
             </div>
             <div class="input-field col s6 m1">
-              <input id="weight_oz" name="weight_oz" type="number" class="validate" min="0" max="15" pattern="([0-9]+)"
-                required>
+              <input id="weight_oz" name="weight_oz" type="number" class="validate" min="0" max="15" required>
               <label for="weight_oz">oz</label>
             </div>
             <div class="input-field col s6 m2">

@@ -103,6 +103,7 @@ A Figma wireframe for each page can be found in the links Below.
 - [Figma](https://www.figma.com/): Figma was used to create the wireframes during the design process
 
 ## Testing
+Python code was tested for PEP8 compliancy with no issues http://pep8online.com/checkresult
 
 ### Testing User Stories from User Experience (UX) Section
 
