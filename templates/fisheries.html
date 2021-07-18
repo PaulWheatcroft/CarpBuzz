@@ -185,7 +185,7 @@
                 <div class="row main-facilities">
                     <div class="col s4 main-facility">
                         <i class="fas fa-water"></i>
-                        {% if facility.lake == "single" %}
+                        {% if facility.lake_type == "single" %}
                         <p>{{ facility.lake_type|capitalize }} Lake</p>
                         {% else %}
                         <p>{{ facility.lake_type|capitalize }} Lakes</p>
