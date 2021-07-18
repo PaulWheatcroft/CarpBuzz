@@ -7,10 +7,10 @@
         <a href="{{ url_for('add_report', fishery_id=fishery_contact._id) }}"
             class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Create a Report</a>
     </div>
+    {% endif %}
     <div class="row center-align">
         <a href="javascript:window.history.back();"><i class="far fa-arrow-alt-circle-left"></i> Back</a>
-    </div>    
-    {% endif %}
+    </div>  
     {% for report in reports %}
     <div class="row">
         <div class="col s12 m8 offset-m2 card center-align" data-aos="fade-in">

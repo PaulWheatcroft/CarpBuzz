@@ -7,10 +7,10 @@
         <a href="{{ url_for('add_review', fishery_id=fishery_contact._id) }}"
             class="btn waves-effect  light-green darken-2 col s12 m2 offset-m5">Add a Review</a>
     </div>
+    {% endif %}
     <div class="row center-align">
         <a href="javascript:window.history.back();"><i class="far fa-arrow-alt-circle-left"></i> Back</a>
     </div> 
-    {% endif %}
     {% if reviews|length == 0 %}
         <h3 class="center-align">There are no reviews for this fishery</h3>
     {% else %}
