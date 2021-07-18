@@ -556,7 +556,7 @@ def moderate_reviews():
         else:
             accounts = []   
             for account_id in fishery_reviews:
-                accounts.append({"account_id": account_id["account_id"]})
+                accounts.append({"_id": ObjectId(account_id["account_id"])})
             accounts_list = list(mongo.db.accounts.find({"$or":accounts}))
             return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews,
             accounts_list=accounts_list)

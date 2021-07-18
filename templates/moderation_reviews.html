@@ -2,7 +2,7 @@
 {% block content %}
 {% if session["is_admin"] %}
 <div class="container">
-    <h1>All Review reported for Moderation</h1>
+    <h1>All Reviews reported for Moderation</h1>
     {% if session.is_admin %}
         {% if fishery_reviews|length == 0 %}
             <h2 class="center-align">There are No Reviews Needing Moderation</h2>
@@ -10,7 +10,7 @@
             {% for review in fishery_reviews %}
                 {% if review.moderation %}
                 <div class="row">
-                    <div class="col s12 m8 offset-m2 card rating-star" data-aos="fade-in">
+                    <div class="col s12 m8 offset-m2 card rating-star" data-aos="fade-in" data-aos-offset="50">
                         {% if review.rating == 1 %}
                         <i class="fas fa-star"></i>
                         {% endif %}
@@ -26,8 +26,14 @@
                         {% if review.rating == 5 %}
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
-                        {% endif %}
+                        {% endif %}                        
                         <p>by {{ review.account_id }} on the {{ review.date.strftime('%d-%b-%Y') }}</p>
+                        {% for account in accounts_list %}
+                            {% if account._id|string == review.account_id|string %}
+                            <p>{{ account.username }}</p>
+                            <p>{{ account.email }}</p>
+                            {% endif %}
+                        {% endfor %}
                         <h2>{{ review.heading }}</h2>
                         <p>{{ review.main_text }}</p>
                         <h3><i class="fas fa-check-circle green-text"></i> I liked...</h3>
