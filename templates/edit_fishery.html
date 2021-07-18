@@ -197,7 +197,7 @@
                         <!-- Lake type -->
                         <h3 class="center-align">Lake Type</h3>
                         <div class="input-field col s12 m4">
-                            <select name="lake_type" required>
+                            <select name="lake_type" id="lake_type" required>
                                 <option value="" disabled>Choose your option</option>
                                 {% if fishery_facilities.lake_type == "single" %}
                                 <option value="single" selected>Single Lake</option>
@@ -210,7 +210,7 @@
                             <label for="lake_type">Lake Type</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <select name="stock_size" required>
+                            <select name="stock_size" id="stock_size" required>
                                 <option value="" disabled>Choose your option</option>
                                 {% if fishery_facilities.lake_type == "20" %}
                                 <option value="20" selected>20lbs</option>
@@ -246,7 +246,7 @@
                             <label for="stock_size">Stock Size</label>
                         </div>
                         <div class="input-field col s12 m4">
-                            <select name="rods" required>
+                            <select name="rods" id="rods" required>
                                 <option value="" disabled>Choose your option</option>
                                 {% if fishery_facilities.rods == "One" %}
                                 <option value="One" selected>One</option>
@@ -403,7 +403,6 @@
                     </div>
                 </form>
             </div>
-            </form>
         </div>
     </div>
 

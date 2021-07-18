@@ -51,16 +51,16 @@
           <ul id="catch_list">
             {% for catch in report_catches %}
             {% if report._id|string == catch.report_id %}
-            <div class="row catch-row">
-              <li>
+
+              <li class="row catch-row">
 
                 <div class="input-field col s6 m1">
-                  <input id="{{ catch._id }}weight_lbs" name="{{ catch._id }}weight_lbs" type="number" class="validate" pattern="([0-9]+)" 
+                  <input id="{{ catch._id }}weight_lbs" name="{{ catch._id }}weight_lbs" type="number" class="validate"
                   value="{{ (catch.weight/16)|round(0, 'floor')|int }}" required>
                   <label for="{{ catch._id }}weight_lbs">lbs</label>
                 </div>
                 <div class="input-field col s6 m1">
-                  <input id="{{ catch._id }}weight_oz" name="{{ catch._id }}weight_oz" type="number" class="validate" min="0" max="15" pattern="([0-9]+)" 
+                  <input id="{{ catch._id }}weight_oz" name="{{ catch._id }}weight_oz" type="number" class="validate" min="0" max="15"
                   value="{{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}" required>
                   <label for="{{ catch._id }}weight_oz">oz</label>
                 </div>
@@ -69,33 +69,33 @@
                   <select name="{{ catch._id }}fish" id="{{ catch._id }}fish" required>
                       <option value="" disabled selected>Choose your option</option>
                       {% if catch.fish == "Common" %}
-                      <option value="Common" selected>Common</option>
+                      <option value="{{ catch._id }}Common" selected>Common</option>
                       {% else %}
-                      <option value="Common">Common</option>
+                      <option value="{{ catch._id }}Common">Common</option>
                       {% endif %}
 
                       {% if catch.fish == "Fully Scaled" %}
-                      <option value="Fully Scaled" selected>Fully Scaled</option>
+                      <option value="{{ catch._id }}Fully Scaled" selected>Fully Scaled</option>
                       {% else %}
-                      <option value="Fully Scaled">Fully Scaled</option>
+                      <option value="{{ catch._id }}Fully Scaled">Fully Scaled</option>
                       {% endif %}
 
                       {% if catch.fish == "Leather" %}
-                      <option value="Leather" selected>Leather</option>
+                      <option value="{{ catch._id }}Leather" selected>Leather</option>
                       {% else %}
-                      <option value="Leather">Leather</option>
+                      <option value="{{ catch._id }}Leather">Leather</option>
                       {% endif %}
 
                       {% if catch.fish == "Linear" %}
-                      <option value="Linear" selected>Linear</option>
+                      <option value="{{ catch._id }}Linear" selected>Linear</option>
                       {% else %}
-                      <option value="Linear">Linear</option>
+                      <option value="{{ catch._id }}Linear">Linear</option>
                       {% endif %}
 
                       {% if catch.fish == "Mirror" %}
-                      <option value="Mirror" selected>Mirror</option>
+                      <option value="{{ catch._id }}Mirror" selected>Mirror</option>
                       {% else %}
-                      <option value="Mirror">Mirror</option>
+                      <option value="{{ catch._id }}Mirror">Mirror</option>
                       {% endif %}
                   </select>
                   <label for="{{ catch._id }}fish">Carp Type</label>
@@ -117,8 +117,7 @@
                     Delete Entry
                   </label>
                 </div>
-              </li><br>
-            </div>
+              </li>
             {% endif %}
             {% endfor %}
           </ul>
