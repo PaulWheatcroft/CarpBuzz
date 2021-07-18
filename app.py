@@ -143,6 +143,7 @@ def profile(user):
     account = mongo.db.accounts.find_one(
         {"_id": ObjectId(user)})
     catches = list(mongo.db.catch.fish.find({"account_id": session["user"]}))
+    sorted_catches = sorted(catches, key=lambda catch: catch["weight"], reverse=True)
     total_fish_weight = 0
     if len(catches) == 0:
         average_fish_weight = 0
@@ -156,7 +157,7 @@ def profile(user):
             average_fish_weight = total_fish_weight/len(catches)
         if session["user"]:
             return render_template("profile.html", account=account, catches=catches,
-            total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight)
+            total_fish_weight=total_fish_weight, average_fish_weight=average_fish_weight, sorted_catches=sorted_catches)
 
     return redirect(url_for("login"))
 

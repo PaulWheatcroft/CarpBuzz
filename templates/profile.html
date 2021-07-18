@@ -7,17 +7,22 @@
         <div class="col s12 card-panel">
             <div class="row center-align">
                 <h2>My Stats</h2>
-                    {% if catches|length == 0 %}
+                    {% if sorted_catches|length == 0 %}
                     <p>You haven't registered that you've caught anything?</p>
                     <p>Get out there and get fishing!!!</p>
                     {% else %}
-                    <p>In total you have caught {{ catches|length }} fish</p>
-                    <p>This is a total weight of {{ (total_fish_weight/16)|round(0, 'floor')|int }}lbs and 
-                        {{ (((total_fish_weight/16) - (total_fish_weight/16)|round(0, 'floor')) * 16)|int }}oz
+                    <p>In total you have caught <strong class="bold-text">{{ sorted_catches|length }}</strong> fish</p>
+                    <p>This is a total weight of <strong class="bold-text">{{ (total_fish_weight/16)|round(0, 'floor')|int }}lbs</strong> and 
+                        <strong class="bold-text">{{ (((total_fish_weight/16) - (total_fish_weight/16)|round(0, 'floor')) * 16)|int }}oz</strong>
                     </p>
                     <p>
-                        This is an average weight of {{ (average_fish_weight/16)|round(0, 'floor')|int }}lbs and 
-                        {{ (((average_fish_weight/16) - (average_fish_weight/16)|round(0, 'floor')) * 16)|int }}oz
+                        This is an average weight of <strong class="bold-text">{{ (average_fish_weight/16)|round(0, 'floor')|int }}lbs</strong> and 
+                        <strong class="bold-text">{{ (((average_fish_weight/16) - (average_fish_weight/16)|round(0, 'floor')) * 16)|int }}oz</strong>
+                    </p>
+                    <p>
+                        The biggest fish you've caught was a <strong class="bold-text">{{ sorted_catches[0]["fish"] }}</strong> Carp weighing in at
+                        <strong class="bold-text">{{ (sorted_catches[0]["weight"]/16)|round(0, 'floor')|int }}lbs</strong> and 
+                        <strong class="bold-text">{{ (((sorted_catches[0]["weight"]/16) - (sorted_catches[0]["weight"]/16)|round(0, 'floor')) * 16)|int }}oz</strong>
                     </p>
                     {% endif %}
             </div>
