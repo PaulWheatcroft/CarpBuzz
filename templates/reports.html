@@ -30,16 +30,14 @@
                 <ul class="col s10 offset-s1">
                     {% for catch in fishery_catches %}
                     {% if report._id|string == catch.report_id %}
-                    <div class="row catch-row">
+                    <li class="row catch-row">
                         <!-- because weight is store in pounds this needs to be converted
                             back out to pounds and ounces -->
-                        <l1>
                             {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) -
                             (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
                             {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the
                             {{ catch.date.strftime('%d-%b-%Y') }}
-                        </l1>
-                    </div>
+                    </li>
                     {% endif %}
                     {% endfor %}
                 </ul>
