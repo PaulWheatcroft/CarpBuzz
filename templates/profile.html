@@ -28,7 +28,7 @@
                 <h2>My Details</h2>
                 <h3>Section still being developed</h3>
                 <div class="row">
-                    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+                    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('profile', user=account._id) }}">
                         <div class="card-panel">
                             <!-- First name -->
                             <div class="row">
@@ -69,7 +69,7 @@
                                 <div class="input-field col s12">
                                 <div class="input-field col s12">
                                     <input id="password" name="password" type="password" minlength="8"
-                                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" class="validate" value="{{ account.password }}" required>
+                                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" class="validate" required>
                                     <label for="password">Password</label>
                                 </div>
                             </div>

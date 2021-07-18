@@ -79,8 +79,7 @@ def register():
             "fname": request.form.get("fname").lower(),
             "lname": request.form.get("lname").lower(),
             "username": request.form.get("username"),
-            "password": generate_password_hash(request.form.get("password")),
-            "is_admin": bool(False)
+            "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.accounts.insert_one(register)
 
@@ -121,6 +120,20 @@ def login():
 
 @app.route("/profile/<user>", methods=["GET", "POST"])
 def profile(user):
+    if request.method == "POST":
+        profile = mongo.db.accounts.find_one({"_id": ObjectId(user)})
+        updated_profile = { "$set":
+        {
+            "email": request.form.get("email").lower(),
+            "fname": request.form.get("fname").lower(),
+            "lname": request.form.get("lname").lower(),
+            "username": request.form.get("username"),
+            "password": generate_password_hash(request.form.get("password")),
+        }
+        }
+        mongo.db.accounts.update_one(profile, updated_profile)
+
+
     account = mongo.db.accounts.find_one(
         {"_id": ObjectId(user)})
     catches = list(mongo.db.catch.fish.find({"account_id": session["user"]}))
