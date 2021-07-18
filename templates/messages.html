@@ -4,27 +4,28 @@
 <div class="container">
     <h1>All Open Messages</h1>
     {% if session.is_admin %}
-        {% if messages|length == 0 %}
-            <h2 class="center-align">There are no messages to view</h2>
-        {% else %}
-            {% for message in messages %}
-                {% if not message.hidden %}
-                <div class="row">
-                    <div class="col s12 m8 offset-m2 card" data-aos="fade-in">
-                        <h3>{{ message.email }}</h3>
-                        <h3>{{ message.heading}}</h3>
-                        <p>{{ message.text }}</p>
-                       
-            
-                        <div class="row">
-                            <a href="{{ url_for('hide_message', message_id=message._id) }}" class="btn waves-effect blue darken-2 col s12">Hide Message</a>
-                        </div>
-                        
-                    </div>
-                </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+    {% if messages|length == 0 %}
+    <!-- if there are no message to view -->
+    <h2 class="center-align">There are no messages to view</h2>
+    {% else %}
+    <!-- else loop through the message and show those that haven't been passed the hidden key -->
+    {% for message in messages %}
+    {% if not message.hidden %}
+    <div class="row">
+        <div class="col s12 m8 offset-m2 card" data-aos="fade-in">
+            <h3>{{ message.email }}</h3>
+            <h3>{{ message.heading}}</h3>
+            <p>{{ message.text }}</p>
+            <div class="row">
+                <a href="{{ url_for('hide_message', message_id=message._id) }}"
+                    class="btn waves-effect blue darken-2 col s12">Hide Message</a>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     {% endif %}
 </div>
 {% endif %}

@@ -554,6 +554,8 @@ def moderate_reviews():
             return render_template("moderation_reviews.html", fishery_reviews=fishery_reviews)
 
         else:
+            # The details for the accounts that created the reviews
+            # needs to be retrieved and passed to the HTML file
             accounts = []   
             for account_id in fishery_reviews:
                 accounts.append({"_id": ObjectId(account_id["account_id"])})
@@ -571,6 +573,7 @@ def keep_review(review_id):
     # Make sure the person executing this function is an admin
     if session["is_admin"]:
         fishery_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        # Remove the moderation entry for the document
         fishery_review.pop('moderation', True) 
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, fishery_review)
         flash("Moderation flag removed", 'success')    
@@ -611,6 +614,7 @@ def add_report(fishery_id):
                 "notes": request.form.get("report_notes")
             }
             mongo.db.catch.reports.insert_one(report)
+            # When a report is added the user is passed to the add_fish function
             return redirect(url_for('add_fish', report_id=report["_id"]))
 
         fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(fishery_id)})    
@@ -652,6 +656,8 @@ def edit_report(report_id):
                         mongo.db.catch.fish.delete_one({"_id": ObjectId(str_catch_id)})
 
                     else:
+                        # In carp fishing weight is measure in pounds and ounces
+                        # The most efficient way to store this measure is in ounces 
                         weight_lbs = int(request.form.get(f"{str_catch_id}weight_lbs")) *16
                         weight_oz = int(request.form.get(f"{str_catch_id}weight_oz"))
                         weight = weight_oz + weight_lbs
@@ -704,6 +710,8 @@ def add_fish(report_id):
     if session["user"] == report["account_id"]:
         if request.method == "POST":
             fishery_contact = mongo.db.fisheries.contact.find_one({"_id": ObjectId(report["fishery_id"])})
+            # In carp fishing weight is measure in pounds and ounces
+            # The most efficient way to store this measure is in ounces
             weight_lbs = int(request.form.get("weight_lbs")) *16
             weight_oz = int(request.form.get("weight_oz"))
             weight = weight_oz + weight_lbs

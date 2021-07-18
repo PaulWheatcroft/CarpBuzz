@@ -12,46 +12,47 @@
         <a href="javascript:window.history.back();"><i class="far fa-arrow-alt-circle-left"></i> Back</a>
     </div>
     {% if reports|length == 0 %}
-        <h3 class="center-align">There are no reports for this fishery</h3>
+    <h3 class="center-align">There are no reports for this fishery</h3>
     {% else %}
-        {% for report in reports %}
-        <div class="row">
-            <div class="col s12 m8 offset-m2 card center-align" data-aos="fade-in">
-                <div class="container">
-                    
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <h2>{{ report.name }}</h2>
-                        <h3>by {{ report.username }} on the {{ report.date.strftime('%d-%b-%Y') }}</h3>
-                        <p>{{ report.notes }}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <ul class="col s10 offset-s1">
-                        {% for catch in fishery_catches %}
-                        {% if report._id|string == catch.report_id %}
-                        <div class="row catch-row">
-                            <l1>
-                                {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) - (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
-                                {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the
-                                {{ catch.date.strftime('%d-%b-%Y') }}
-                            </l1>
-                        </div>
-                    
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% if report.account_id == session["user"] %}
-                <div class="row">
-                    <a href="{{ url_for('edit_report', report_id=report._id) }}"
-                        class="btn waves-effect yellow darken-2 col s12">Edit this Report</a>
-                </div>
-                {% endif %}
+    {% for report in reports %}
+    <div class="row">
+        <div class="col s12 m8 offset-m2 card center-align" data-aos="fade-in">
+            <div class="container">
             </div>
+            <div class="row">
+                <div class="col s12">
+                    <h2>{{ report.name }}</h2>
+                    <h3>by {{ report.username }} on the {{ report.date.strftime('%d-%b-%Y') }}</h3>
+                    <p>{{ report.notes }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <ul class="col s10 offset-s1">
+                    {% for catch in fishery_catches %}
+                    {% if report._id|string == catch.report_id %}
+                    <div class="row catch-row">
+                        <!-- because weight is store in pounds this needs to be converted
+                            back out to pounds and ounces -->
+                        <l1>
+                            {{ (catch.weight/16)|round(0, 'floor')|int }}lbs {{ (((catch.weight/16) -
+                            (catch.weight/16)|round(0, 'floor')) * 16)|int }}oz
+                            {{ catch.fish }} at {{ catch.time.strftime('%H:%M') }} on the
+                            {{ catch.date.strftime('%d-%b-%Y') }}
+                        </l1>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if report.account_id == session["user"] %}
+            <div class="row">
+                <a href="{{ url_for('edit_report', report_id=report._id) }}"
+                    class="btn waves-effect yellow darken-2 col s12">Edit this Report</a>
+            </div>
+            {% endif %}
         </div>
-        {% endfor %}
+    </div>
+    {% endfor %}
     {% endif %}
 </div>
 

@@ -6,11 +6,13 @@
     <div class="row">
         <div class="col s12">
             <div class="card-panel">
+                <!-- form for submitting a new fishery -->
                 <form method="POST" action="{{ url_for('add_fishery') }}">
                     <!-- Fishery Contact Details -->
                     <h2 class="center-align">Fishery Contact Details</h2>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- regex used for additional validation -->
                             <input id="name" name="name" type="text" minlength="2" maxlength="50"
                                 pattern="^[a-zA-Z0-9_()]+( [a-zA-Z0-9_()]+)*$" class="validate" required>
                             <label for="name">Fishery Name</label>
@@ -18,6 +20,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- regex used for additional validation -->
                             <input id="address" name="address" type="text" minlength="2" maxlength="50"
                                 pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
                             <label for="address">First Line of the Address</label>
@@ -25,6 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- regex for used for additional validation -->
                             <input id="town" name="town" type="text" minlength="2" maxlength="50"
                                 pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*{2,50}$" class="validate" required>
                             <label for="town">Town</label>
@@ -32,6 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- regex used for additional validation -->
                             <input id="county" name="county" type="text" minlength="2" maxlength="50"
                                 pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*{2,50}$" class="validate" required>
                             <label for="county">County</label>
@@ -39,6 +44,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1 off-white">
+                            <!-- postcode regex used for additional validation -->
                             <input id="postcode" name="postcode" type="text" minlength="5" maxlength="10"
                                 pattern="^[A-Z0-9_]+( [A-Z0-9_]+)*{2,50}$" class="validate" required>
                             <label for="postcode">Postcode</label>
@@ -46,6 +52,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- Specific numeric regex used for additional validation -->
                             <input id="telephone" name="telephone" type="tel" minlength="10" maxlength="20"
                                 pattern="^[0-9_]+( [0-9_]+)*{10,20}$" class="validate" required>
                             <label for="telephone">Telephone</label>
@@ -53,6 +60,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- Specific webaddress regex used for additional validation -->
                             <input id="website" name="website" type="text" minlength="1"
                                 pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                                 class="validate">
@@ -61,6 +69,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m10 offset-m1">
+                            <!-- Specific webaddress regex used for additional validation -->
                             <input id="facebook" name="facebook" type="text" minlength="1"
                                 pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                                 class="validate">
