@@ -103,19 +103,17 @@ A Figma wireframe for each page can be found in the links Below.
 - [Figma](https://www.figma.com/): Figma was used to create the wireframes during the design process
 
 ## Testing
-Python code was tested for PEP8 compliancy with no issues http://pep8online.com/checkresult
+
+Python code was tested for PEP8 compliancy with no issues http://pep8online.com
+HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
+Accepted error:
+<img src="static/images/accepted-error.png" style="margin: 0;">
+Each error is generated from a select element that does have a unique id. Therefore it is not a muliple selection is a single selection element.
 
 ### Testing User Stories from User Experience (UX) Section
 
-
-Both HTML and CSS have been validated via
-
-- W3C [Nu HTML Checker](https://validator.w3.org/nu/)
-- W3C CSS Validation Service [CSS Result]
-Accessibility was checked at [www.webaccessibility.com]
-Responsiveness was checked thought using the Google dev tools and [www.responsinator.com]
-
 A code review was posted in the Code Institute peer-code-review channel.
+
 
 
 Functional testing was carried out against every element to ensure everything worked and was linked as expected before user tested was started. This was recorded in [functional-testing.xlsx](functional-testing.xlsx). Another tab was added after user testing to regression test functionality following changes through the user testing feedback.
