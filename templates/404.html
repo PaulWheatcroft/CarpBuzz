@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
+<div class="container center-align">
     <h1>Error 404</h1>
-    <h2 class="center-align">The One That Got Away</h2>
-    <p class="center-align">Unfortunately the page you are looking for doesn't exist.</p>
+    <h2>The One That Got Away</h2>
+    <p>Unfortunately the page you are looking for doesn't exist.</p>
+
+    <img style="width:200px;" src="{{ url_for('static', filename='/images/cp.png') }}" alt="">
 
     <div class="row">
         <a href="{{ url_for('get_fisheries') }}"
