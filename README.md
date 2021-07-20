@@ -32,7 +32,7 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
     - [Deployment](#deployment)
         - [To contribute to the project](#to-contribute-to-the-project)
         - [Clone and Run Locally](#clone-and-run-locally)
-    - [Deploying to Heroku](#deploying-to-heroku)
+        - [Deploying to Heroku](#deploying-to-heroku)
     - [Bugs and issues](#bugs-and-issues)
     - [Future development](#future-development)
     - [Acknowledgements](#acknowledgements)
@@ -382,7 +382,7 @@ You will find the MONGO_URI string in the connection section of your cluster. Ma
 
 You should now be able to run the website from your computer.
 
-## Deploying to Heroku
+### Deploying to Heroku
  
 You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or late and copy the string into the environment variable.
 To deploy to Heroku (https://www.heroku.com/ )
