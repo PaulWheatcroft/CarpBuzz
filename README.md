@@ -1,4 +1,4 @@
-<img src="images/" style="margin: 0;">
+<img src="static/images/smartmockup-cb.png" style="margin: 0;">
 
 # Carp Buzz
 
