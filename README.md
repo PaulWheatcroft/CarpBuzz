@@ -383,8 +383,7 @@ You will find the MONGO_URI string in the connection section of your cluster. Ma
 You should now be able to run the website from your computer.
 
 ### Deploying to Heroku
- 
-You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or late and copy the string into the environment variable.
+
 To deploy to Heroku (https://www.heroku.com/ )
 1.	Log in with your account
 2.	Select New
