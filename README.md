@@ -30,6 +30,7 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
             - [Registered Users](#registered-users)
             - [Administrator](#administrator)
     - [Deployment](#deployment)
+        - [Clone the repository](#clone-the-repository)
     - [Bugs and issues](#bugs-and-issues)
     - [Future development](#future-development)
     - [Acknowledgements](#acknowledgements)
@@ -329,6 +330,7 @@ Each error is generated from a select element that does have a unique id. Theref
 
 ## Deployment
 
+### Clone the repository
 
 ## Bugs and issues
 
