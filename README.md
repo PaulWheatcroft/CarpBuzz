@@ -46,9 +46,25 @@ The following personas and user stories have been identified:
 - As an administrator of the site, I can view any messages that have been sent using the contact form
 
 
+## Structure
+
+### Database
+
+Data for Carp Buzz is stored in a document database.
+<img src="static/images/cb-data.png" style="margin: 0;">
+
+https://lucid.app/lucidchart/invitations/accept/inv_7b410190-ce33-47a5-80bd-387f7c72f0c6
+
+## Wireframing
+
+<img src="images/" style="margin: 0;">
+
+Mocking up of the site was done using Figma.
+
+[Figma Wireframes](https://www.figma.com/file/3G7nX6FtgMuFxYMjBPjuQc/Carp-Buzz?node-id=0%3A1)
+
 
 ## Design Choices
-
 
 Below is the brand colour pallet for Carp Buzz.
 
@@ -58,26 +74,6 @@ Below is the brand colour pallet for Carp Buzz.
 | XXX | ### |
 | XXX | ### |
 | XXX | ### |
-| XXX | ### |
-| XXX | ### |
-| XXX | ### |
-
-
-## Structure
-
-## Wireframing
-
-<img src="images/" style="margin: 0;">
-
-Mocking up of the site was done using Figma.
-
-A Figma wireframe for each page can be found in the links Below.
-
-[index.html](https://www.figma.com/file/lbEOracgvjZ4jw3uFd6hJd/8-Meg-Stick-Records?node-id=0%3A1)
-
-
-## Design Choices
-
 
 ## Technologies
 
@@ -132,6 +128,7 @@ Border https://www.steckinsights.com/shorten-length-border-bottom-pure-css/
 
 Cancelling of flash messages https://stackoverflow.com/questions/57660542/flask-closing-flash-message
 
+https://smartmockups.com/ was used for the image in the README
 
 
 ## Further Development Ideas
