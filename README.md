@@ -353,16 +353,16 @@ For instance in VS Code:
 <img src="static/images/vs-clone1.png" style="margin: 0;"><br>
 <img src="static/images/vs-clone2.png" style="margin: 0;">
  
-> Alternatively the repository can be cloned from the terminal of your IDE
->1.	Open the terminal
->2.	Change the current working directory to the location where you want the cloned directory.
->3.	Type git clone, and then paste the URL you copied earlier.
->   git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
->4.	Press Enter to create the local clone.
+>> Alternatively the repository can be cloned from the terminal of your IDE
+>>1.	Open the terminal
+>>2.	Change the current working directory to the location where you want the cloned directory.
+>>3.	Type git clone, and then paste the URL you copied earlier.
+>>   git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+>>4.	Press Enter to create the local clone.
 
 Once the clone has completed (though either method) you should see a requirements.txt file in the route of the directory.
 
-5.	In the terminal run
+>> 5.	In the terminal run
 pip install -r requirements.txt
 
 
