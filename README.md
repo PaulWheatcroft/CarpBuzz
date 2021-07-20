@@ -30,7 +30,9 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
             - [Registered Users](#registered-users)
             - [Administrator](#administrator)
     - [Deployment](#deployment)
-        - [Clone the repository](#clone-the-repository)
+        - [To contribute to the project](#to-contribute-to-the-project)
+        - [Clone and Run Locally](#clone-and-run-locally)
+    - [Deploying to Heroku](#deploying-to-heroku)
     - [Bugs and issues](#bugs-and-issues)
     - [Future development](#future-development)
     - [Acknowledgements](#acknowledgements)
@@ -330,7 +332,74 @@ Each error is generated from a select element that does have a unique id. Theref
 
 ## Deployment
 
-### Clone the repository
+### To contribute to the project
+
+1.	Navigate to the Carp Buzz repository page in GitHub https://github.com/PaulWheatcroft/CarpBuzz
+2.	In the top right corner click Fork
+3.	This creates a copy in your GitHub repository 
+4.	From here you could open in Gitpod or make changes directly in GitHub. Once completed click New Puss Request to submit your changes to be merged with the master branch
+
+### Clone and Run Locally
+
+The Carp Buzz application runs on a MongoDB database and requires environment variables. These are kept in a file called env.py which is not shared through GitHub to protect the Carp Buzz database.
+Before cloning the repository, you will need to set up a MongoDB account if you do not already have one (https://www.mongodb.com/). Then inside a MongoDB cluster set up a database with the name of your choice and then create collections outlined in the Website Architecture>Database section of this README file.
+
+<img src="static/images/clone-string.png" style="margin: 0;">
+ 
+You can find the clone string for the repository in Code button above the project’s files.
+Most IDE application have a GUI interface for cloning a GitHub repository from this string.
+For instance in VS Code:
+
+<img src="static/images/vs-clone1.png" style="margin: 0;"><br>
+<img src="static/images/vs-clone2.png" style="margin: 0;">
+ 
+> Alternatively the repository can be cloned from the terminal of your IDE
+>1.	Open the terminal
+>2.	Change the current working directory to the location where you want the cloned directory.
+>3.	Type git clone, and then paste the URL you copied earlier.
+>   git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+>4.	Press Enter to create the local clone.
+
+Once the clone has completed (though either method) you should see a requirements.txt file in the route of the directory.
+
+5.	In the terminal run
+pip install -r requirements.txt
+
+
+Once the repository is cloned you can set up your env.py file in the root of the website but make sure it isn’t replicated to your GitHub repository
+
+> import os	
+>
+>	os.environ.setdefault("IP", "0.0.0.0")
+>	os.environ.setdefault("PORT", "5000")
+>	os.environ.setdefault("SECRET_KEY", "password_of_your_choice")
+>	os.environ.setdefault("MONGO_URI", "")
+>	os.environ.setdefault("MONGO_DBNAME", "your_database_name")
+
+<img src="static/images/mongo-connection.png" style="margin: 0;">
+
+You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or late and copy the string into the environment variable.
+
+You should now be able to run the website from your computer.
+
+## Deploying to Heroku
+ 
+You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or late and copy the string into the environment variable.
+To deploy to Heroku (https://www.heroku.com/ )
+1.	Log in with your account
+2.	Select New
+3.	Then Create new app
+4.	Give your app a unique name and choose you local region
+5.	The click Create app
+6.	When the app is created go to Setting
+7.	Click on Reveal Config Vars and enter the 5 environment variable that are set in the 
+
+<img src="static/images/heroku-keys.png" style="margin: 0;">
+
+8.	Now navigate to Deploy and click on Connect to GitHub
+9.	Authenticate to your GitHub repositories and select the correct GitHub repository for this project.
+10.	Click on Deploy Branch to make the application available publicly through Heroku
+
 
 ## Bugs and issues
 
