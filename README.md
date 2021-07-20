@@ -12,7 +12,7 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
 
 ### User Stories
 
-The following personas and user stories have been identified:
+Working with the founder of Carp Buzz the following personas and user stories have been identified:
 
 >
 > All Users
@@ -30,7 +30,7 @@ The following personas and user stories have been identified:
 - As someone who wants to go carp fishing, who is registered to the site, I can leave a review of a fishery
     - I can edit my review at a later date
     - I can delete my reviews
-- As someone who wants to go carp fishing, who is registered to the site, I can log the fish I catch on a fishing trip to one of the fisheries in the directory
+- As someone who wants to go carp fishing, who is registered to the site, I can log the fish I catch on a fishing trip to one of the fisheries in the directory [^1]
     - I can amend this report at a later dade
     - I can delete my reports
 
@@ -43,7 +43,19 @@ The following personas and user stories have been identified:
 - An administrator of the site, I can moderate fishery reviews when notified by someone who uses the “report review” function.
     - I can deleted the review
     - I can remove the review from moderation should it be OK to do so
-- As an administrator of the site, I can view any messages that have been sent using the contact form
+- As an administrator of the site, I can view any messages that have been sent using a contact form
+
+These user stories helped inform a feature backlog that is kept in [Trello](https://trello.com/b/xP7HGN7D/carp-buzz). This also informed what the minimum viable product was for the project.
+
+[^1]: Due to submission timelines the feature to record catch reports was the only feature to be calssified as "Should" as opposed to "Must".
+
+# Wireframing
+
+<img src="images/" style="margin: 0;">
+
+Mocking up of the site was done using Figma collaborating with Carp Buzz founder Ben Hesketh. 
+
+[Figma Wireframes](https://www.figma.com/file/3G7nX6FtgMuFxYMjBPjuQc/Carp-Buzz?node-id=0%3A1)
 
 
 ## Structure
@@ -55,15 +67,7 @@ Data for Carp Buzz is stored in a document database.
 
 https://lucid.app/lucidchart/invitations/accept/inv_7b410190-ce33-47a5-80bd-387f7c72f0c6
 
-## Wireframing
-
-<img src="images/" style="margin: 0;">
-
-Mocking up of the site was done using Figma.
-
-[Figma Wireframes](https://www.figma.com/file/3G7nX6FtgMuFxYMjBPjuQc/Carp-Buzz?node-id=0%3A1)
-
-
+#
 ## Design Choices
 
 Below is the brand colour pallet for Carp Buzz.

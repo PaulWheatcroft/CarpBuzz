@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 /**************************************************** General Site Wide CSS ***/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  }
 .desktop-only {
     visibility: hidden;
 }
@@ -167,7 +175,7 @@ h4 {
     padding: 20px 0 20px 0;
 }
 .filter-checkbox span {
-    color: #1a1a1a;
+    color: #383838;
 }
 .filter-button-row {
     padding: 20px 0 40px 0;
@@ -286,11 +294,20 @@ h4 {
     margin-top: 0;
 }
 .rating-star h3 i {
-    color: #111;
+    color: #383838;
     text-shadow: 0 0 0;
 }
 .profile-card {
     padding: 20px;
+}
+/**************************************************** Specific css for the footer ***/
+footer {
+    height: 100px;
+    background-color: #383838;
+    padding-top: 10px;
+}
+footer a {
+    color: #f7f7f7;
 }
 @media only screen and (min-width: 1025px) {
     .mobile-only {
