@@ -188,7 +188,7 @@ A code review was posted in the Code Institute peer-code-review channel.
 
 A number of people I know carried out user testing. This resulted in a number of bugs found and fixed and usability improvements.
 
-Functional testing was carried out against every element to ensure everything worked and was linked as expected before user tested was started. This was recorded in [functional-testing.xlsx](functional-testing.xlsx). Another tab was added after user testing to regression test functionality following changes through the user testing feedback.### Validation
+### Validation
 Python code was tested for PEP8 compliancy with no issues http://pep8online.com
 HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
 Accepted error:
