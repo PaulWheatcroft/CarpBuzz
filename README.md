@@ -85,7 +85,7 @@ Working with the founder of Carp Buzz the following personas and user stories ha
 These user stories helped inform a feature backlog that is kept in [Trello](https://trello.com/b/xP7HGN7D/carp-buzz). This also informed what the minimum viable product was for the project.
 
 
-# Wireframing
+## Wireframing
 
 <img src="static/images/cb-wireframe.png" style="margin: 0;width:500px">
 
