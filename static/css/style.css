@@ -300,6 +300,9 @@ h4 {
 .profile-card {
     padding: 20px;
 }
+.back-row {
+    padding-top: 10px;
+}
 /**************************************************** Specific css for the footer ***/
 footer {
     height: 100px;

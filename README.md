@@ -66,7 +66,9 @@ Working with the founder of Carp Buzz the following personas and user stories ha
     - I can view this report at a later date
     - I can amend this report at a later date
     - I can delete my reports
-
+- As someone who has been carp fishing and who regularly used the site to record my catch details, I can log and view the details of what i have caught
+- As someone who has registered for the site I am able to change my own account details
+    
 >
 > Administrator
 >
@@ -222,6 +224,9 @@ Each error is generated from a select element that does have a unique id. Theref
 - I can view any reviews a fishery has
     1. Each fishery card contact a reviews button
     2. When clicked the reviews for that fishery are displayed if there are any. The page will state if there are no reviews
+
+<img src="static/images/reported.png" style="margin: 0;">
+    
 - if I read a review that has questionable or offensive text I can report the review to the website administrator
     1. If the review contains any information that the reader sees as questionable they are able to report the review to the website administrators
     2. A flash message will indicate that they review has been reported
@@ -230,8 +235,7 @@ Each error is generated from a select element that does have a unique id. Theref
 
 - I can view any catch reports a fishery has
     1. Much like reviews each fishery card contains a reports button
-    2. When clicked the reports for that fishery are displayed, if there are any. The page will state if there are no reports
-    
+    2. When clicked the reports for that fishery are displayed, if there are any. The page will state if there are no reports    
 - if I have any questions or queries and can send a message to Carp Buzz
     1. There is a contact link on the menu
     2. When on the contact page there is a simple form that allows anyone to send a message to the website
@@ -239,17 +243,47 @@ Each error is generated from a select element that does have a unique id. Theref
 >
 > As someone who has been carp fishing and who is registered to the site
 >
+<img src="static/images/crud-reviews.png" style="margin: 0;">
+
 - I can leave a review of a fishery that I visited
+    1. If the user has loged in to the website, when on the reviews section for a fishery they will be able to add a new review via a very clear button at the top of the page
+    2. The user is then presented with a clear and simple for them to leave their review
 - I can edit my reviews at a later date
+    1. If ther user has already left a review for a fishery the user will be able to edit this review by a large clear 'edit this review' button.
+    2. The user is able to change all aspects of their review
+
+<img src="static/images/yes-delete.png" style="margin: 0;">
+   
 - I can delete my reviews
+    1. Also within the edit section there is a clear delete button
+    2. To avoid accidental deletetion the button opens a second prompt to confirm the deletion
 >
 > As someone who is currently carp fishing and who is registered to the site
 >
+<img src="static/images/catch-report.png" style="margin: 0;">
+
 - I can log the fish I catch on my fishing trip
+    1. If logged in to the site a user can add a catch report via a very clear button at the top of the reports page of a fishery
 - I can easily add fish individually as I catch them
-- I can view this report at a later date
-- I can amend this report at a later date
+    1. Once the report has been created the user will be taken to a form where they can add the invividual fish as they catch them
+        1. The type of fish is restricted to types of carp only
+        2. Weight is captured in pounds and ounces
+- I can view amend this report at a later date
+    1. Within the reports page the user can clearly see which are their report and can be edited via a large clear 'edit this report' button
+    2. Once in the report all aspects can be eddited
+    3. The user can also re-enter the add fish page to add more catches
 - I can delete my reports
+    1. Also within the edit section there is a clear delete button
+    2. To avoid accidental deletetion the button opens a second prompt to confirm the deletion
+
+<img src="static/images/profile.png" style="margin: 0;">
+
+- As someone who has been carp fishing and who regularly used the site to record my catch details, I can log and view the details of what i have caught
+    1. If the user is logged in a profile page link is available in the menu
+    2. On this page there is a summary of what they have caught
+- As someone who has registered for the site I am able to change my own account details
+    1. On the profile page there is a form to enable to the user to change their details
+
 
 #### Administrator
 >
@@ -270,6 +304,8 @@ Each error is generated from a select element that does have a unique id. Theref
 ## Bugs and issues
 
 ## Future development
+
+- The user profile page needs to be more interactive with their data, date rangers, by fishery, number over a size, by type etc
 
 ## Acknowledgements
 
