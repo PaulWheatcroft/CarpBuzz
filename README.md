@@ -49,6 +49,7 @@ Working with the founder of Carp Buzz the following personas and user stories ha
 
 - As someone who wants to go carp fishing, I can easily view a directory of fisheries in the South West of England
 - As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on location
+- As someone who wants to go carp fishing, I can view useful information for that fishery such as contact details, ticket prices, stock sizes and facilities
 - As someone who wants to go carp fishing, I can view any reviews a fishery has
 - As someone who wants to go carp fishing, if I read a review that  has questionable or offensive text I can report the review to the website administrator
 - As someone who wants to go carp fishing, I can view any catch reports a fishery has
@@ -200,13 +201,40 @@ Each error is generated from a select element that does have a unique id. Theref
 
 - I can easily view a directory of fisheries in the South West of England
     1. Upon landing on the website the user is presented with a clean site containing imagery and text that indicates that this is a carp fishing site
-    2. There is a statement 65% of the way down the screen that states how many fisheries are available to view. This defaults to the total number of fisheries in the database
-    3. At least 1 fishery will be in full or part view
+    2. There is a statement 65% of the way down the screen that states how many fisheries are available to view. This defaults to the total number of fisheries in the database in alphabetical order
+    3. 1 fishery will be in part view
+    
+<img src="static/images/landing-page.png" style="margin: 0;">
+
 - I can filter a directory of fisheries in the South West of England based on location
+    1. The user is presented with the ability to filter the directory based on what county the fishery is in
+    2. There is a statement 65% of the way down the screen that states how many fisheries are now available to view.
+    3. 1 fishery will be in part view
+
+<img src="static/images/info.png" style="margin: 0;">
+
+- I can view useful information for that fishery such as contact details, ticket prices, stock sizes and facilities
+    1. Each fishery card displays contact information and ticket price by default
+    2. More information is clearly marked. When this is clicked additional information is displayed
+
+<img src="static/images/reviews.png" style="margin: 0;">
+
 - I can view any reviews a fishery has
-- if I read a review that  has questionable or offensive text I can report the review to the website administrator
+    1. Each fishery card contact a reviews button
+    2. When clicked the reviews for that fishery are displayed if there are any. The page will state if there are no reviews
+- if I read a review that has questionable or offensive text I can report the review to the website administrator
+    1. If the review contains any information that the reader sees as questionable they are able to report the review to the website administrators
+    2. A flash message will indicate that they review has been reported
+
+<img src="static/images/reviews.png" style="margin: 0;">
+
 - I can view any catch reports a fishery has
+    1. Much like reviews each fishery card contains a reports button
+    2. When clicked the reports for that fishery are displayed, if there are any. The page will state if there are no reports
+    
 - if I have any questions or queries and can send a message to Carp Buzz
+    1. There is a contact link on the menu
+    2. When on the contact page there is a simple form that allows anyone to send a message to the website
 #### Registered Users
 >
 > As someone who has been carp fishing and who is registered to the site
