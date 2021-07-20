@@ -162,7 +162,7 @@ Bold Materialize colours were used for the functional buttons on the app to help
 - [CSS3](https://en.wikipedia.org/wiki/CSS): Is used for the sytling of the site
 - [Python](https://www.python.org/): Is used to program the functionality of the application
 - [Jinja template language](https://jinja.palletsprojects.com/en/3.0.x/) Is used to render the data passed to it to the DOM
-- [Jquery](https://jquery.com/): Is used to nitialise several Materialize CSS components
+- [JQuery](https://jquery.com/): Is used to nitialise several Materialize CSS components
 
 ### Frameworks, Libraries, Databases & Programs Used
 
@@ -172,7 +172,7 @@ Bold Materialize colours were used for the functional buttons on the app to help
 - [Google Fonts](https://fonts.google.com/): Google fonts were used to import the 'Otomanopee One' and 'Questrial' fonts
 - [Font Awesome](https://fontawesome.com/): Font Awesome was used for any icons
 - [Git](https://git-scm.com/): Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub
-- [Gitpod](https://www.gitpod.io/): Gitpod was used as the initial development environment
+- [Gitpod](https://www.gitpod.io/): GitPod was used as the initial development environment
 - [Microsoft VS Code](https://code.visualstudio.com/) Was used after the application development was started in GitPod after the monthly time usage had expired
 - [GitHub](https://github.com/): GitHub is used to store the projects code after being pushed from Git
 - [Figma](https://www.figma.com/): Figma was used to create the wireframes during the design process
@@ -188,7 +188,7 @@ Python code was tested for PEP8 compliancy with no issues http://pep8online.com
 HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
 Accepted error:
 <img src="static/images/accepted-error.png" style="margin: 0;">
-Each error is generated from a select element that does have a unique id. Therefore it is not a muliple selection is a single selection element.
+Each error is generated from a select element that does have a unique id. Therefore it is not a multiple selection is a single selection element.
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -196,8 +196,12 @@ Each error is generated from a select element that does have a unique id. Theref
 >
 > As someone who wants to go carp fishing
 >
+<img src="static/images/landing-page.png" style="margin: 0;">
+
 - I can easily view a directory of fisheries in the South West of England
-    1. Upon landing on the website the user is presented with 
+    1. Upon landing on the website the user is presented with a clean site containing imagery and text that indicates that this is a carp fishing site
+    2. There is a statement 65% of the way down the screen that states how many fisheries are available to view. This defaults to the total number of fisheries in the database
+    3. At least 1 fishery will be in full or part view
 - I can filter a directory of fisheries in the South West of England based on location
 - I can view any reviews a fishery has
 - if I read a review that  has questionable or offensive text I can report the review to the website administrator
