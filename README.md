@@ -9,7 +9,33 @@
 
 The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
 
-Table of Contents
+<!-- TOC -->
+
+- [Carp Buzz](#carp-buzz)
+    - [User Experience UX](#user-experience-ux)
+        - [User Stories](#user-stories)
+- [Wireframing](#wireframing)
+    - [Website Architecture](#website-architecture)
+        - [Database](#database)
+        - [Application](#application)
+        - [Frontend](#frontend)
+        - [Security](#security)
+    - [Design Choices](#design-choices)
+    - [Technologies](#technologies)
+        - [Languages Used](#languages-used)
+        - [Frameworks, Libraries, Databases & Programs Used](#frameworks-libraries-databases--programs-used)
+    - [Testing](#testing)
+        - [Testing User Stories from User Experience UX Section](#testing-user-stories-from-user-experience-ux-section)
+            - [All Users](#all-users)
+            - [Registered Users](#registered-users)
+            - [Administrator](#administrator)
+    - [Deployment](#deployment)
+    - [Bugs and issues](#bugs-and-issues)
+    - [Future development](#future-development)
+    - [Acknowledgements](#acknowledgements)
+    - [Further Development Ideas](#further-development-ideas)
+
+<!-- /TOC -->
 
 ## User Experience (UX)
 
@@ -24,13 +50,13 @@ Working with the founder of Carp Buzz the following personas and user stories ha
 - As someone who wants to go carp fishing, I can easily view a directory of fisheries in the South West of England
 - As someone who wants to go carp fishing, I can filter a directory of fisheries in the South West of England based on location
 - As someone who wants to go carp fishing, I can view any reviews a fishery has
+- As someone who wants to go carp fishing, if I read a review that  has questionable or offensive text I can report the review to the website administrator
 - As someone who wants to go carp fishing, I can view any catch reports a fishery has
 - As someone who wants to go carp fishing, if I have any questions or queries and can send a message to Carp Buzz
 
 >
 > Registered Users
 >
-
 - As someone who has been carp fishing and who is registered to the site, I can leave a review of a fishery that I visited
     - I can edit my reviews at a later date
     - I can delete my reviews
@@ -153,6 +179,11 @@ Bold Materialize colours were used for the functional buttons on the app to help
 
 ## Testing
 
+A code review was posted in the Code Institute peer-code-review channel.
+
+A number of people I know carried out user testing. This resulted in a number of bugs found and fixed and usability improvements.
+
+Functional testing was carried out against every element to ensure everything worked and was linked as expected before user tested was started. This was recorded in [functional-testing.xlsx](functional-testing.xlsx). Another tab was added after user testing to regression test functionality following changes through the user testing feedback.### Validation
 Python code was tested for PEP8 compliancy with no issues http://pep8online.com
 HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
 Accepted error:
@@ -161,13 +192,43 @@ Each error is generated from a select element that does have a unique id. Theref
 
 ### Testing User Stories from User Experience (UX) Section
 
-A code review was posted in the Code Institute peer-code-review channel.
+#### All Users
+>
+> As someone who wants to go carp fishing
+>
+- I can easily view a directory of fisheries in the South West of England
+- I can filter a directory of fisheries in the South West of England based on location
+- I can view any reviews a fishery has
+- if I read a review that  has questionable or offensive text I can report the review to the website administrator
+- I can view any catch reports a fishery has
+- if I have any questions or queries and can send a message to Carp Buzz
+#### Registered Users
+>
+> As someone who has been carp fishing and who is registered to the site
+>
+- I can leave a review of a fishery that I visited
+- I can edit my reviews at a later date
+- I can delete my reviews
+>
+> As someone who is currently carp fishing and who is registered to the site
+>
+- I can log the fish I catch on my fishing trip
+- I can easily add fish individually as I catch them
+- I can view this report at a later date
+- I can amend this report at a later date
+- I can delete my reports
 
-
-
-Functional testing was carried out against every element to ensure everything worked and was linked as expected before user tested was started. This was recorded in [functional-testing.xlsx](functional-testing.xlsx). Another tab was added after user testing to regression test functionality following changes through the user testing feedback.
-
-
+#### Administrator
+>
+>As an administrator of the site
+>
+- I can add new fisheries to the directory
+- I can amend existing fishery entries
+- I can delete fisheries from the directory
+- I can moderate fishery reviews when notified by someone who uses the “report review” function.
+- I can deleted the review
+- I can remove the review from moderation should it be OK to do so
+- As an administrator of the site, I can view any messages that have been sent using a contact form
 
 
 ## Deployment
