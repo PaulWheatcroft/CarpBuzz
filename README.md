@@ -197,6 +197,7 @@ Each error is generated from a select element that does have a unique id. Theref
 > As someone who wants to go carp fishing
 >
 - I can easily view a directory of fisheries in the South West of England
+    1. Upon landing on the website the user is presented with 
 - I can filter a directory of fisheries in the South West of England based on location
 - I can view any reviews a fishery has
 - if I read a review that  has questionable or offensive text I can report the review to the website administrator
