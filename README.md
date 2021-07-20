@@ -52,9 +52,11 @@ These user stories helped inform a feature backlog that is kept in [Trello](http
 
 # Wireframing
 
-<img src="static/images/cb-wireframe.png" style="margin: 0;">
+<img src="static/images/cb-wireframe.png" style="margin: 0;width:500px">
 
-Mocking up of the site was done using Figma collaborating with Carp Buzz founder Ben Hesketh. 
+Mocking up of the site was done using Figma collaborating with Carp Buzz founder Ben Hesketh.
+
+The features outlined in the MVP were used to shape the wireframe images
 
 [Figma Wireframes](https://www.figma.com/file/3G7nX6FtgMuFxYMjBPjuQc/Carp-Buzz?node-id=0%3A1)
 
