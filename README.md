@@ -33,7 +33,6 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
     - [Bugs and issues](#bugs-and-issues)
     - [Future development](#future-development)
     - [Acknowledgements](#acknowledgements)
-    - [Further Development Ideas](#further-development-ideas)
 
 <!-- /TOC -->
 
@@ -138,18 +137,18 @@ Security is provided through the [Werkzeug](https://werkzeug.palletsprojects.com
 
 The website has been built as a mobile first site.
 
-The Materialize side-nav was chosen to enahance the mobile experience. The word menu was chosen above using the burger icon for usability purposes.
+The Materialize side-nav was chosen to enhance the mobile experience. The word menu was chosen above using the burger icon for usability purposes.
 
 The h1 and h2 heading and Carp Buzz font was changed from 'Questrial' to 'Otomanopee One' to give a less corporate feel following feedback from users.
 
-Below is the brand colour pallet for Carp Buzz. A complimentary colour pallet was used in relation to the brand colors.
+Below is the brand colour pallet for Carp Buzz. A complimentary colour pallet was used in relation to the brand colours.
 
 | Description | Hex Colour Value |
 | --- | ----------- |
 | Carp Buzz primary Colour Blue  | #689DA8 |
 | Carp Buzz secondary colour green | ##89A857 |
 | Off white used for backgrounds or light text | #f7f7f7 |
-| Dark grey primarily used for font color | #383838 |
+| Dark grey primarily used for font colour | #383838 |
 
 The Carp Buzz logo was removed from the menu bar as it overcomplicated the look of the navigation.
 
@@ -162,10 +161,10 @@ Bold Materialize colours were used for the functional buttons on the app to help
 ### Languages Used
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5): Is used to structure the website
-- [CSS3](https://en.wikipedia.org/wiki/CSS): Is used for the sytling of the site
+- [CSS3](https://en.wikipedia.org/wiki/CSS): Is used for the styling of the site
 - [Python](https://www.python.org/): Is used to program the functionality of the application
 - [Jinja template language](https://jinja.palletsprojects.com/en/3.0.x/) Is used to render the data passed to it to the DOM
-- [JQuery](https://jquery.com/): Is used to nitialise several Materialize CSS components
+- [JQuery](https://jquery.com/): Is used to initialise several Materialize CSS components
 
 ### Frameworks, Libraries, Databases & Programs Used
 
@@ -175,7 +174,7 @@ Bold Materialize colours were used for the functional buttons on the app to help
 - [Google Fonts](https://fonts.google.com/): Google fonts were used to import the 'Otomanopee One' and 'Questrial' fonts
 - [Font Awesome](https://fontawesome.com/): Font Awesome was used for any icons
 - [Git](https://git-scm.com/): Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub
-- [Gitpod](https://www.gitpod.io/): GitPod was used as the initial development environment
+- [GitPod](https://www.gitpod.io/): GitPod was used as the initial development environment
 - [Microsoft VS Code](https://code.visualstudio.com/) Was used after the application development was started in GitPod after the monthly time usage had expired
 - [GitHub](https://github.com/): GitHub is used to store the projects code after being pushed from Git
 - [Figma](https://www.figma.com/): Figma was used to create the wireframes during the design process
@@ -222,7 +221,7 @@ Each error is generated from a select element that does have a unique id. Theref
 <img src="static/images/reviews.png" style="margin: 0;">
 
 - I can view any reviews a fishery has
-    1. Each fishery card contact a reviews button
+    1. Each fishery card contact has a reviews button
     2. When clicked the reviews for that fishery are displayed if there are any. The page will state if there are no reviews
 
 <img src="static/images/reported.png" style="margin: 0;">
@@ -246,17 +245,17 @@ Each error is generated from a select element that does have a unique id. Theref
 <img src="static/images/crud-reviews.png" style="margin: 0;">
 
 - I can leave a review of a fishery that I visited
-    1. If the user has loged in to the website, when on the reviews section for a fishery they will be able to add a new review via a very clear button at the top of the page
+    1. If the user has logged in to the website, when on the reviews section for a fishery, they will be able to add a new review via a very clear button at the top of the page
     2. The user is then presented with a clear and simple for them to leave their review
 - I can edit my reviews at a later date
-    1. If ther user has already left a review for a fishery the user will be able to edit this review by a large clear 'edit this review' button.
+    1. If the user has already left a review for a fishery the user will be able to edit this review by a large clear 'edit this review' button.
     2. The user is able to change all aspects of their review
 
 <img src="static/images/yes-delete.png" style="margin: 0;">
    
 - I can delete my reviews
     1. Also within the edit section there is a clear delete button
-    2. To avoid accidental deletetion the button opens a second prompt to confirm the deletion
+    2. To avoid accidental deletion the button opens a second prompt to confirm the deletion
 >
 > As someone who is currently carp fishing and who is registered to the site
 >
@@ -265,16 +264,16 @@ Each error is generated from a select element that does have a unique id. Theref
 - I can log the fish I catch on my fishing trip
     1. If logged in to the site a user can add a catch report via a very clear button at the top of the reports page of a fishery
 - I can easily add fish individually as I catch them
-    1. Once the report has been created the user will be taken to a form where they can add the invividual fish as they catch them
+    1. Once the report has been created the user will be taken to a form where they can add the individual fish caught as they catch them
         1. The type of fish is restricted to types of carp only
         2. Weight is captured in pounds and ounces
 - I can view amend this report at a later date
     1. Within the reports page the user can clearly see which are their report and can be edited via a large clear 'edit this report' button
-    2. Once in the report all aspects can be eddited
+    2. Once in the report all aspects can be edited
     3. The user can also re-enter the add fish page to add more catches
 - I can delete my reports
     1. Also within the edit section there is a clear delete button
-    2. To avoid accidental deletetion the button opens a second prompt to confirm the deletion
+    2. To avoid accidental deletion the button opens a second prompt to confirm the deletion
 
 <img src="static/images/profile.png" style="margin: 0;">
 
@@ -289,13 +288,43 @@ Each error is generated from a select element that does have a unique id. Theref
 >
 >As an administrator of the site
 >
+<img src="static/images/admin.png" style="margin: 0;">
+
+> Admin tools are only available when logged in as a user with admin credentials
+
 - I can add new fisheries to the directory
+    1. When logged in as an administrator the user can click on the Admin link located in the menu
+    2. The first link in the drop down is Add Fishery
+    3. This open a large form where the details of the fishery can be completed, or partially completed with a view to adding additional items at a later date
+    
+<img src="static/images/edit-fishery.png" style="margin: 0;"><br>
+
+<img src="static/images/edit-fishery2.png" style="margin: 0;">
+
 - I can amend existing fishery entries
+    1. An edit icon for each fishery can be found in the top left hand corner of the more information for that fishery
+    2. When the user click on this icon they are take to the edit page for that fishery
+    3. All details can be changed as needed
 - I can delete fisheries from the directory
-- I can moderate fishery reviews when notified by someone who uses the “report review” function.
+    1. Also there is a clearly marked delete button.
+    2. To avoid accidental deletion the button opens a second prompt to confirm the deletion
+    
+<img src="static/images/moderated.png" style="margin: 0;">
+    
+- I can moderate fishery reviews that have been notified by someone who uses the “report review” function.
+    1. In the Admin menu there is a link to Moderate Reviews
+    2. This page allows the admin to read the review and ascertain if the review should be kept or removed
 - I can deleted the review
+    3. At the foot of each review is two buttons. One to delete the review
 - I can remove the review from moderation should it be OK to do so
+    4. And one to keep the review
+
+<img src="static/images/messages.png" style="margin: 0;">
+    
 - As an administrator of the site, I can view any messages that have been sent using a contact form
+    1. In the Admin menu there is a link to messages received from the contact form on the contacts page
+    2. This page displays all the messaged that have not been marked as hidden
+    3. If no longer needed the message can be hidden via the 'hide message' button at the foot of each message
 
 
 ## Deployment
@@ -305,7 +334,17 @@ Each error is generated from a select element that does have a unique id. Theref
 
 ## Future development
 
+Near term changes needed
 - The user profile page needs to be more interactive with their data, date rangers, by fishery, number over a size, by type etc
+- Deleting reviews from the Admin page needs an "are you sure" modal
+- Messages page needs a display hidden messages toggle and a delete button
+
+Longer term changes
+- Filtering for a fishery based on current user location and distance away from that location
+- Heat map of fish caught
+- Ability to follow a fisheries reports via push notifications
+- Ability to follow another user
+- Facility to upload images
 
 ## Acknowledgements
 
@@ -317,6 +356,4 @@ Cancelling of flash messages https://stackoverflow.com/questions/57660542/flask-
 
 https://smartmockups.com/ was used for the image in the README
 
-
-## Further Development Ideas
 
