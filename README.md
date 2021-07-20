@@ -1,6 +1,7 @@
 <img src="static/images/smartmockup-cb.png" style="margin: 0;">
 
 # Carp Buzz
+<img src="static/images/cb.png" style="margin: 0;width:100px">
 
 >
 > Carp Buzz is a directory of fisheries in the South West of England.
@@ -51,7 +52,7 @@ These user stories helped inform a feature backlog that is kept in [Trello](http
 
 # Wireframing
 
-<img src="images/" style="margin: 0;">
+<img src="static/images/cb-wireframe.png" style="margin: 0;">
 
 Mocking up of the site was done using Figma collaborating with Carp Buzz founder Ben Hesketh. 
 
