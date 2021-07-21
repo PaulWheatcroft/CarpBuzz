@@ -188,7 +188,7 @@ A code review was posted in the Code Institute peer-code-review channel.
 
 A number of people I know carried out user testing. This resulted in a number of bugs found and fixed and usability improvements.
 
-Functional testing was carried out against every element to ensure everything worked and was linked as expected before user tested was started. This was recorded in [functional-testing.xlsx](functional-testing.xlsx). Another tab was added after user testing to regression test functionality following changes through the user testing feedback.### Validation
+### Validation
 Python code was tested for PEP8 compliancy with no issues http://pep8online.com
 HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
 Accepted error:
@@ -383,8 +383,7 @@ You will find the MONGO_URI string in the connection section of your cluster. Ma
 You should now be able to run the website from your computer.
 
 ### Deploying to Heroku
- 
-You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or late and copy the string into the environment variable.
+
 To deploy to Heroku (https://www.heroku.com/ )
 1.	Log in with your account
 2.	Select New
