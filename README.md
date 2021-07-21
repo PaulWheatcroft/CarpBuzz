@@ -189,6 +189,8 @@ A code review was posted in the Code Institute peer-code-review channel.
 
 A number of people I know carried out user testing. This resulted in a number of bugs found and fixed and usability improvements.
 
+Functional testing has been carried out and recorded in [Regression Testing](regression-testing.xlsx)
+
 ### Validation
 Python code was tested for PEP8 compliancy with no issues http://pep8online.com
 HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
