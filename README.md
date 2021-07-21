@@ -325,7 +325,7 @@ Each error is generated from a select element that does have a unique id. Theref
     1. At the foot of each review there are two buttons. One of which deletes the review
     
 - I can remove the review from moderation should it be OK to do so
-    2. At the foot of each review there are two buttons. One of which takes the review off the moderation list
+    1. At the foot of each review there are two buttons. One of which takes the review off the moderation list
 
 <img src="static/images/messages.png" style="margin: 0;">
     
