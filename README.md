@@ -208,7 +208,7 @@ Each error is generated from a select element that does have a unique id. Theref
 
 - I can easily view a directory of fisheries in the South West of England
     1. Upon landing on the website the user is presented with a clean site containing imagery and text that indicates that this is a carp fishing site
-    2. There is a statement 65% of the way down the screen that states how many fisheries are available to view. This defaults to the total number of fisheries in the database in alphabetical order
+    2. There is a statement 65% of the way down the screen that states how many fisheries are available to view. This defaults to the total number of fisheries in the database
     3. 1 fishery will be in part view
     
 <img src="static/images/landing-page.png" style="margin: 0;">
