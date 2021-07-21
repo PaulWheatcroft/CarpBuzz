@@ -342,7 +342,7 @@ Each error is generated from a select element that does have a unique id. Theref
 1.	Navigate to the Carp Buzz repository page in GitHub https://github.com/PaulWheatcroft/CarpBuzz
 2.	In the top right corner click Fork
 3.	This creates a copy in your GitHub repository 
-4.	From here you could open in Gitpod or make changes directly in GitHub. Once completed click New Puss Request to submit your changes to be merged with the master branch
+4.	From here you could open in Gitpod or make changes directly in GitHub. Once completed click New Push Request to submit your changes to be merged with the master branch
 
 ### Clone and Run Locally
 
@@ -360,10 +360,10 @@ For instance in VS Code:
  
 > Alternatively the repository can be cloned from the terminal of your IDE
 > 1.	Open the terminal
-> 2.	Change the current working directory to the location where you want the cloned directory.
+> 2.	Change the current working directory to the location where you want the cloned directory
 > 3.	Type git clone, and then paste the URL you copied earlier.
 >   git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-> 4.	Press Enter to create the local clone.
+> 4.	Press Enter to create the local clone
 
 Once the clone has completed (through either method) you should see a requirements.txt file in the route of the directory.
 
@@ -383,7 +383,7 @@ Once the repository is cloned you can set up your env.py file in the root of the
 
 <img src="static/images/mongo-connection.png" style="margin: 0;">
 
-You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or late and copy the string into the environment variable.
+You will find the MONGO_URI string in the connection section of your cluster. Make sure you are using Python 3.6 or later and copy the string into the environment variable.
 
 You should now be able to run the website from your computer.
 
@@ -393,8 +393,8 @@ To deploy to Heroku (https://www.heroku.com/ )
 1.	Log in with your account
 2.	Select New
 3.	Then Create new app
-4.	Give your app a unique name and choose you local region
-5.	The click Create app
+4.	Give your app a unique name and choose your local region
+5.	Then click Create app
 6.	When the app is created go to Setting
 7.	Click on Reveal Config Vars and enter the 5 environment variable that are set in the 
 
