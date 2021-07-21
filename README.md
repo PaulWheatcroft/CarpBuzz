@@ -78,8 +78,8 @@ Working with the founder of Carp Buzz the following personas and user stories ha
 - As an administrator of the site, I can add new fisheries to the directory
 - As an administrator of the site, I can amend existing fishery entries
 - As an administrator of the site, I can delete fisheries from the directory
-- An administrator of the site, I can moderate fishery reviews when notified by someone who uses the “report review” function.
-    - I can deleted the review
+- As an administrator of the site, I can moderate fishery reviews when notified by someone who uses the “report review” function.
+    - I can delete the review
     - I can remove the review from moderation should it be OK to do so
 - As an administrator of the site, I can view any messages that have been sent using a contact form
 
@@ -116,11 +116,11 @@ This database is segregated in to 9 collections.
 - catch.fish
 - messages
 
-The fisheries collection is broken down in to the 4 sub-collection you see above following best practice. The fisheries.contact can be considered as the primary collection as the individual documents generate the ID that links the the other subcollections. This fishery ID is also used to link the reviews collection and both of the catch collections.
+The fisheries collection is broken down in to the 4 sub-collections you see above following best practice. The fisheries.contact can be considered as the primary collection as the individual documents generate the ID that links the the other subcollections. This fishery ID is also used to link the reviews collection and both of the catch collections.
 
 When a fishery is deleted by an administrator the fisheries.facilities, fisheries.payment and fisheries.tickets are removed whilst fisheries.contact is given a hidden value and remains in the collections. This keeps the integrity of the catch.report and catch.fish data.
 
-The catch collection is divided in 2 so that fish caught are indivually recorded making further enhancements using the data possible such as returning fish date georaphically or returning information based on type or size.
+The catch collection is divided in 2 so that fish caught are individually recorded making further enhancements using the data possible such as returning fish date geographically or returning information based on type or size.
 
 https://lucid.app/lucidchart/invitations/accept/inv_7b410190-ce33-47a5-80bd-387f7c72f0c6
 
@@ -131,7 +131,7 @@ The application is build on the [Flask](https://flask.palletsprojects.com/en/2.0
 
 As the site is built upon the Flask framework the application is reliant on the [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) templating language and is designed to be a single page application. This means individual pages do not need to be re-loaded in order to view updated content.
 
-To render the card layout shown in the wireframes MaterializeCSS was chosen for the structural framwork for the HTML and CSS code.
+To render the card layout shown in the wireframes MaterializeCSS was chosen for the structural framework for the HTML and CSS code.
 
 ### Security
 
@@ -149,7 +149,7 @@ Below is the brand colour pallet for Carp Buzz. A complimentary colour pallet wa
 
 | Description | Hex Colour Value |
 | --- | ----------- |
-| Carp Buzz primary Colour Blue  | #689DA8 |
+| Carp Buzz primary colour Blue  | #689DA8 |
 | Carp Buzz secondary colour green | ##89A857 |
 | Off white used for backgrounds or light text | #f7f7f7 |
 | Dark grey primarily used for font colour | #383838 |
@@ -193,10 +193,10 @@ Functional testing has been carried out and recorded in [Regression Testing](reg
 
 ### Validation
 Python code was tested for PEP8 compliancy with no issues http://pep8online.com
-HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised on error that I've accepted.
+HTML was tested though https://validator.w3.org/ by copying and pasting in the page source for each page. This raised an error that I've accepted.
 Accepted error:
 <img src="static/images/accepted-error.png" style="margin: 0;">
-Each error is generated from a select element that does have a unique id. Therefore it is not a multiple selection is a single selection element.
+Each error is generated from a select element that does have a unique id. Therefore it is not a multiple selection on a single selection element.
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -241,7 +241,7 @@ Each error is generated from a select element that does have a unique id. Theref
 - I can view any catch reports a fishery has
     1. Much like reviews each fishery card contains a reports button
     2. When clicked the reports for that fishery are displayed, if there are any. The page will state if there are no reports    
-- if I have any questions or queries and can send a message to Carp Buzz
+- if I have any questions or queries I can send a message to Carp Buzz
     1. There is a contact link on the menu
     2. When on the contact page there is a simple form that allows anyone to send a message to the website
 #### Registered Users
@@ -252,7 +252,7 @@ Each error is generated from a select element that does have a unique id. Theref
 
 - I can leave a review of a fishery that I visited
     1. If the user has logged in to the website, when on the reviews section for a fishery, they will be able to add a new review via a very clear button at the top of the page
-    2. The user is then presented with a clear and simple for them to leave their review
+    2. The user is then presented with a clear and simple form for them to leave their review
 - I can edit my reviews at a later date
     1. If the user has already left a review for a fishery the user will be able to edit this review by a large clear 'edit this review' button.
     2. The user is able to change all aspects of their review
@@ -274,7 +274,7 @@ Each error is generated from a select element that does have a unique id. Theref
         1. The type of fish is restricted to types of carp only
         2. Weight is captured in pounds and ounces
 - I can view amend this report at a later date
-    1. Within the reports page the user can clearly see which are their report and can be edited via a large clear 'edit this report' button
+    1. Within the reports page the user can clearly see which are their reports and can be edited via a large clear 'edit this report' button
     2. Once in the report all aspects can be edited
     3. The user can also re-enter the add fish page to add more catches
 - I can delete my reports
@@ -301,7 +301,7 @@ Each error is generated from a select element that does have a unique id. Theref
 - I can add new fisheries to the directory
     1. When logged in as an administrator the user can click on the Admin link located in the menu
     2. The first link in the drop down is Add Fishery
-    3. This open a large form where the details of the fishery can be completed, or partially completed with a view to adding additional items at a later date
+    3. This opens a large form where the details of the fishery can be completed, or partially completed with a view to adding additional items at a later date
     
 <img src="static/images/edit-fishery.png" style="margin: 0;"><br>
 
@@ -309,7 +309,7 @@ Each error is generated from a select element that does have a unique id. Theref
 
 - I can amend existing fishery entries
     1. An edit icon for each fishery can be found in the top left hand corner of the more information for that fishery
-    2. When the user click on this icon they are take to the edit page for that fishery
+    2. When the user clicks on this icon they are taken to the edit page for that fishery
     3. All details can be changed as needed
 - I can delete fisheries from the directory
     1. Also there is a clearly marked delete button.
@@ -317,11 +317,13 @@ Each error is generated from a select element that does have a unique id. Theref
     
 <img src="static/images/moderated.png" style="margin: 0;">
     
-- I can moderate fishery reviews that have been notified by someone who uses the “report review” function.
+- I can moderate fishery reviews that have been notified by someone who uses the “report review” function
     1. In the Admin menu there is a link to Moderate Reviews
     2. This page allows the admin to read the review and ascertain if the review should be kept or removed
-- I can deleted the review
+    
+- I can delete the review
     3. At the foot of each review is two buttons. One to delete the review
+    
 - I can remove the review from moderation should it be OK to do so
     4. And one to keep the review
 
@@ -329,7 +331,7 @@ Each error is generated from a select element that does have a unique id. Theref
     
 - As an administrator of the site, I can view any messages that have been sent using a contact form
     1. In the Admin menu there is a link to messages received from the contact form on the contacts page
-    2. This page displays all the messaged that have not been marked as hidden
+    2. This page displays all the messages that have not been marked as hidden
     3. If no longer needed the message can be hidden via the 'hide message' button at the foot of each message
 
 
@@ -350,7 +352,7 @@ Before cloning the repository, you will need to set up a MongoDB account if you 
 <img src="static/images/clone-string.png" style="margin: 0;">
  
 You can find the clone string for the repository in Code button above the project’s files.
-Most IDE application have a GUI interface for cloning a GitHub repository from this string.
+Most IDE applications have a GUI interface for cloning a GitHub repository from this string.
 For instance in VS Code:
 
 <img src="static/images/vs-clone1.png" style="margin: 0;"><br>
@@ -363,7 +365,7 @@ For instance in VS Code:
 >   git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 > 4.	Press Enter to create the local clone.
 
-Once the clone has completed (though either method) you should see a requirements.txt file in the route of the directory.
+Once the clone has completed (through either method) you should see a requirements.txt file in the route of the directory.
 
 > 5.	In the terminal run
 pip install -r requirements.txt
