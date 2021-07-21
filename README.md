@@ -322,10 +322,10 @@ Each error is generated from a select element that does have a unique id. Theref
     2. This page allows the admin to read the review and ascertain if the review should be kept or removed
     
 - I can delete the review
-    3. At the foot of each review is two buttons. One to delete the review
+    1. At the foot of each review there are two buttons. One of which deletes the review
     
 - I can remove the review from moderation should it be OK to do so
-    4. And one to keep the review
+    2. At the foot of each review there are two buttons. One of which takes the review off the moderation list
 
 <img src="static/images/messages.png" style="margin: 0;">
     
