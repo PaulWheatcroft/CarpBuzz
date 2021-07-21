@@ -14,7 +14,7 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
 - [Carp Buzz](#carp-buzz)
     - [User Experience UX](#user-experience-ux)
         - [User Stories](#user-stories)
-- [Wireframing](#wireframing)
+    - [Wireframing](#wireframing)
     - [Website Architecture](#website-architecture)
         - [Database](#database)
         - [Application](#application)
@@ -85,7 +85,7 @@ Working with the founder of Carp Buzz the following personas and user stories ha
 These user stories helped inform a feature backlog that is kept in [Trello](https://trello.com/b/xP7HGN7D/carp-buzz). This also informed what the minimum viable product was for the project.
 
 
-# Wireframing
+## Wireframing
 
 <img src="static/images/cb-wireframe.png" style="margin: 0;width:500px">
 
@@ -100,7 +100,7 @@ The features outlined in the MVP were used to shape the wireframe images. After 
 
 ### Database
 
-Data for Carp Buzz is stored in a MongoDB document database called carp+buzz.
+Data for Carp Buzz is stored in a MongoDB document database called carp_buzz.
 <img src="static/images/cb-data.png" style="margin: 0;">
 
 This database is segregated in to 9 collections.
