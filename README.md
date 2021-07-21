@@ -25,6 +25,7 @@ The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
         - [Languages Used](#languages-used)
         - [Frameworks, Libraries, Databases & Programs Used](#frameworks-libraries-databases--programs-used)
     - [Testing](#testing)
+        - [Validation](#validation)
         - [Testing User Stories from User Experience UX Section](#testing-user-stories-from-user-experience-ux-section)
             - [All Users](#all-users)
             - [Registered Users](#registered-users)
@@ -401,11 +402,12 @@ To deploy to Heroku (https://www.heroku.com/ )
 
 
 ## Bugs and issues
+The "Showing x Fisheries" displays incorrectly if there are disabled fisheries. Though the correct number of cards are displayed. This is because disabled fisheries are removed as part of the if statement when displaying the cards.
 
 ## Future development
 
 Near term changes needed
-- The user profile page needs to be more interactive with their data, date rangers, by fishery, number over a size, by type etc
+- The user profile page needs to be more interactive with their data, date ranges, by fishery, number of fish over a size, by type etc
 - Deleting reviews from the Admin page needs an "are you sure" modal
 - Messages page needs a display hidden messages toggle and a delete button
 
@@ -420,10 +422,9 @@ Longer term changes
 
 The project was started using the The Code Institute's [Gitpod Full Template](https://github.com/Code-Institute-Org/gitpod-full-template).
 
-Border https://www.steckinsights.com/shorten-length-border-bottom-pure-css/ 
+Border shortening was created by reading https://www.steckinsights.com/shorten-length-border-bottom-pure-css/ 
 
-Cancelling of flash messages https://stackoverflow.com/questions/57660542/flask-closing-flash-message
+Cancelling of flash messages came from here https://stackoverflow.com/questions/57660542/flask-closing-flash-message
 
 https://smartmockups.com/ was used for the image in the README
-
 
