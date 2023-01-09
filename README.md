@@ -7,8 +7,6 @@
 > Carp Buzz is a directory of fisheries in the South West of England.
 >
 
-The live site has been deployed to https://carp-buzz-dev.herokuapp.com/
-
 <!-- TOC -->
 
 - [Carp Buzz](#carp-buzz)
